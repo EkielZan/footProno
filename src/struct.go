@@ -31,6 +31,7 @@ type PrMatch struct {
 	Date    string `json:"Date"`
 	Stage   string `json:"Stage"`
 	Winner  string `json:"Winner"`
+	ScoreP  int    `json:"ScoreP"`
 }
 
 //spaHandler

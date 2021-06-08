@@ -7,12 +7,17 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/tidwall/gjson"
 )
 
 var stage1File = "./ressources/stage1.json"
 var stage1PronoFile = "./ressources/MatchDay1Test.json"
+
+const (
+	layoutISO = "2006-01-02"
+)
 
 func getScores(marshalled []byte, id int) {
 	myString := string(marshalled)
@@ -32,8 +37,8 @@ func getScores(marshalled []byte, id int) {
 }
 
 func getMatches(w http.ResponseWriter, r *http.Request) {
-	matches := readJsonMatches(stage1File)
-	marshalled, _ := json.Marshal(matches)
+	officialScores := readJsonMatches(stage1File)
+	marshalled, _ := json.Marshal(officialScores)
 	getScores(marshalled, 0)
 	Respond(w, marshalled)
 }
@@ -45,40 +50,39 @@ func getPlayers(w http.ResponseWriter, r *http.Request) {
 }
 
 func readJsonMatches(strFile string) []Match {
-	var matches []Match
+	var officialScores []Match
 	// Open our jsonFile
 	raw, err := ioutil.ReadFile(strFile)
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
 	}
-	err = json.Unmarshal([]byte(raw), &matches)
+	err = json.Unmarshal([]byte(raw), &officialScores)
 	if err != nil {
 		panic(err)
 	}
-	return matches
+	return officialScores
 }
 
 func readJson(strFile string) []Player {
-	matches := readJsonMatches(stage1File)
+	now := time.Now()
+	date := "2012-06-12"
+	t, _ := time.Parse(layoutISO, date)
+	diff := t.Sub(now)
+	if diff.Hours() > 0 {
+		fmt.Println("avant")
+		fmt.Println(diff)
+	} else {
+		fmt.Println("apres")
+		fmt.Println(diff.Hours())
+	}
+
+	officialScores := readJsonMatches(stage1File)
 	// Open our jsonFile
 	raw, err := ioutil.ReadFile(strFile)
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
-	}
-	//we itarete the played Matches
-	// Code is for debug can be removed at the end when happy
-	for _, s := range matches {
-		match := s
-		if match.ScoreT1 == match.ScoreT2 {
-			fmt.Printf("Egalité")
-		} else if match.ScoreT2 > match.ScoreT1 {
-			fmt.Printf("%s Wins", match.Team2)
-		} else {
-			fmt.Printf("%s Wins", match.Team1)
-		}
-		fmt.Println()
 	}
 
 	var m interface{}
@@ -89,20 +93,50 @@ func readJson(strFile string) []Player {
 	var players []Player
 	for _, i := range m.([]interface{}) {
 		var player Player
+		var matchPronoSlice []PrMatch
+		tempScore := 0
 		player.ID = i.(map[string]interface{})["ID"].(string)
 		player.Email = i.(map[string]interface{})["Email"].(string)
 		player.Name = i.(map[string]interface{})["Name"].(string)
 		// We itare to create real pronostics for players
-		for j, s := range matches {
+		for j, oS := range officialScores {
+			scoreP := 0
 			var matchProno PrMatch
 			matchProno.MatchID = j
-			matchProno.Team1 = s.Team1
-			matchProno.ScoreT1, _ = strconv.Atoi(i.(map[string]interface{})[s.Team1].(string))
-			matchProno.Team2 = s.Team2
-			matchProno.ScoreT2, _ = strconv.Atoi(i.(map[string]interface{})[s.Team2].(string))
-			fmt.Println(matchProno)
+			matchProno.Team1 = oS.Team1
+			matchProno.ScoreT1, _ = strconv.Atoi(i.(map[string]interface{})[oS.Team1].(string))
+			matchProno.Team2 = oS.Team2
+			matchProno.ScoreT2, _ = strconv.Atoi(i.(map[string]interface{})[oS.Team2].(string))
+			matchProno.Date = oS.Date
+			//We compare Score to know who is winner according to player
+			if matchProno.ScoreT1 == matchProno.ScoreT2 {
+				matchProno.Winner = "PAR"
+			} else if matchProno.ScoreT1 > matchProno.ScoreT2 {
+				matchProno.Winner = matchProno.Team1
+			} else {
+				matchProno.Winner = matchProno.Team2
+			}
+			//We compare Score to know who is Real winner
+			if oS.ScoreT1 == oS.ScoreT2 {
+				oS.Winner = "PAR"
+			} else if oS.ScoreT1 > oS.ScoreT2 {
+				oS.Winner = oS.Team1
+			} else {
+				oS.Winner = oS.Team2
+			}
+			if matchProno.Winner == oS.Winner {
+				scoreP += 1
+				if matchProno.ScoreT1 == oS.ScoreT1 && matchProno.ScoreT2 == oS.ScoreT2 {
+					scoreP += 2
+				}
+			}
+			matchProno.ScoreP = scoreP
+			tempScore += scoreP
+			//we add the filled strucut to the slice
+			matchPronoSlice = append(matchPronoSlice, matchProno)
 		}
-		player.Score = 0
+		player.Matches = matchPronoSlice
+		player.Score = tempScore
 		players = append(players, player)
 	}
 	return players
