@@ -2,7 +2,7 @@ package main
 
 //Player
 type Player struct {
-	ID      string    `json:"ID"`
+	ID      int       `json:"ID"`
 	Name    string    `json:"Name"`
 	Email   string    `json:"Email"`
 	Score   int       `json:"Score"`
@@ -32,6 +32,14 @@ type PrMatch struct {
 	Stage   string `json:"Stage"`
 	Winner  string `json:"Winner"`
 	ScoreP  int    `json:"ScoreP"`
+}
+
+//Statistics
+type Statistics struct {
+	Rise     string `json:"Rise"`
+	Fall     string `json:"Fall"`
+	ButProno int    `json:"ButProno"`
+	ButReal  int    `json:"ButReal"`
 }
 
 //spaHandler

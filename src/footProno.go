@@ -30,13 +30,16 @@ func main() {
 	log.Println("Version:\t", Version)
 	log.Println("Running Web Server Api on port " + serverPort)
 	router := mux.NewRouter()
-	spa := spaHandler{staticPath: "static", indexPath: "index.html"}
+	static := spaHandler{staticPath: "static", indexPath: "index.html"}
 
 	router.HandleFunc("/matches", getMatches)
 	router.HandleFunc("/players", getPlayers)
+	router.HandleFunc("/playersByScore", getOrderedPlayers)
+	router.HandleFunc("/player/{id}", getPlayer)
+	router.HandleFunc("/stats", getStat)
 
 	//TODO Remove if not necessary
-	router.PathPrefix("/").Handler(spa)
+	router.PathPrefix("/").Handler(static)
 	fileServer := http.FileServer(http.Dir("static"))
 	router.PathPrefix("/js").Handler(http.StripPrefix("/", fileServer))
 	router.PathPrefix("/css").Handler(http.StripPrefix("/", fileServer))

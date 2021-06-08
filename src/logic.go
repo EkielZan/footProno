@@ -6,46 +6,53 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"sort"
 	"strconv"
 	"time"
 
-	"github.com/tidwall/gjson"
+	"github.com/gorilla/mux"
 )
 
 var stage1File = "./ressources/stage1.json"
 var stage1PronoFile = "./ressources/MatchDay1Test.json"
+var stat Statistics
 
 const (
 	layoutISO = "2006-01-02"
 )
 
-func getScores(marshalled []byte, id int) {
-	myString := string(marshalled)
-	Team1Name := gjson.Get(myString, "#(MatchID=="+strconv.Itoa(id)+").Team1")
-	Team1Score := gjson.Get(myString, "#(MatchID=="+strconv.Itoa(id)+").ScoreT1")
-	Team2Name := gjson.Get(myString, "#(MatchID=="+strconv.Itoa(id)+").Team2")
-	Team2Score := gjson.Get(myString, "#(MatchID=="+strconv.Itoa(id)+").ScoreT2")
-	fmt.Println(Team1Name.String() + ":" + Team1Score.String())
-	fmt.Println(Team2Name.String() + ":" + Team2Score.String())
-	if Team2Score.Int() == Team1Score.Int() {
-		fmt.Println("Egalité")
-	} else if Team2Score.Int() > Team1Score.Int() {
-		fmt.Printf("%s Wins", Team2Name.String())
-	} else {
-		fmt.Printf("%s Wins", Team1Name.String())
-	}
-}
-
+// Api Calls
 func getMatches(w http.ResponseWriter, r *http.Request) {
 	officialScores := readJsonMatches(stage1File)
 	marshalled, _ := json.Marshal(officialScores)
-	getScores(marshalled, 0)
 	Respond(w, marshalled)
 }
 
 func getPlayers(w http.ResponseWriter, r *http.Request) {
-	players := readJson(stage1PronoFile)
+	players := readJsonPlayers(stage1PronoFile)
 	marshalled, _ := json.Marshal(players)
+	Respond(w, marshalled)
+}
+
+func getOrderedPlayers(w http.ResponseWriter, r *http.Request) {
+	players := readJsonPlayers(stage1PronoFile)
+	sort.Slice(players, func(i, j int) bool {
+		return players[i].Score > players[j].Score
+	})
+	marshalled, _ := json.Marshal(players)
+	Respond(w, marshalled)
+}
+
+func getPlayer(w http.ResponseWriter, r *http.Request) {
+	playerID, _ := strconv.Atoi(mux.Vars(r)["id"])
+	players := readJsonPlayers(stage1PronoFile)
+	player := players[playerID]
+	marshalled, _ := json.Marshal(player)
+	Respond(w, marshalled)
+}
+
+func getStat(w http.ResponseWriter, r *http.Request) {
+	marshalled, _ := json.Marshal(stat)
 	Respond(w, marshalled)
 }
 
@@ -64,19 +71,16 @@ func readJsonMatches(strFile string) []Match {
 	return officialScores
 }
 
-func readJson(strFile string) []Player {
+func readJsonPlayers(strFile string) []Player {
+	stat.ButProno = 0
+	stat.ButReal = 0
+	stat.Fall = ""
+	stat.Rise = ""
 	now := time.Now()
-	date := "2012-06-12"
-	t, _ := time.Parse(layoutISO, date)
-	diff := t.Sub(now)
-	if diff.Hours() > 0 {
-		fmt.Println("avant")
-		fmt.Println(diff)
-	} else {
-		fmt.Println("apres")
-		fmt.Println(diff.Hours())
-	}
-
+	/*Time Debug*/
+	date := "2021-06-12"
+	now, _ = time.Parse(layoutISO, date)
+	/* */
 	officialScores := readJsonMatches(stage1File)
 	// Open our jsonFile
 	raw, err := ioutil.ReadFile(strFile)
@@ -84,56 +88,73 @@ func readJson(strFile string) []Player {
 		fmt.Println(err.Error())
 		os.Exit(1)
 	}
-
 	var m interface{}
 	err = json.Unmarshal([]byte(raw), &m)
 	if err != nil {
 		panic(err)
 	}
 	var players []Player
-	for _, i := range m.([]interface{}) {
+	for idx, i := range m.([]interface{}) {
 		var player Player
 		var matchPronoSlice []PrMatch
 		tempScore := 0
-		player.ID = i.(map[string]interface{})["ID"].(string)
+		player.ID = idx
 		player.Email = i.(map[string]interface{})["Email"].(string)
 		player.Name = i.(map[string]interface{})["Name"].(string)
 		// We itare to create real pronostics for players
 		for j, oS := range officialScores {
-			scoreP := 0
-			var matchProno PrMatch
-			matchProno.MatchID = j
-			matchProno.Team1 = oS.Team1
-			matchProno.ScoreT1, _ = strconv.Atoi(i.(map[string]interface{})[oS.Team1].(string))
-			matchProno.Team2 = oS.Team2
-			matchProno.ScoreT2, _ = strconv.Atoi(i.(map[string]interface{})[oS.Team2].(string))
-			matchProno.Date = oS.Date
-			//We compare Score to know who is winner according to player
-			if matchProno.ScoreT1 == matchProno.ScoreT2 {
-				matchProno.Winner = "PAR"
-			} else if matchProno.ScoreT1 > matchProno.ScoreT2 {
-				matchProno.Winner = matchProno.Team1
-			} else {
-				matchProno.Winner = matchProno.Team2
-			}
-			//We compare Score to know who is Real winner
-			if oS.ScoreT1 == oS.ScoreT2 {
-				oS.Winner = "PAR"
-			} else if oS.ScoreT1 > oS.ScoreT2 {
-				oS.Winner = oS.Team1
-			} else {
-				oS.Winner = oS.Team2
-			}
-			if matchProno.Winner == oS.Winner {
-				scoreP += 1
-				if matchProno.ScoreT1 == oS.ScoreT1 && matchProno.ScoreT2 == oS.ScoreT2 {
-					scoreP += 2
+			date := oS.Date
+			t, _ := time.Parse(layoutISO, date)
+			diff := t.Before(now)
+			if diff {
+				scoreP := 0
+				var matchProno PrMatch
+				matchProno.MatchID = j
+				//We check the score if 10 then it's 0
+				score, _ := strconv.Atoi(i.(map[string]interface{})[oS.Team1].(string))
+				if score == 10 {
+					score = 0
 				}
+				matchProno.Team1 = oS.Team1
+				matchProno.ScoreT1 = score
+				stat.ButProno += score
+				//We check the score if 10 then it's 0
+				score, _ = strconv.Atoi(i.(map[string]interface{})[oS.Team2].(string))
+				if score == 10 {
+					score = 0
+				}
+				matchProno.Team2 = oS.Team2
+				matchProno.ScoreT2 = score
+				stat.ButProno += score
+				matchProno.Date = oS.Date
+				//We compare Score to know who is winner according to player
+				if matchProno.ScoreT1 == matchProno.ScoreT2 {
+					matchProno.Winner = "PAR"
+				} else if matchProno.ScoreT1 > matchProno.ScoreT2 {
+					matchProno.Winner = matchProno.Team1
+				} else {
+					matchProno.Winner = matchProno.Team2
+				}
+				stat.ButReal += oS.ScoreT1 + oS.ScoreT2
+				//We compare Score to know who is Real winner
+				if oS.ScoreT1 == oS.ScoreT2 {
+					oS.Winner = "PAR"
+				} else if oS.ScoreT1 > oS.ScoreT2 {
+					oS.Winner = oS.Team1
+				} else {
+					oS.Winner = oS.Team2
+				}
+				if matchProno.Winner == oS.Winner {
+					scoreP += 1
+					if matchProno.ScoreT1 == oS.ScoreT1 && matchProno.ScoreT2 == oS.ScoreT2 {
+						scoreP += 2
+					}
+				}
+				matchProno.ScoreP = scoreP
+				tempScore += scoreP
+				//we add the filled strucut to the slice
+				matchPronoSlice = append(matchPronoSlice, matchProno)
 			}
-			matchProno.ScoreP = scoreP
-			tempScore += scoreP
-			//we add the filled strucut to the slice
-			matchPronoSlice = append(matchPronoSlice, matchProno)
 		}
 		player.Matches = matchPronoSlice
 		player.Score = tempScore
@@ -141,11 +162,3 @@ func readJson(strFile string) []Player {
 	}
 	return players
 }
-
-/*
-for k, v := range i.(map[string]interface{}) {
-	if k == "ID" {
-		fmt.Println(k + " - " + v.(string))
-		player.ID = k
-	}
-}*/
