@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <title>Version Monitor - (vermon)</title>
+  <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/card.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/grid.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/message.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="ui four column grid">
+        <div class="ui row centered">
+          <div class="ui blue message"> {{timezone1}} : {{meTime}} <br> refresh every {{refresh}}s, next refresh in {{count}}s</div>
+        </div>
+      <div v-show="onError" class="row">
+        <div class="eight wide column centered ">
+          <div class="ui red message">{{onError.message}}</div>
+        </div>
+      </div>
+      <div v-show="invalidConfig" class="row">
+        <div class="eight wide column centered ">
+          <div class="ui attached message">
+            <div class="header">
+              Invalid Configuration
+            </div>
+          </div>
+          <div class="ui attached fluid segment">
+            <p>
+              Make sure all configs are set.
+              The following properties must be defined in the URL.
+            </p>
+            <ul>
+              <li>projects</li>
+            </ul>
+          </div>
+          <div class="ui bottom attached warning message">
+            <p>Ex: http://vermon-web.example.com?projects=projects</p>
+          </div>
+        </div>
+      </div>
+      <div v-show="loading" class="row">
+        <div class="ui large active centered inline loader"></div>
+      </div>
+      <div class="row builds">
+        <div class="thirteen wide column">
+          <div class="ui stackable cards">
+            <div v-for="server in servers" class="card {{server.ServerTier}}">
+              <div class="content">
+			   <div class="header">
+			    <div class=" project-name">
+                  <a target="_blank" title="overview of {{server.ServerHName}}" href="">{{ server.ServerHName }}</a> <a target="_blank" href="">({{ server.ServerDesc }} - {{ server.ServerTier }} )</a>
+                </div>
+			   </div>
+                <div class="meta">{{ server.ServerLName }}</div>
+                <div class="description">
+                  <a target="_blank" href="">
+                    <div class="title">{{ server.AppName }}<H3>{{ server.AppVer }}</H3></div>
+                  </a>
+                  <template v-if="server.ReleaseNote">
+                    <span class="center floated file" title="Release Note">
+                      <a target="_blank" href="{{server.ReleaseNote}}"><i class="file icon"></i>
+                        Release
+                      </a>
+                    </span>
+                  </template>
+                </div>
+              </div>
+              <div class="extra content">
+                <span class="left floated hashtag build-id">
+                    <a target="_blank" href="{{server.PipelineUrl}}"><i class="hashtag icon"></i>
+                    {{server.PipelineId}}   
+                  </a>
+                </span>
+                <span class="right floated calendar" title="{{ server.releaseDate }}">
+                  <i class="calendar icon"></i>
+                  {{ server.releaseDate }}
+                </span>
+              </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/vue.min.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="http://momentjs.com/downloads/moment-timezone-with-data.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
