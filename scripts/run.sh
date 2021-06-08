@@ -1,1 +1,1 @@
-docker run -dit -p 3000:3000 --name quizzy quizzy:latest
+docker run -dit -p 3000:3000 --name footProno footprono:latest
