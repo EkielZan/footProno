@@ -7,6 +7,16 @@ type Player struct {
 	Email   string    `json:"Email"`
 	Score   int       `json:"Score"`
 	Matches []PrMatch `json:"Matches"`
+	Champ   string    `json:"Champ"`
+	LastPos int       `json:"LastPos"`
+	Status  string    `json:"Status"`
+	Amount  int       `json:"Amount"`
+}
+
+type ShortPlayer struct {
+	Name    string `json:"Name"`
+	Score   int    `json:"Score"`
+	LastPos int    `json:"LastPos"`
 }
 
 //Match from json files

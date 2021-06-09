@@ -13,13 +13,21 @@ import (
 	"github.com/gorilla/mux"
 )
 
+//All working files
 var stage1File = "./ressources/stage1.json"
 var stage1PronoFile = "./ressources/MatchDay1Test.json"
+var champFile = "./ressources/champList.json"
+var statusFile = "./ressources/status.json"
 var stat Statistics
 
 const (
 	layoutISO = "2006-01-02"
 )
+
+//preLoad()
+func preLoad() {
+	_ = readJsonPlayers(stage1PronoFile)
+}
 
 // Api Calls
 func getMatches(w http.ResponseWriter, r *http.Request) {
@@ -39,6 +47,8 @@ func getOrderedPlayers(w http.ResponseWriter, r *http.Request) {
 	sort.Slice(players, func(i, j int) bool {
 		return players[i].Score > players[j].Score
 	})
+	checkingRank(players)
+	savePlayers(players)
 	marshalled, _ := json.Marshal(players)
 	Respond(w, marshalled)
 }
@@ -56,6 +66,8 @@ func getStat(w http.ResponseWriter, r *http.Request) {
 	Respond(w, marshalled)
 }
 
+//Func Logic
+
 func readJsonMatches(strFile string) []Match {
 	var officialScores []Match
 	// Open our jsonFile
@@ -72,8 +84,8 @@ func readJsonMatches(strFile string) []Match {
 }
 
 func readJsonPlayers(strFile string) []Player {
-	stat.ButProno = 0
-	stat.ButReal = 0
+	ButProno := 0
+	ButReal := 0
 	stat.Fall = ""
 	stat.Rise = ""
 	now := time.Now()
@@ -93,6 +105,7 @@ func readJsonPlayers(strFile string) []Player {
 	if err != nil {
 		panic(err)
 	}
+	champPlayer := readChampion(champFile)
 	var players []Player
 	for idx, i := range m.([]interface{}) {
 		var player Player
@@ -101,6 +114,11 @@ func readJsonPlayers(strFile string) []Player {
 		player.ID = idx
 		player.Email = i.(map[string]interface{})["Email"].(string)
 		player.Name = i.(map[string]interface{})["Name"].(string)
+		for _, v := range champPlayer {
+			if v.Name == player.Name {
+				player.Champ = v.Champ
+			}
+		}
 		// We itare to create real pronostics for players
 		for j, oS := range officialScores {
 			date := oS.Date
@@ -117,7 +135,7 @@ func readJsonPlayers(strFile string) []Player {
 				}
 				matchProno.Team1 = oS.Team1
 				matchProno.ScoreT1 = score
-				stat.ButProno += score
+				ButProno += score
 				//We check the score if 10 then it's 0
 				score, _ = strconv.Atoi(i.(map[string]interface{})[oS.Team2].(string))
 				if score == 10 {
@@ -125,7 +143,7 @@ func readJsonPlayers(strFile string) []Player {
 				}
 				matchProno.Team2 = oS.Team2
 				matchProno.ScoreT2 = score
-				stat.ButProno += score
+				ButProno += score
 				matchProno.Date = oS.Date
 				//We compare Score to know who is winner according to player
 				if matchProno.ScoreT1 == matchProno.ScoreT2 {
@@ -135,7 +153,7 @@ func readJsonPlayers(strFile string) []Player {
 				} else {
 					matchProno.Winner = matchProno.Team2
 				}
-				stat.ButReal += oS.ScoreT1 + oS.ScoreT2
+				ButReal += oS.ScoreT1 + oS.ScoreT2
 				//We compare Score to know who is Real winner
 				if oS.ScoreT1 == oS.ScoreT2 {
 					oS.Winner = "PAR"
@@ -159,6 +177,82 @@ func readJsonPlayers(strFile string) []Player {
 		player.Matches = matchPronoSlice
 		player.Score = tempScore
 		players = append(players, player)
+		stat.ButProno = ButProno
+		stat.ButReal = ButReal
 	}
 	return players
+}
+
+func readChampion(strFile string) []Player {
+	var champPlayer []Player
+	raw, err := ioutil.ReadFile(strFile)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+	var m interface{}
+	err = json.Unmarshal([]byte(raw), &m)
+	if err != nil {
+		panic(err)
+	}
+	for idx, i := range m.([]interface{}) {
+		var player Player
+		player.ID = idx
+		player.Email = i.(map[string]interface{})["Email"].(string)
+		player.Name = i.(map[string]interface{})["Name"].(string)
+		player.Champ = i.(map[string]interface{})["Champ"].(string)
+		champPlayer = append(champPlayer, player)
+	}
+	return champPlayer
+}
+
+func savePlayers(players []Player) {
+	var toSaveSlice []ShortPlayer
+	for idx, player := range players {
+		var toSavePlayer ShortPlayer
+		toSavePlayer.Name = player.Name
+		toSavePlayer.LastPos = idx
+		toSavePlayer.Score = player.Score
+		toSaveSlice = append(toSaveSlice, toSavePlayer)
+	}
+	marshalled, _ := json.MarshalIndent(toSaveSlice, "", " ")
+	_ = ioutil.WriteFile(statusFile, marshalled, 0644)
+}
+
+func checkingRank(players []Player) []Player {
+	shortPlayers := readSavedPlayers()
+	for _, shortPlayer := range shortPlayers {
+		for idx, player := range players {
+			if shortPlayer.Name == player.Name {
+				diff := idx - shortPlayer.LastPos
+				fmt.Printf("%d  -  %d - %d ", idx, shortPlayer.LastPos, diff)
+				fmt.Println("")
+				if diff > 0 {
+					player.Status = "Down"
+				} else if diff < 0 {
+					player.Status = "Up"
+				} else {
+					player.Status = "SQ"
+				}
+			}
+		}
+	}
+	fmt.Println("--------")
+	return players
+
+}
+
+func readSavedPlayers() []ShortPlayer {
+	var savedPlayer []ShortPlayer
+	// Open our jsonFile
+	raw, err := ioutil.ReadFile(statusFile)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+	err = json.Unmarshal([]byte(raw), &savedPlayer)
+	if err != nil {
+		panic(err)
+	}
+	return savedPlayer
 }

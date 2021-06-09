@@ -14,9 +14,9 @@
 
 <body>
   <div id="app">
-    <div class="ui four column grid">
+    <div class="ui grid">
       <div class="ui row centered">
-        <div class="ui blue message"> {{timezone1}} : {{meTime}} <br> refresh every {{refresh}}s, next refresh in {{count}}s
+        <div class="ui blue message"> {{timezone1}} : {{meTime}} refresh every {{refresh}}s, next refresh in {{count}}s
         </div>
       </div>
       <div v-show="onError" class="row">
@@ -36,38 +36,46 @@
       <div v-show="loading" class="row">
         <div class="ui large active centered inline loader"></div>
       </div>
-      <div class="row builds">
-        <div class="ten wide column">
-          <div class="ui stackable cards">
-            <div class="card ing">
+      <div class="ui row centered">
+        <div class="centered">
+          <div class="ui text container ing">
+            <div class="ing">
               <div class="content">
 			          <div class="header">
 			          <div class=" project-name">
-                  Score
+                  Leaderboard
                 </div>
 			        </div>
-                <div class="meta">
+                <div class="description">
                   <table style="width:100%">
                     <tr>
-                      <th>Nom</th>
+                      <th>Name</th>
                       <th>Score</th>
+                      <th>Champion</th>
+                      <th></th>
+                      <th></th>
                     </tr>
                     <tr v-for="player in players">
                       <td>{{player.Name}}</td>
                       <td>{{player.Score}}</td>
+                      <td>{{player.Champ}}</td>
+                      <td>+3</td>
+                      <td>Up</td>
                     </tr>
                   </table>
                 </div>
               </div>
             </div>
-            <div class="card ing">
+            <br>
+            <br>
+            <div class="ing">
               <div class="content">
 			          <div class="header">
 			          <div class=" project-name">
                   Statistics
                 </div>
 			        </div>
-                <div class="meta">
+                <div class="description">
                   Nombre de But Pronostiqué : {{stats.ButProno}}<br>
                   Nombre de But Marqué : {{stats.ButReal}}
                 </div>

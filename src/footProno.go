@@ -32,6 +32,8 @@ func main() {
 	router := mux.NewRouter()
 	static := spaHandler{staticPath: "static", indexPath: "index.html"}
 
+	preLoad()
+
 	router.HandleFunc("/matches", getMatches)
 	router.HandleFunc("/players", getPlayers)
 	router.HandleFunc("/playersByScore", getOrderedPlayers)
