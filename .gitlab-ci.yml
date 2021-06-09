@@ -1,0 +1,51 @@
+image: docker:dind
+services:
+  - docker:dind
+
+stages:
+  - version
+  - build
+  - release
+
+variables:
+  # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
+  CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
+
+version:
+  image: python:3.7-stretch
+  stage: version
+  script:
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+    - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - pip install semver
+    - python3 /builds/EkielZan/footProno/scripts/gen-semver.py > version
+  artifacts:
+    paths:
+      - version
+  only:
+    - branches
+
+build:
+  stage: build
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - "[ -f ./version ] && export VERSION=$(cat ./version)"
+    - DOCKER_BUILDKIT=1 docker build --pull -t $CONTAINER_TEST_IMAGE --build-arg VERSION=$VERSION -f Dockerfile .
+    - docker push $CONTAINER_TEST_IMAGE
+  only:
+    - branches
+
+release-image:
+  stage: release
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull $CONTAINER_TEST_IMAGE
+    - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
+    - docker push $CONTAINER_RELEASE_IMAGE
+  only:
+    - master
