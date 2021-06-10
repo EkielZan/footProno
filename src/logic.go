@@ -220,12 +220,11 @@ func calculateScore(w http.ResponseWriter, r *http.Request) {
 				t, _ := time.Parse(layoutISO, date)
 				diff := t.Before(now)
 				if diff {
-					if matchProno.ScoreT1 == matchProno.ScoreT2 {
-						matchProno.Winner = "PAR"
-					} else if matchProno.ScoreT1 > matchProno.ScoreT2 {
-						matchProno.Winner = matchProno.Team1
-					} else {
-						matchProno.Winner = matchProno.Team2
+					if match.Winner == oS.Winner {
+						//scoreP += 1
+						if match.ScoreT1 == oS.ScoreT1 && match.ScoreT2 == oS.ScoreT2 {
+							//	scoreP += 2
+						}
 					}
 				}
 			}
