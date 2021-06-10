@@ -1,96 +1,96 @@
 [
  {
-  "Name": "Johann Ahrens",
-  "Score": 3,
+  "Name": "Thiago Dimbarre",
+  "Score": 0,
   "LastPos": 0,
   "ScoreDate": ""
  },
  {
   "Name": "BART MACHIELS",
-  "Score": 3,
+  "Score": 0,
   "LastPos": 1,
   "ScoreDate": ""
  },
  {
-  "Name": "Werner Bruers",
-  "Score": 3,
+  "Name": "Filip Bollaerts",
+  "Score": 0,
   "LastPos": 2,
   "ScoreDate": ""
  },
  {
-  "Name": "Didier Siemons",
-  "Score": 3,
+  "Name": "Joost Boulpaep",
+  "Score": 0,
   "LastPos": 3,
   "ScoreDate": ""
  },
  {
-  "Name": "Thiago Dimbarre",
-  "Score": 1,
+  "Name": "Johann Ahrens",
+  "Score": 0,
   "LastPos": 4,
   "ScoreDate": ""
  },
  {
-  "Name": "Joost Boulpaep",
-  "Score": 1,
+  "Name": "Didier Siemons",
+  "Score": 0,
   "LastPos": 5,
   "ScoreDate": ""
  },
  {
-  "Name": "Filip Bollaerts",
-  "Score": 1,
+  "Name": "Werner Bruers",
+  "Score": 0,
   "LastPos": 6,
   "ScoreDate": ""
  },
  {
   "Name": "Blaise Biajila",
-  "Score": 1,
+  "Score": 0,
   "LastPos": 7,
   "ScoreDate": ""
  },
  {
   "Name": "Regis Fromont",
-  "Score": 1,
+  "Score": 0,
   "LastPos": 8,
   "ScoreDate": ""
  },
  {
   "Name": "Kathy Dekens",
-  "Score": 1,
+  "Score": 0,
   "LastPos": 9,
   "ScoreDate": ""
  },
  {
-  "Name": "David Follen",
-  "Score": 1,
+  "Name": "Celine Jost",
+  "Score": 0,
   "LastPos": 10,
   "ScoreDate": ""
  },
  {
   "Name": "Benoit Missen",
-  "Score": 1,
+  "Score": 0,
   "LastPos": 11,
-  "ScoreDate": ""
- },
- {
-  "Name": "William De Keyzer",
-  "Score": 1,
-  "LastPos": 12,
   "ScoreDate": ""
  },
  {
   "Name": "Stephen Wincote",
   "Score": 0,
-  "LastPos": 13,
+  "LastPos": 12,
   "ScoreDate": ""
  },
  {
   "Name": "Alain Devillers",
   "Score": 0,
+  "LastPos": 13,
+  "ScoreDate": ""
+ },
+ {
+  "Name": "David Follen",
+  "Score": 0,
   "LastPos": 14,
   "ScoreDate": ""
  },
  {
-  "Name": "Celine Jost",
+  "Name": "William De Keyzer",
   "Score": 0,
   "LastPos": 15,
   "ScoreDate": ""
