@@ -18,7 +18,9 @@ var stage1File = "./ressources/stage1.json"
 var stage1PronoFile = "./ressources/MatchDay1Test.json"
 var champFile = "./ressources/champList.json"
 var statusFile = "./ressources/status.json"
+var configFile = "./ressources/config.json"
 var stat Statistics
+var config Config
 
 const (
 	layoutISO = "2006-01-02"
@@ -47,7 +49,7 @@ func getOrderedPlayers(w http.ResponseWriter, r *http.Request) {
 	sort.Slice(players, func(i, j int) bool {
 		return players[i].Score > players[j].Score
 	})
-	checkingRank(players)
+	players = checkingRank(players)
 	savePlayers(players)
 	marshalled, _ := json.Marshal(players)
 	Respond(w, marshalled)
@@ -80,6 +82,7 @@ func readJsonMatches(strFile string) []Match {
 	if err != nil {
 		panic(err)
 	}
+	saveConfig(config)
 	return officialScores
 }
 
@@ -125,6 +128,9 @@ func readJsonPlayers(strFile string) []Player {
 			t, _ := time.Parse(layoutISO, date)
 			diff := t.Before(now)
 			if diff {
+				config.LastMatchDate = date
+				config.LastMatchID = oS.MatchID
+				saveConfig(config)
 				scoreP := 0
 				var matchProno PrMatch
 				matchProno.MatchID = j
@@ -217,6 +223,11 @@ func savePlayers(players []Player) {
 	}
 	marshalled, _ := json.MarshalIndent(toSaveSlice, "", " ")
 	_ = ioutil.WriteFile(statusFile, marshalled, 0644)
+}
+
+func saveConfig(config Config) {
+	marshalled, _ := json.MarshalIndent(config, "", " ")
+	_ = ioutil.WriteFile(configFile, marshalled, 0644)
 }
 
 func checkingRank(players []Player) []Player {

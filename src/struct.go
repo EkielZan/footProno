@@ -14,9 +14,10 @@ type Player struct {
 }
 
 type ShortPlayer struct {
-	Name    string `json:"Name"`
-	Score   int    `json:"Score"`
-	LastPos int    `json:"LastPos"`
+	Name      string `json:"Name"`
+	Score     int    `json:"Score"`
+	LastPos   int    `json:"LastPos"`
+	ScoreDate string `json:"ScoreDate"`
 }
 
 //Match from json files
@@ -56,4 +57,11 @@ type Statistics struct {
 type spaHandler struct {
 	staticPath string
 	indexPath  string
+}
+
+//Config
+type Config struct {
+	LastSave      string `json:LastSave`
+	LastMatchDate string `json:LastMatchDate`
+	LastMatchID   int    `json:LastMatchID`
 }
