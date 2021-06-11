@@ -203,7 +203,19 @@ func getStat(w http.ResponseWriter, r *http.Request) {
 	Respond(w, marshalled)
 }
 
-func calculateScore(w http.ResponseWriter, r *http.Request) {
+func getScore(w http.ResponseWriter, r *http.Request) {
+	scoredPlayers := calculateScore()
+	sort.Slice(scoredPlayers, func(i, j int) bool {
+		return scoredPlayers[i].Score > scoredPlayers[j].Score
+	})
+	players = checkingRank(players)
+	savePlayers(players)
+	marshalled, _ := json.MarshalIndent(scoredPlayers, "", " ")
+	Respond(w, marshalled)
+}
+
+//Other func
+func calculateScore() []Player {
 	var tempPlayers []Player
 	now := time.Now()
 	/*Time Debug*/
@@ -211,45 +223,52 @@ func calculateScore(w http.ResponseWriter, r *http.Request) {
 	now, _ = time.Parse(layoutISO, date)
 	/* */
 	for _, player := range players {
-		var tempPlayer Player
-		var tempMatches []Match
+		playerScoreTemp := 0
+		var tempMatches []PrMatch
 		for _, match := range player.Matches {
-			var tempMatch Match
+			MatchscoreTemp := 0
+			var tempMatch PrMatch
 			for _, oS := range officialScores {
 				date := oS.Date
 				t, _ := time.Parse(layoutISO, date)
 				diff := t.Before(now)
 				if diff {
 					if match.Winner == oS.Winner {
-						//scoreP += 1
+						MatchscoreTemp += 1
 						if match.ScoreT1 == oS.ScoreT1 && match.ScoreT2 == oS.ScoreT2 {
-							//	scoreP += 2
+							MatchscoreTemp += 2
 						}
 					}
+
 				}
 			}
+			match.ScoreP = MatchscoreTemp
+			playerScoreTemp += MatchscoreTemp
 			tempMatches = append(tempMatches, tempMatch)
 		}
-		tempPlayers = append(tempPlayers, tempPlayer)
+		player.Matches = tempMatches
+		player.Score = playerScoreTemp
+		tempPlayers = append(tempPlayers, player)
 	}
-	marshalled, _ := json.MarshalIndent(tempPlayers, "", " ")
-	Respond(w, marshalled)
+	return tempPlayers
 }
 
 func checkingRank(players []Player) []Player {
 	for _, shortPlayer := range shortPlayers {
-		for idx, player := range players {
+		for idx_p, player := range players {
 			if shortPlayer.Name == player.Name {
-				diff := idx - shortPlayer.LastPos
-				fmt.Printf("%d  -  %d - %d ", idx, shortPlayer.LastPos, diff)
+				diff := idx_p - shortPlayer.LastPos
+				fmt.Printf("%d  -  %d - %d ", idx_p, shortPlayer.LastPos, diff)
 				fmt.Println("")
 				if diff > 0 {
 					player.Status = "Down"
 				} else if diff < 0 {
 					player.Status = "Up"
 				} else {
-					player.Status = "SQ"
+					player.Status = "-"
 				}
+				players[idx_p].Amount = diff
+				players[idx_p].Status = player.Status
 			}
 		}
 	}

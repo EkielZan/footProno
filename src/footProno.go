@@ -37,6 +37,7 @@ func main() {
 	router.HandleFunc("/matches", getMatches)
 	router.HandleFunc("/players", getPlayers)
 	router.HandleFunc("/playersByScore", getOrderedPlayers)
+	router.HandleFunc("/getScores", getScore)
 	router.HandleFunc("/player/{id}", getPlayer)
 	router.HandleFunc("/stats", getStat)
 
