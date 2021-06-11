@@ -49,6 +49,7 @@
                 <div class="description">
                   <table style="width:100%">
                     <tr>
+                      <th>Pos</th>
                       <th>Name</th>
                       <th>Score</th>
                       <th>Champion</th>
@@ -56,6 +57,7 @@
                       <th></th>
                     </tr>
                     <tr v-for="player in players">
+                      <td>{{player.ID}}</td>
                       <td>{{player.Name}}</td>
                       <td>{{player.Score}}</td>
                       <td>{{player.Champ}}</td>
