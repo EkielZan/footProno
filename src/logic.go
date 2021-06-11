@@ -20,6 +20,7 @@ var stage1PronoFile = "./ressources/MatchDay1Test.json"
 var champFile = "./ressources/champList.json"
 var statusFile = "./ressources/status.json"
 var configFile = "./ressources/config.json"
+var datefile = "ressources/matchday.json"
 var stat Statistics
 var config Config
 var officialScores []Match
@@ -38,7 +39,15 @@ func preLoad() {
 	log.Println("Reading Official Match Scores")
 	officialScores = readJsonMatches(stage1File)
 	log.Println("Reading Saved Players")
-	shortPlayers = readSavedPlayers()
+	//shortPlayers = readSavedPlayers()
+	log.Println("Reading Players Pronostics")
+	players = readJsonPlayers(stage1PronoFile)
+}
+
+//reload json File in Memory
+func reload() {
+	log.Println("Reading Official Match Scores")
+	officialScores = readJsonMatches(stage1File)
 	log.Println("Reading Players Pronostics")
 	players = readJsonPlayers(stage1PronoFile)
 }
@@ -83,7 +92,7 @@ func readJsonPlayers(strFile string) []Player {
 	for idx, i := range m.([]interface{}) {
 		var player Player
 		var matchPronoSlice []PrMatch
-		player.ID = idx
+		player.ID = idx + 1
 		player.Email = i.(map[string]interface{})["Email"].(string)
 		player.Name = i.(map[string]interface{})["Name"].(string)
 		for _, v := range champPlayer {
@@ -184,7 +193,6 @@ func getOrderedPlayers(w http.ResponseWriter, r *http.Request) {
 	sort.Slice(players, func(i, j int) bool {
 		return players[i].Score > players[j].Score
 	})
-	players = checkingRank(players)
 	savePlayers(players)
 	marshalled, _ := json.MarshalIndent(players, "", " ")
 	Respond(w, marshalled)
@@ -199,17 +207,20 @@ func getPlayer(w http.ResponseWriter, r *http.Request) {
 }
 
 func getStat(w http.ResponseWriter, r *http.Request) {
+	reload()
 	marshalled, _ := json.MarshalIndent(stat, "", " ")
 	Respond(w, marshalled)
 }
 
 func getScore(w http.ResponseWriter, r *http.Request) {
+	reload()
 	scoredPlayers := calculateScore()
 	sort.Slice(scoredPlayers, func(i, j int) bool {
 		return scoredPlayers[i].Score > scoredPlayers[j].Score
 	})
-	players = checkingRank(players)
-	savePlayers(players)
+	scoredPlayers = setRank(scoredPlayers)
+	//players = computeRank(players)
+	savePlayers(scoredPlayers)
 	marshalled, _ := json.MarshalIndent(scoredPlayers, "", " ")
 	Respond(w, marshalled)
 }
@@ -218,10 +229,10 @@ func getScore(w http.ResponseWriter, r *http.Request) {
 func calculateScore() []Player {
 	var tempPlayers []Player
 	now := time.Now()
-	/*Time Debug*/
+	/*Time Debug
 	date := "2021-06-12"
 	now, _ = time.Parse(layoutISO, date)
-	/* */
+	*/
 	for _, player := range players {
 		playerScoreTemp := 0
 		var tempMatches []PrMatch
@@ -239,10 +250,10 @@ func calculateScore() []Player {
 							MatchscoreTemp += 2
 						}
 					}
-
 				}
 			}
 			match.ScoreP = MatchscoreTemp
+			tempMatch = match
 			playerScoreTemp += MatchscoreTemp
 			tempMatches = append(tempMatches, tempMatch)
 		}
@@ -253,36 +264,25 @@ func calculateScore() []Player {
 	return tempPlayers
 }
 
-func checkingRank(players []Player) []Player {
-	for _, shortPlayer := range shortPlayers {
-		for idx_p, player := range players {
-			if shortPlayer.Name == player.Name {
-				diff := idx_p - shortPlayer.LastPos
-				fmt.Printf("%d  -  %d - %d ", idx_p, shortPlayer.LastPos, diff)
-				fmt.Println("")
-				if diff > 0 {
-					player.Status = "Down"
-				} else if diff < 0 {
-					player.Status = "Up"
-				} else {
-					player.Status = "-"
-				}
-				players[idx_p].Amount = diff
-				players[idx_p].Status = player.Status
-			}
-		}
+func setRank(players []Player) []Player {
+	for idx_p, _ := range players {
+		players[idx_p].ID = idx_p + 1
 	}
-	fmt.Println("--------")
 	return players
 }
 
 // Save datas
 func savePlayers(players []Player) {
+	now := time.Now()
 	var toSaveSlice []ShortPlayer
 	for idx, player := range players {
 		var toSavePlayer ShortPlayer
 		toSavePlayer.Name = player.Name
-		toSavePlayer.LastPos = idx
+		var tempPosition LastPosition
+		tempPositionSlice := player.Positions
+		tempPosition.Position = idx + 1
+		tempPosition.ScoreDate = now.Format("2006-01-02")
+		toSavePlayer.Positions = append(tempPositionSlice, tempPosition)
 		toSavePlayer.Score = player.Score
 		toSaveSlice = append(toSaveSlice, toSavePlayer)
 	}
