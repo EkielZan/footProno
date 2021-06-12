@@ -101,9 +101,9 @@ func readJsonPlayers(strFile string) []Player {
 			}
 		}
 		// We itare to create real pronostics for players
-		for j, oS := range officialScores {
+		for _, oS := range officialScores {
 			var matchProno PrMatch
-			matchProno.MatchID = j
+			matchProno.MatchID = oS.MatchID
 			//We check the score if 10 then it's 0
 			score, _ := strconv.Atoi(i.(map[string]interface{})[oS.Team1].(string))
 			if score == 10 {
@@ -121,7 +121,7 @@ func readJsonPlayers(strFile string) []Player {
 			matchProno.Date = oS.Date
 			//We compare Score to know who is winner according to player
 			if matchProno.ScoreT1 == matchProno.ScoreT2 {
-				matchProno.Winner = "PAR"
+				matchProno.Winner = "Draw"
 			} else if matchProno.ScoreT1 > matchProno.ScoreT2 {
 				matchProno.Winner = matchProno.Team1
 			} else {
@@ -228,7 +228,8 @@ func getScore(w http.ResponseWriter, r *http.Request) {
 //Other func
 func calculateScore() []Player {
 	var tempPlayers []Player
-	now := time.Now()
+	/* now := time.Now() */
+	LastMatchID := 2
 	/*Time Debug
 	date := "2021-06-12"
 	now, _ = time.Parse(layoutISO, date)
@@ -237,13 +238,13 @@ func calculateScore() []Player {
 		playerScoreTemp := 0
 		var tempMatches []PrMatch
 		for _, match := range player.Matches {
-			MatchscoreTemp := 0
 			var tempMatch PrMatch
 			for _, oS := range officialScores {
-				date := oS.Date
-				t, _ := time.Parse(layoutISO, date)
-				diff := t.Before(now)
-				if diff {
+				MatchscoreTemp := 0
+				/* date := oS.Date */
+				/* t, _ := time.Parse(layoutISO, date) */
+				/* diff := t.Before(now) */
+				if match.MatchID <= LastMatchID {
 					if match.Winner == oS.Winner {
 						MatchscoreTemp += 1
 						if match.ScoreT1 == oS.ScoreT1 && match.ScoreT2 == oS.ScoreT2 {
@@ -251,10 +252,16 @@ func calculateScore() []Player {
 						}
 					}
 				}
+				match.ScoreP = MatchscoreTemp
+				if player.Name == "Regis Fromont" {
+					fmt.Printf("ICI = %d \n", match.ScoreP)
+				}
+				playerScoreTemp += match.ScoreP
 			}
-			match.ScoreP = MatchscoreTemp
+			if player.Name == "Regis Fromont" {
+				fmt.Println(match.ScoreP)
+			}
 			tempMatch = match
-			playerScoreTemp += MatchscoreTemp
 			tempMatches = append(tempMatches, tempMatch)
 		}
 		player.Matches = tempMatches
