@@ -245,6 +245,7 @@ func calculateScore() []Player {
 				/* t, _ := time.Parse(layoutISO, date) */
 				/* diff := t.Before(now) */
 				if match.MatchID <= LastMatchID {
+					fmt.Printf("Match = %s \n", match.Winner)
 					if match.Winner == oS.Winner {
 						MatchscoreTemp += 1
 						if match.ScoreT1 == oS.ScoreT1 && match.ScoreT2 == oS.ScoreT2 {

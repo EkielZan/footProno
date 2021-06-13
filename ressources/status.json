@@ -5,7 +5,17 @@
   "Position": [
    {
     "LastPos": 1,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
+   }
+  ]
+ },
+ {
+  "Name": "Stephane Bouffouix",
+  "Score": 36,
+  "Position": [
+   {
+    "LastPos": 2,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -14,8 +24,8 @@
   "Score": 27,
   "Position": [
    {
-    "LastPos": 2,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 3,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -24,8 +34,8 @@
   "Score": 26,
   "Position": [
    {
-    "LastPos": 3,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 4,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -34,18 +44,8 @@
   "Score": 25,
   "Position": [
    {
-    "LastPos": 4,
-    "ScoreDate": "2021-06-12"
-   }
-  ]
- },
- {
-  "Name": "Raj Ranjan Dash",
-  "Score": 22,
-  "Position": [
-   {
     "LastPos": 5,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -55,7 +55,17 @@
   "Position": [
    {
     "LastPos": 6,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
+   }
+  ]
+ },
+ {
+  "Name": "Raj Ranjan Dash",
+  "Score": 22,
+  "Position": [
+   {
+    "LastPos": 7,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -64,8 +74,8 @@
   "Score": 21,
   "Position": [
    {
-    "LastPos": 7,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 8,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -74,8 +84,8 @@
   "Score": 21,
   "Position": [
    {
-    "LastPos": 8,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 9,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -84,8 +94,8 @@
   "Score": 20,
   "Position": [
    {
-    "LastPos": 9,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 10,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -94,8 +104,8 @@
   "Score": 14,
   "Position": [
    {
-    "LastPos": 10,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 11,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -104,8 +114,8 @@
   "Score": 14,
   "Position": [
    {
-    "LastPos": 11,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 12,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -114,18 +124,8 @@
   "Score": 14,
   "Position": [
    {
-    "LastPos": 12,
-    "ScoreDate": "2021-06-12"
-   }
-  ]
- },
- {
-  "Name": "Werner Bruers",
-  "Score": 12,
-  "Position": [
-   {
     "LastPos": 13,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -135,17 +135,17 @@
   "Position": [
    {
     "LastPos": 14,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
  {
-  "Name": "Nicolas Notte",
+  "Name": "Werner Bruers",
   "Score": 12,
   "Position": [
    {
     "LastPos": 15,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -155,7 +155,7 @@
   "Position": [
    {
     "LastPos": 16,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -165,7 +165,17 @@
   "Position": [
    {
     "LastPos": 17,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
+   }
+  ]
+ },
+ {
+  "Name": "Nicolas Notte",
+  "Score": 12,
+  "Position": [
+   {
+    "LastPos": 18,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -174,18 +184,8 @@
   "Score": 12,
   "Position": [
    {
-    "LastPos": 18,
-    "ScoreDate": "2021-06-12"
-   }
-  ]
- },
- {
-  "Name": "Ravi KUMAR",
-  "Score": 12,
-  "Position": [
-   {
     "LastPos": 19,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -195,7 +195,17 @@
   "Position": [
    {
     "LastPos": 20,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
+   }
+  ]
+ },
+ {
+  "Name": "Ravi KUMAR",
+  "Score": 12,
+  "Position": [
+   {
+    "LastPos": 21,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -204,8 +214,8 @@
   "Score": 12,
   "Position": [
    {
-    "LastPos": 21,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 22,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -214,8 +224,8 @@
   "Score": 12,
   "Position": [
    {
-    "LastPos": 22,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 23,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -224,8 +234,8 @@
   "Score": 12,
   "Position": [
    {
-    "LastPos": 23,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 24,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -234,8 +244,8 @@
   "Score": 11,
   "Position": [
    {
-    "LastPos": 24,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 25,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -244,8 +254,8 @@
   "Score": 11,
   "Position": [
    {
-    "LastPos": 25,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 26,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -254,8 +264,8 @@
   "Score": 11,
   "Position": [
    {
-    "LastPos": 26,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 27,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -264,8 +274,8 @@
   "Score": 11,
   "Position": [
    {
-    "LastPos": 27,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 28,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -274,18 +284,8 @@
   "Score": 10,
   "Position": [
    {
-    "LastPos": 28,
-    "ScoreDate": "2021-06-12"
-   }
-  ]
- },
- {
-  "Name": "Jean-François CANON",
-  "Score": 10,
-  "Position": [
-   {
     "LastPos": 29,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -295,7 +295,17 @@
   "Position": [
    {
     "LastPos": 30,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
+   }
+  ]
+ },
+ {
+  "Name": "Jean-François CANON",
+  "Score": 10,
+  "Position": [
+   {
+    "LastPos": 31,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -304,48 +314,38 @@
   "Score": 3,
   "Position": [
    {
-    "LastPos": 31,
-    "ScoreDate": "2021-06-12"
-   }
-  ]
- },
- {
-  "Name": "Blaise Biajila",
-  "Score": 1,
-  "Position": [
-   {
     "LastPos": 32,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
  {
-  "Name": "Gino Ritiere",
+  "Name": "Martine Van der Haeghen",
   "Score": 1,
   "Position": [
    {
     "LastPos": 33,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
  {
-  "Name": "David Follen",
+  "Name": "Christopher Nolan",
   "Score": 1,
   "Position": [
    {
     "LastPos": 34,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
  {
-  "Name": "Muhammad Mohsin",
+  "Name": "Emilia Bozek",
   "Score": 1,
   "Position": [
    {
     "LastPos": 35,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -355,37 +355,37 @@
   "Position": [
    {
     "LastPos": 36,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
  {
-  "Name": "Emilia Bozek",
+  "Name": "David Follen",
   "Score": 1,
   "Position": [
    {
     "LastPos": 37,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
  {
-  "Name": "Nicolas Deombrun",
+  "Name": "Muhammad Mohsin",
   "Score": 1,
   "Position": [
    {
     "LastPos": 38,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
  {
-  "Name": "Marc Nihon",
+  "Name": "Joachim Landuyt",
   "Score": 1,
   "Position": [
    {
     "LastPos": 39,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -395,27 +395,27 @@
   "Position": [
    {
     "LastPos": 40,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
  {
-  "Name": "Martine Van der Haeghen",
+  "Name": "Nicolas Deombrun",
   "Score": 1,
   "Position": [
    {
     "LastPos": 41,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
  {
-  "Name": "Filip Bollaerts",
+  "Name": "Marc Nihon",
   "Score": 1,
   "Position": [
    {
     "LastPos": 42,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -425,7 +425,17 @@
   "Position": [
    {
     "LastPos": 43,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
+   }
+  ]
+ },
+ {
+  "Name": "Blaise Biajila",
+  "Score": 1,
+  "Position": [
+   {
+    "LastPos": 44,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -434,18 +444,8 @@
   "Score": 1,
   "Position": [
    {
-    "LastPos": 44,
-    "ScoreDate": "2021-06-12"
-   }
-  ]
- },
- {
-  "Name": "Joachim Landuyt",
-  "Score": 1,
-  "Position": [
-   {
     "LastPos": 45,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -455,7 +455,7 @@
   "Position": [
    {
     "LastPos": 46,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -465,7 +465,27 @@
   "Position": [
    {
     "LastPos": 47,
-    "ScoreDate": "2021-06-12"
+    "ScoreDate": "2021-06-13"
+   }
+  ]
+ },
+ {
+  "Name": "Gino Ritiere",
+  "Score": 1,
+  "Position": [
+   {
+    "LastPos": 48,
+    "ScoreDate": "2021-06-13"
+   }
+  ]
+ },
+ {
+  "Name": "Filip Bollaerts",
+  "Score": 1,
+  "Position": [
+   {
+    "LastPos": 49,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -474,18 +494,8 @@
   "Score": 1,
   "Position": [
    {
-    "LastPos": 48,
-    "ScoreDate": "2021-06-12"
-   }
-  ]
- },
- {
-  "Name": "Christopher Nolan",
-  "Score": 1,
-  "Position": [
-   {
-    "LastPos": 49,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 50,
+    "ScoreDate": "2021-06-13"
    }
   ]
  },
@@ -494,8 +504,8 @@
   "Score": 0,
   "Position": [
    {
-    "LastPos": 50,
-    "ScoreDate": "2021-06-12"
+    "LastPos": 51,
+    "ScoreDate": "2021-06-13"
    }
   ]
  }
