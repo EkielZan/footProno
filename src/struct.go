@@ -11,6 +11,7 @@ type Player struct {
 	Positions []LastPosition `json:"Position"`
 	Status    string         `json:"Status"`
 	Amount    int            `json:"Amount"`
+	Rank      int            `json:"Rank"`
 }
 
 type ShortPlayer struct {

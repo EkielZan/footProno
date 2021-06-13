@@ -229,7 +229,7 @@ func getScore(w http.ResponseWriter, r *http.Request) {
 func calculateScore() []Player {
 	var tempPlayers []Player
 	/* now := time.Now() */
-	LastMatchID := 2
+	LastMatchID := 3
 	/*Time Debug
 	date := "2021-06-12"
 	now, _ = time.Parse(layoutISO, date)
@@ -245,18 +245,16 @@ func calculateScore() []Player {
 				/* t, _ := time.Parse(layoutISO, date) */
 				/* diff := t.Before(now) */
 				if match.MatchID <= LastMatchID {
-					fmt.Printf("Match = %s \n", match.Winner)
-					if match.Winner == oS.Winner {
-						MatchscoreTemp += 1
-						if match.ScoreT1 == oS.ScoreT1 && match.ScoreT2 == oS.ScoreT2 {
-							MatchscoreTemp += 2
+					if match.Team1 == oS.Team1 && match.Team2 == oS.Team2 {
+						if match.Winner == oS.Winner {
+							MatchscoreTemp += 1
+							if match.ScoreT1 == oS.ScoreT1 && match.ScoreT2 == oS.ScoreT2 {
+								MatchscoreTemp += 2
+							}
 						}
 					}
 				}
 				match.ScoreP = MatchscoreTemp
-				if player.Name == "Regis Fromont" {
-					fmt.Printf("ICI = %d \n", match.ScoreP)
-				}
 				playerScoreTemp += match.ScoreP
 			}
 			if player.Name == "Regis Fromont" {
@@ -274,7 +272,7 @@ func calculateScore() []Player {
 
 func setRank(players []Player) []Player {
 	for idx_p, _ := range players {
-		players[idx_p].ID = idx_p + 1
+		players[idx_p].Rank = idx_p + 1
 	}
 	return players
 }
