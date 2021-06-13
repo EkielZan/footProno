@@ -74,13 +74,13 @@ const app = new Vue({
       self.count = self.refresh;
     },
     setupDefaults: function () {
-port="3000"
+      port = "3000"
       axios.defaults.baseURL = "http://localhost:" + port;
     },
     fetchPlayers: function () {
       const self = this;
       self.loading = true;
-      request = "/playersByScore";
+      request = "/getScores";
       axios
         .get(request)
         .then(function (response) {
