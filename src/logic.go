@@ -20,17 +20,11 @@ var stage1PronoFile = "./ressources/MatchDay1Test.json"
 var champFile = "./ressources/champList.json"
 var statusFile = "./ressources/status.json"
 var configFile = "./ressources/config.json"
-var datefile = "ressources/matchday.json"
 var stat Statistics
 var config Config
 var officialScores []Match
 var players []Player
 var champPlayer []Player
-var shortPlayers []ShortPlayer
-
-const (
-	layoutISO = "2006-01-02"
-)
 
 //Preload json File in Memory
 func preLoad() {
@@ -42,6 +36,8 @@ func preLoad() {
 	//shortPlayers = readSavedPlayers()
 	log.Println("Reading Players Pronostics")
 	players = readJsonPlayers(stage1PronoFile)
+	log.Println("Reading Config")
+	loadConfig()
 }
 
 //reload json File in Memory
@@ -50,6 +46,8 @@ func reload() {
 	officialScores = readJsonMatches(stage1File)
 	log.Println("Reading Players Pronostics")
 	players = readJsonPlayers(stage1PronoFile)
+	log.Println("Reading Config")
+	loadConfig()
 }
 
 //Function to Fill Struct
@@ -163,7 +161,7 @@ func readJsonMatches(strFile string) []Match {
 	return officialScores
 }
 
-func readSavedPlayers() []ShortPlayer {
+/* func readSavedPlayers() []ShortPlayer {
 	var savedPlayer []ShortPlayer
 	// Open our jsonFile
 	raw, err := ioutil.ReadFile(statusFile)
@@ -176,7 +174,7 @@ func readSavedPlayers() []ShortPlayer {
 		panic(err)
 	}
 	return savedPlayer
-}
+} */
 
 // Api Calls
 func getMatches(w http.ResponseWriter, r *http.Request) {
@@ -184,24 +182,20 @@ func getMatches(w http.ResponseWriter, r *http.Request) {
 	Respond(w, marshalled)
 }
 
-func getPlayers(w http.ResponseWriter, r *http.Request) {
-	marshalled, _ := json.MarshalIndent(players, "", " ")
-	Respond(w, marshalled)
-}
-
-func getOrderedPlayers(w http.ResponseWriter, r *http.Request) {
-	sort.Slice(players, func(i, j int) bool {
-		return players[i].Score > players[j].Score
-	})
-	savePlayers(players)
-	marshalled, _ := json.MarshalIndent(players, "", " ")
-	Respond(w, marshalled)
-}
-
 func getPlayer(w http.ResponseWriter, r *http.Request) {
+	reload()
+	scoredPlayers := calculateScore()
+	sort.Slice(scoredPlayers, func(i, j int) bool {
+		return scoredPlayers[i].Score > scoredPlayers[j].Score
+	})
+	scoredPlayers = setRank(scoredPlayers)
 	playerID, _ := strconv.Atoi(mux.Vars(r)["id"])
-	players := readJsonPlayers(stage1PronoFile)
-	player := players[playerID]
+	var player Player
+	for _, p := range scoredPlayers {
+		if p.ID == playerID {
+			player = p
+		}
+	}
 	marshalled, _ := json.MarshalIndent(player, "", " ")
 	Respond(w, marshalled)
 }
@@ -228,23 +222,14 @@ func getScore(w http.ResponseWriter, r *http.Request) {
 //Other func
 func calculateScore() []Player {
 	var tempPlayers []Player
-	/* now := time.Now() */
-	LastMatchID := 3
-	/*Time Debug
-	date := "2021-06-12"
-	now, _ = time.Parse(layoutISO, date)
-	*/
+	LastMatchID := 6
 	for _, player := range players {
 		playerScoreTemp := 0
 		var tempMatches []PrMatch
 		for _, match := range player.Matches {
-			//var tempMatch PrMatch
 			MatchscoreTemp := 0
 			for _, oS := range officialScores {
 				MatchscoreTemp = 0
-				/* date := oS.Date */
-				/* t, _ := time.Parse(layoutISO, date) */
-				/* diff := t.Before(now) */
 				if match.MatchID <= LastMatchID {
 					if match.Team1 == oS.Team1 && match.Team2 == oS.Team2 {
 						if match.Winner == oS.Winner {
@@ -258,7 +243,6 @@ func calculateScore() []Player {
 					}
 				}
 			}
-			//tempMatch = match
 			tempMatches = append(tempMatches, match)
 		}
 		player.Matches = tempMatches
@@ -269,7 +253,7 @@ func calculateScore() []Player {
 }
 
 func setRank(players []Player) []Player {
-	for idx_p, _ := range players {
+	for idx_p := range players {
 		players[idx_p].Rank = idx_p + 1
 	}
 	return players
@@ -295,6 +279,11 @@ func savePlayers(players []Player) {
 }
 
 func saveConfig(config Config) {
+	marshalled, _ := json.MarshalIndent(config, "", " ")
+	_ = ioutil.WriteFile(configFile, marshalled, 0644)
+}
+
+func loadConfig() {
 	marshalled, _ := json.MarshalIndent(config, "", " ")
 	_ = ioutil.WriteFile(configFile, marshalled, 0644)
 }

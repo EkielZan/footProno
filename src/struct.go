@@ -66,7 +66,7 @@ type spaHandler struct {
 
 //Config
 type Config struct {
-	LastSave      string `json:LastSave`
-	LastMatchDate string `json:LastMatchDate`
-	LastMatchID   int    `json:LastMatchID`
+	LastSave      string `json:"LastSave"`
+	LastMatchDate string `json:"LastMatchDate"`
+	LastMatchID   int    `json:"LastMatchID"`
 }
