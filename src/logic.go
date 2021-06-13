@@ -238,9 +238,10 @@ func calculateScore() []Player {
 		playerScoreTemp := 0
 		var tempMatches []PrMatch
 		for _, match := range player.Matches {
-			var tempMatch PrMatch
+			//var tempMatch PrMatch
+			MatchscoreTemp := 0
 			for _, oS := range officialScores {
-				MatchscoreTemp := 0
+				MatchscoreTemp = 0
 				/* date := oS.Date */
 				/* t, _ := time.Parse(layoutISO, date) */
 				/* diff := t.Before(now) */
@@ -252,16 +253,13 @@ func calculateScore() []Player {
 								MatchscoreTemp += 2
 							}
 						}
+						match.ScoreP = MatchscoreTemp
+						playerScoreTemp += match.ScoreP
 					}
 				}
-				match.ScoreP = MatchscoreTemp
-				playerScoreTemp += match.ScoreP
 			}
-			if player.Name == "Regis Fromont" {
-				fmt.Println(match.ScoreP)
-			}
-			tempMatch = match
-			tempMatches = append(tempMatches, tempMatch)
+			//tempMatch = match
+			tempMatches = append(tempMatches, match)
 		}
 		player.Matches = tempMatches
 		player.Score = playerScoreTemp
