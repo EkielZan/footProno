@@ -11,4 +11,5 @@ FROM scratch
 COPY --from=builder /go/src/gitlab.com/EkielZan/footProno/footProno /    
 ADD .env /
 ADD static static
-CMD ["/quizzy"]
+ADD ressources ressources
+CMD ["/footProno"]
