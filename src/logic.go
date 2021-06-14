@@ -43,11 +43,8 @@ func preLoad() {
 
 //reload json File in Memory
 func reload() {
-	log.Println("Reading Official Match Scores")
 	officialScores = readJsonMatches(stage1File)
-	log.Println("Reading Players Pronostics")
 	players = readJsonPlayers(stage1PronoFile)
-	log.Println("Reading Config")
 	config = loadConfig()
 	saveConfig(config)
 }
@@ -193,7 +190,15 @@ func loadConfig() Config {
 
 // Api Calls
 func getMatches(w http.ResponseWriter, r *http.Request) {
-	marshalled, _ := json.MarshalIndent(officialScores, "", " ")
+	var officialScores2 []Match
+	LastMatchID := config.LastMatchID
+	for _, p := range officialScores {
+		if p.MatchID > LastMatchID && p.Winner == "Draw" {
+			p.Winner = ""
+		}
+		officialScores2 = append(officialScores2, p)
+	}
+	marshalled, _ := json.MarshalIndent(officialScores2, "", " ")
 	Respond(w, marshalled)
 }
 
@@ -209,6 +214,14 @@ func getPlayer(w http.ResponseWriter, r *http.Request) {
 	for _, p := range scoredPlayers {
 		if p.ID == playerID {
 			player = p
+			var tempMatches []PrMatch
+			LastMatchID := config.LastMatchID
+			for _, m := range player.Matches {
+				if m.MatchID <= LastMatchID {
+					tempMatches = append(tempMatches, m)
+				}
+			}
+			player.Matches = tempMatches
 		}
 	}
 	marshalled, _ := json.MarshalIndent(player, "", " ")

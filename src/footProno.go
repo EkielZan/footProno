@@ -32,12 +32,12 @@ func main() {
 
 	updateJavaScript(serverPort, serverHost)
 	log.Println("Version:\t", Version)
-	log.Println("Running Web Server Api on port " + serverPort)
+	log.Println("Running Web Server Api on " + serverHost + " " + serverPort)
 	router := mux.NewRouter()
 	static := spaHandler{staticPath: "static", indexPath: "index.html"}
 
 	preLoad()
-
+	log.Println("Preparing to Serve Api")
 	router.HandleFunc("/matches", getMatches)
 	router.HandleFunc("/getScores", getScore)
 	router.HandleFunc("/player/{id}", getPlayer)
@@ -58,6 +58,7 @@ func main() {
 		ReadTimeout:  15 * time.Second,
 	}
 	//log.Fatal(srv.ListenAndServe())
+	log.Println("Ready to received calls")
 	log.Fatal(srv.ListenAndServeTLS("certs/server.crt", "certs/server.key"))
 
 }

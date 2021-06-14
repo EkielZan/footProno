@@ -1,14 +1,326 @@
 [
-{"MatchID":0,"Team1":"Turkey","ScoreT1":0,"Team2":"Italy","ScoreT2":3,"Date":"2021-06-11","Stage":"0"},
-{"MatchID":1,"Team1":"Wales","ScoreT1":1,"Team2":"Switzerland","ScoreT2":1,"Date":"2021-06-12","Stage":"0"},
-{"MatchID":2,"Team1":"Denmark","ScoreT1":0,"Team2":"Finland","ScoreT2":1,"Date":"2021-06-12","Stage":"0"},
-{"MatchID":3,"Team1":"Belgium","ScoreT1":3,"Team2":"Russia","ScoreT2":0,"Date":"2021-06-12","Stage":"0"},
-{"MatchID":4,"Team1":"England","ScoreT1":1,"Team2":"Croatia","ScoreT2":0,"Date":"2021-06-13","Stage":"0"},
-{"MatchID":5,"Team1":"Austria","ScoreT1":3,"Team2":"North Macedonia","ScoreT2":1,"Date":"2021-06-13","Stage":"0"},
-{"MatchID":6,"Team1":"Netherlands","ScoreT1":3,"Team2":"Ukraine","ScoreT2":2,"Date":"2021-06-13","Stage":"0"},
-{"MatchID":7,"Team1":"Scotland","ScoreT1":0,"Team2":"Czech Republic","ScoreT2":0,"Date":"2021-06-14","Stage":"0"},
-{"MatchID":8,"Team1":"Poland","ScoreT1":0,"Team2":"Slovakia","ScoreT2":0,"Date":"2021-06-14","Stage":"0"},
-{"MatchID":9,"Team1":"Spain","ScoreT1":0,"Team2":"Sweden","ScoreT2":0,"Date":"2021-06-14","Stage":"0"},
-{"MatchID":10,"Team1":"Hungary","ScoreT1":0,"Team2":"Portugal","ScoreT2":0,"Date":"2021-06-15","Stage":"0"},
-{"MatchID":11,"Team1":"France","ScoreT1":0,"Team2":"Germany","ScoreT2":0,"Date":"2021-06-15","Stage":"0"}
+{
+    "MatchID": 0,
+    "Team1": "Turkey",
+    "ScoreT1": 0,
+    "Team2": "Italy",
+    "ScoreT2": 3,
+    "Date": "2021-06-11 21:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 1,
+    "Team1": "Wales",
+    "ScoreT1": 1,
+    "Team2": "Switzerland",
+    "ScoreT2": 1,
+    "Date": "2021-06-12 15:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 2,
+    "Team1": "Denmark",
+    "ScoreT1": 0,
+    "Team2": "Finland",
+    "ScoreT2": 1,
+    "Date": "2021-06-12 18:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 3,
+    "Team1": "Belgium",
+    "ScoreT1": 3,
+    "Team2": "Russia",
+    "ScoreT2": 0,
+    "Date": "2021-06-12 21:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 4,
+    "Team1": "England",
+    "ScoreT1": 1,
+    "Team2": "Croatia",
+    "ScoreT2": 0,
+    "Date": "2021-06-13 15:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 5,
+    "Team1": "Austria",
+    "ScoreT1": 3,
+    "Team2": "North Macedonia",
+    "ScoreT2": 1,
+    "Date": "2021-06-13 18:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 6,
+    "Team1": "Netherlands",
+    "ScoreT1": 3,
+    "Team2": "Ukraine",
+    "ScoreT2": 2,
+    "Date": "2021-06-13 21:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 7,
+    "Team1": "Scotland",
+    "ScoreT1": 0,
+    "Team2": "Czech Republic",
+    "ScoreT2": 0,
+    "Date": "2021-06-14 15:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 8,
+    "Team1": "Poland",
+    "ScoreT1": 0,
+    "Team2": "Slovakia",
+    "ScoreT2": 0,
+    "Date": "2021-06-14 18:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 9,
+    "Team1": "Spain",
+    "ScoreT1": 0,
+    "Team2": "Sweden",
+    "ScoreT2": 0,
+    "Date": "2021-06-14 21:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 10,
+    "Team1": "Hungary",
+    "ScoreT1": 0,
+    "Team2": "Portugal",
+    "ScoreT2": 0,
+    "Date": "2021-06-15 18:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 11,
+    "Team1": "France",
+    "ScoreT1": 0,
+    "Team2": "Germany",
+    "ScoreT2": 0,
+    "Date": "2021-06-15 21:00",
+    "Stage": "0"
+},
+{
+    "MatchID": 12,
+    "Team1": "Finland",
+    "ScoreT1": 0,
+    "Team2": "Russia",
+    "ScoreT2": 0,
+    "Date": "2021-06-16 16:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 13,
+    "Team1": "Turkey",
+    "ScoreT1": 0,
+    "Team2": "Wales",
+    "ScoreT2": 0,
+    "Date": "2021-06-16 18:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 14,
+    "Team1": "Italy",
+    "ScoreT1": 0,
+    "Team2": "Switzerland",
+    "ScoreT2": 0,
+    "Date": "2021-06-16 21:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 15,
+    "Team1": "Ukraine",
+    "ScoreT1": 0,
+    "Team2": "North Macedonia",
+    "ScoreT2": 0,
+    "Date": "2021-06-17 15:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 16,
+    "Team1": "Denmark",
+    "ScoreT1": 0,
+    "Team2": "Belgium",
+    "ScoreT2": 0,
+    "Date": "2021-06-17 18:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 17,
+    "Team1": "Netherlands",
+    "ScoreT1": 0,
+    "Team2": "Austria",
+    "ScoreT2": 0,
+    "Date": "2021-06-17 21:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 18,
+    "Team1": "Sweden",
+    "ScoreT1": 0,
+    "Team2": "Slovakia",
+    "ScoreT2": 0,
+    "Date": "2021-06-18 15:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 19,
+    "Team1": "Croatia",
+    "ScoreT1": 0,
+    "Team2": "Czech Republic",
+    "ScoreT2": 0,
+    "Date": "2021-06-18 18:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 20,
+    "Team1": "England",
+    "ScoreT1": 0,
+    "Team2": "Scotland",
+    "ScoreT2": 0,
+    "Date": "2021-06-18 21:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 21,
+    "Team1": "Hungary",
+    "ScoreT1": 0,
+    "Team2": "France",
+    "ScoreT2": 0,
+    "Date": "2021-06-19 15:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 22,
+    "Team1": "Portugal",
+    "ScoreT1": 0,
+    "Team2": "Germany",
+    "ScoreT2": 0,
+    "Date": "2021-06-19 18:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 23,
+    "Team1": "Spain",
+    "ScoreT1": 0,
+    "Team2": "Poland",
+    "ScoreT2": 0,
+    "Date": "2021-06-19 21:00",
+    "Stage": "1"
+},
+{
+    "MatchID": 24,
+    "Team1": "Italy",
+    "ScoreT1": 0,
+    "Team2": "Wales",
+    "ScoreT2": 0,
+    "Date": "2021-06-20 18:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 25,
+    "Team1": "Switzerland",
+    "ScoreT1": 0,
+    "Team2": "Turkey",
+    "ScoreT2": 0,
+    "Date": "2021-06-20 18:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 26,
+    "Team1": "Ukraine",
+    "ScoreT1": 0,
+    "Team2": "Austria",
+    "ScoreT2": 0,
+    "Date": "2021-06-21 18:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 27,
+    "Team1": "North Macedonia",
+    "ScoreT1": 0,
+    "Team2": "Netherlands",
+    "ScoreT2": 0,
+    "Date": "2021-06-21 18:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 28,
+    "Team1": "Russia",
+    "ScoreT1": 0,
+    "Team2": "Denmark",
+    "ScoreT2": 0,
+    "Date": "2021-06-21 21:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 29,
+    "Team1": "Finland",
+    "ScoreT1": 0,
+    "Team2": "Belgium",
+    "ScoreT2": 0,
+    "Date": "2021-06-21 21:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 30,
+    "Team1": "Croatia",
+    "ScoreT1": 0,
+    "Team2": "Scotland",
+    "ScoreT2": 0,
+    "Date": "2021-06-22 21:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 31,
+    "Team1": "Czech Republic",
+    "ScoreT1": 0,
+    "Team2": "England",
+    "ScoreT2": 0,
+    "Date": "2021-06-22 21:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 32,
+    "Team1": "Sweden",
+    "ScoreT1": 0,
+    "Team2": "Poland",
+    "ScoreT2": 0,
+    "Date": "2021-06-23 18:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 33,
+    "Team1": "Slovakia",
+    "ScoreT1": 0,
+    "Team2": "Spain",
+    "ScoreT2": 0,
+    "Date": "2021-06-23 18:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 34,
+    "Team1": "Portugal",
+    "ScoreT1": 0,
+    "Team2": "France",
+    "ScoreT2": 0,
+    "Date": "2021-06-23 21:00",
+    "Stage": "2"
+},
+{
+    "MatchID": 35,
+    "Team1": "Germany",
+    "ScoreT1": 0,
+    "Team2": "Hungary",
+    "ScoreT2": 0,
+    "Date": "2021-06-23 21:00",
+    "Stage": "2"
+}
 ]

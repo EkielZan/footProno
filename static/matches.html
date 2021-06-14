@@ -1,14 +1,15 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <title>Euro 2020 - Contest</title>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="css/font.css">
-  <link rel="stylesheet" href="css/card.css" />
-  <link rel="stylesheet" href="css/grid.css" />
-  <link rel="stylesheet" href="css/message.css" />
-  <link rel="stylesheet" href="css/semantic.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/card.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/grid.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/message.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" />
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -39,49 +40,33 @@
           <div class="ui text container ing">
             <div class="ing">
               <div class="content">
-			          <div class="header">
-			          <div class=" project-name">
-                  Leaderboard
+                <div class="header">
+                  <div class=" project-name">
+                    Matches
+                  </div>
                 </div>
-			        </div>
                 <div class="description">
                   <table style="width:100%">
                     <tr>
-                      <th>Pos</th>
-                      <th>Name</th>
+                      <th>Date</th>
+                      <th>Teams</th>
                       <th>Score</th>
-                      <th>Champion</th>
-                      <th></th>
-                      <th></th>
+                      <th>Winner</th>
+                      <th>Stage</th>
                     </tr>
-                    <tr v-for="player in players">
-                      <td>{{player.Rank}}</td>
-                      <td><a href="player.html?id={{player.ID}}">{{player.Name}}</a></td>
-                      <td>{{player.Score}}</td>
-                      <td>{{player.Champ}}</td>
-                      <td>{{player.Amount}}</td>
-                      <td>{{player.Status}}</td>
+                    <tr v-for="match in matches">
+                      <td>{{match.Date}}</td>
+                      <td>{{match.Team1}} - {{match.Team2}}</td>
+                      <td>{{match.ScoreT1}} - {{match.ScoreT2}}</td>
+                      <td>{{match.Winner}}</td>
+                      <td>{{match.Stage}}</td>
                     </tr>
                   </table>
                 </div>
               </div>
             </div>
             <br>
-            <div class="ing">
-              <div class="content">
-			          <div class="header">
-			          <div class=" project-name">
-                  Statistics
-                </div>
-			        </div>
-                <div class="description">
-                  Number of goals predicted : {{stats.ButProno}}<br>
-                  Number of goals scored : {{stats.ButReal}}
-                </div>
-              </div>
-            </div>
-            <br>
-            <a href="matches.html">Go to the Matches</a>
+            <a href="/"">Back</a>
           </div>
         </div>
       </div>
@@ -90,8 +75,9 @@
   <script src="js/vue.min.js"></script>
   <script src="js/axios.min.js"></script>
   <script src="js/moment.min.js"></script>
-  <script src="js/moment-timezone-with-data.min.js"></script>
+  <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/app.js"></script>
 </body>
+
 </html>

@@ -45,6 +45,7 @@ const app = new Vue({
     count: 0,
     onError: null,
     byPlayer: false,
+    matches: {},
   },
   created: function () {
     this.loadConfig();
@@ -56,6 +57,7 @@ const app = new Vue({
     } else {
       this.fetchPlayers();
     }
+    this.fetchMatches();
     this.fetchStats();
     setInterval(function () {
       if (count-- == 0) {
@@ -64,6 +66,7 @@ const app = new Vue({
         } else {
           this.fetchPlayers();
         }
+        this.fetchMatches();
         this.fetchStats();
         count = self.refresh;
       }
@@ -90,7 +93,7 @@ const app = new Vue({
     setupDefaults: function () {
       port = "###PORT###"
       host = "###HOST###"
-      axios.defaults.baseURL = "https://"+host+":" + port;
+      axios.defaults.baseURL = "https://" + host + ":" + port;
     },
     fetchPlayers: function () {
       const self = this;
@@ -118,6 +121,19 @@ const app = new Vue({
         })
         .catch(onError.bind(self));
     },
+    fetchMatches: function () {
+      const self = this;
+      self.loading = true;
+      request = "/matches";
+      axios
+        .get(request)
+        .then(function (response) {
+          self.loading = false;
+          const matches = response.data;
+          self.matches = matches;
+        })
+        .catch(onError.bind(self));
+    },
     fetchStats: function () {
       const self = this;
       self.loading = true;
@@ -127,7 +143,6 @@ const app = new Vue({
         .then(function (response) {
           self.loading = false;
           const stats = response.data;
-          console.log(stats)
           self.stats = stats;
         })
         .catch(onError.bind(self));
