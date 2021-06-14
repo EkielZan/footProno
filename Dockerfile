@@ -12,4 +12,5 @@ COPY --from=builder /go/src/gitlab.com/EkielZan/footProno/footProno /
 ADD .env /
 ADD static static
 ADD ressources ressources
+ADD certs certs
 CMD ["/footProno"]

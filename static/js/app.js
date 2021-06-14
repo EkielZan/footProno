@@ -75,7 +75,7 @@ const app = new Vue({
   methods: {
     loadConfig: function () {
       const self = this;
-      self.backend = "localhost:3000";
+      self.backend = "localhost:8090";
       self.proto = "https";
       self.timezone1 = "Europe/Brussels";
       self.refresh = getParameterByName("refresh")
