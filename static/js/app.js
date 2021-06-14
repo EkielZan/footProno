@@ -45,18 +45,26 @@ const app = new Vue({
     meTime: theTime("Europe/Brussels"),
     count: 0,
     onError: null,
+    byPlayer: false,
   },
   created: function () {
     this.loadConfig();
     this.setupDefaults();
     console.log(axios.defaults.baseURL);
-    this.fetchPlayers();
-    this.fetchStats();
     var self = this;
-    var count = self.refresh;
+    if (self.byPlayer) {
+      this.fetchPlayer();
+    }else{
+      this.fetchPlayers();
+    }
+    this.fetchStats();
     setInterval(function () {
       if (count-- == 0) {
-        this.fetchPlayers();
+        if (self.byPlayer) {
+          this.fetchPlayer();
+        } else {
+          this.fetchPlayers();
+        }
         this.fetchStats();
         count = self.refresh;
       }
@@ -70,8 +78,17 @@ const app = new Vue({
       self.backend = "localhost:3000";
       self.proto = "http";
       self.timezone1 = "Europe/Brussels";
-      self.refresh = 120;
-      self.count = self.refresh;
+      self.refresh = getParameterByName("refresh")
+      if (self.refresh == null)
+          self.refresh = 120;
+      self.playerId = getParameterByName("id")
+      if (self.playerId == null){
+        self.playerId = 0;
+        self.byPlayer = false;
+      }else{
+        self.byPlayer = true;
+      }
+      count = self.refresh;
     },
     setupDefaults: function () {
       port = "3000"
@@ -81,6 +98,19 @@ const app = new Vue({
       const self = this;
       self.loading = true;
       request = "/getScores";
+      axios
+        .get(request)
+        .then(function (response) {
+          self.loading = false;
+          const players = response.data;
+          self.players = players;
+        })
+        .catch(onError.bind(self));
+    },
+    fetchPlayer: function () {
+      const self = this;
+      self.loading = true;
+      request = "/player/" + self.playerId;
       axios
         .get(request)
         .then(function (response) {

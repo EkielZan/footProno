@@ -16,8 +16,6 @@
   <div id="app">
     <div class="ui grid">
       <div class="ui row centered">
-        <div class="ui blue message"> {{timezone1}} : {{meTime}} refresh every {{refresh}}s, next refresh in {{count}}s
-        </div>
       </div>
       <div v-show="onError" class="row">
         <div class="eight wide column centered ">
@@ -58,7 +56,7 @@
                     </tr>
                     <tr v-for="player in players">
                       <td>{{player.Rank}}</td>
-                      <td>{{player.Name}}</td>
+                      <td><a href="player.html?id={{player.ID}}">{{player.Name}}</a></td>
                       <td>{{player.Score}}</td>
                       <td>{{player.Champ}}</td>
                       <td>{{player.Amount}}</td>
