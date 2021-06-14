@@ -75,7 +75,7 @@ const app = new Vue({
   methods: {
     loadConfig: function () {
       const self = this;
-      self.backend = "localhost:8090";
+      self.backend = "localhost:3000";
       self.proto = "https";
       self.timezone1 = "Europe/Brussels";
       self.refresh = getParameterByName("refresh")
@@ -91,7 +91,7 @@ const app = new Vue({
       count = self.refresh;
     },
     setupDefaults: function () {
-port="3000"
+port="8090"
       axios.defaults.baseURL = "https://localhost:" + port;
     },
     fetchPlayers: function () {

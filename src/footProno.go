@@ -23,7 +23,7 @@ func main() {
 	}
 	serverPort := os.Getenv("SERVER_PORT")
 	if serverPort == "" {
-		serverPort = "8000" //localhost
+		serverPort = "8090" //localhost
 	}
 
 	updateJavaScript(serverPort)
