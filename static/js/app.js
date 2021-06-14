@@ -89,7 +89,7 @@ const app = new Vue({
     },
     setupDefaults: function () {
 port="8090"
-      host = "###HOST###"
+host="localhost"
       axios.defaults.baseURL = "https://"+host+":" + port;
     },
     fetchPlayers: function () {
