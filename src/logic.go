@@ -37,7 +37,8 @@ func preLoad() {
 	log.Println("Reading Players Pronostics")
 	players = readJsonPlayers(stage1PronoFile)
 	log.Println("Reading Config")
-	loadConfig()
+	config = loadConfig()
+	saveConfig(config)
 }
 
 //reload json File in Memory
@@ -47,10 +48,11 @@ func reload() {
 	log.Println("Reading Players Pronostics")
 	players = readJsonPlayers(stage1PronoFile)
 	log.Println("Reading Config")
-	loadConfig()
+	config = loadConfig()
+	saveConfig(config)
 }
 
-//Function to Fill Struct
+//Read datas to Fill Struct
 func readChampion(strFile string) []Player {
 	var champPlayer []Player
 	raw, err := ioutil.ReadFile(strFile)
@@ -157,8 +159,21 @@ func readJsonMatches(strFile string) []Match {
 		}
 		officialScores[idx] = oS
 	}
-	saveConfig(config)
 	return officialScores
+}
+
+func loadConfig() Config {
+	// Open our jsonFile
+	raw, err := ioutil.ReadFile(configFile)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+	err = json.Unmarshal([]byte(raw), &config)
+	if err != nil {
+		panic(err)
+	}
+	return config
 }
 
 /* func readSavedPlayers() []ShortPlayer {
@@ -222,7 +237,7 @@ func getScore(w http.ResponseWriter, r *http.Request) {
 //Other func
 func calculateScore() []Player {
 	var tempPlayers []Player
-	LastMatchID := 6
+	LastMatchID := config.LastMatchID
 	for _, player := range players {
 		playerScoreTemp := 0
 		var tempMatches []PrMatch
@@ -279,11 +294,6 @@ func savePlayers(players []Player) {
 }
 
 func saveConfig(config Config) {
-	marshalled, _ := json.MarshalIndent(config, "", " ")
-	_ = ioutil.WriteFile(configFile, marshalled, 0644)
-}
-
-func loadConfig() {
 	marshalled, _ := json.MarshalIndent(config, "", " ")
 	_ = ioutil.WriteFile(configFile, marshalled, 0644)
 }
