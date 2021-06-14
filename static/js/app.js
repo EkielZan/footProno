@@ -54,7 +54,7 @@ const app = new Vue({
     var self = this;
     if (self.byPlayer) {
       this.fetchPlayer();
-    }else{
+    } else {
       this.fetchPlayers();
     }
     this.fetchStats();
@@ -76,23 +76,23 @@ const app = new Vue({
     loadConfig: function () {
       const self = this;
       self.backend = "localhost:3000";
-      self.proto = "http";
+      self.proto = "https";
       self.timezone1 = "Europe/Brussels";
       self.refresh = getParameterByName("refresh")
       if (self.refresh == null)
-          self.refresh = 120;
+        self.refresh = 120;
       self.playerId = getParameterByName("id")
-      if (self.playerId == null){
+      if (self.playerId == null) {
         self.playerId = 0;
         self.byPlayer = false;
-      }else{
+      } else {
         self.byPlayer = true;
       }
       count = self.refresh;
     },
     setupDefaults: function () {
-      port = "3000"
-      axios.defaults.baseURL = "http://localhost:" + port;
+port="3000"
+      axios.defaults.baseURL = "https://localhost:" + port;
     },
     fetchPlayers: function () {
       const self = this;
