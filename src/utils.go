@@ -61,7 +61,7 @@ func updateJavaScript(port string, host string) {
 		if strings.Contains(line, "###PORT###") {
 			lines[i] = "port=\"" + port + "\""
 		}
-		if strings.Contains(line, "###HOSR###") {
+		if strings.Contains(line, "###HOST###") {
 			lines[i] = "host=\"" + host + "\""
 		}
 	}
