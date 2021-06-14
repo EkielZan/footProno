@@ -25,8 +25,12 @@ func main() {
 	if serverPort == "" {
 		serverPort = "8090" //localhost
 	}
+	serverHost := os.Getenv("SERVER_NAME")
+	if serverHost == "" {
+		serverHost = "localhost" //localhost
+	}
 
-	updateJavaScript(serverPort)
+	updateJavaScript(serverPort, serverHost)
 	log.Println("Version:\t", Version)
 	log.Println("Running Web Server Api on port " + serverPort)
 	router := mux.NewRouter()

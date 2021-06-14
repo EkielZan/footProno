@@ -37,7 +37,6 @@ const app = new Vue({
   data: {
     players: {},
     stats: {},
-    backend: null,
     loading: false,
     invalidConfig: false,
     lastRun: lastRun(),
@@ -75,8 +74,6 @@ const app = new Vue({
   methods: {
     loadConfig: function () {
       const self = this;
-      self.backend = "localhost:3000";
-      self.proto = "https";
       self.timezone1 = "Europe/Brussels";
       self.refresh = getParameterByName("refresh")
       if (self.refresh == null)
@@ -92,7 +89,8 @@ const app = new Vue({
     },
     setupDefaults: function () {
       port = "###PORT###"
-      axios.defaults.baseURL = "https://localhost:" + port;
+      host = "###HOST###"
+      axios.defaults.baseURL = "https://"+host+":" + port;
     },
     fetchPlayers: function () {
       const self = this;

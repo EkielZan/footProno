@@ -49,7 +49,7 @@ func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	http.FileServer(http.Dir(h.staticPath)).ServeHTTP(w, r)
 }
 
-func updateJavaScript(port string) {
+func updateJavaScript(port string, host string) {
 	input, err := ioutil.ReadFile("static/js/app.tpl.js")
 	if err != nil {
 		log.Fatalln(err)
@@ -60,6 +60,9 @@ func updateJavaScript(port string) {
 	for i, line := range lines {
 		if strings.Contains(line, "###PORT###") {
 			lines[i] = "port=\"" + port + "\""
+		}
+		if strings.Contains(line, "###HOSR###") {
+			lines[i] = "host=\"" + host + "\""
 		}
 	}
 	output := strings.Join(lines, "\n")
