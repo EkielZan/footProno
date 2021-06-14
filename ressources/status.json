@@ -1,7 +1,7 @@
 [
  {
   "Name": "William De Keyzer",
-  "Score": 12,
+  "Score": 13,
   "Position": [
    {
     "LastPos": 1,
@@ -20,7 +20,7 @@
   ]
  },
  {
-  "Name": "Regis Fromont",
+  "Name": "Ravi KUMAR",
   "Score": 8,
   "Position": [
    {
@@ -30,7 +30,7 @@
   ]
  },
  {
-  "Name": "Ravi KUMAR",
+  "Name": "Bartlomiej KORDALSKI",
   "Score": 8,
   "Position": [
    {
@@ -40,7 +40,7 @@
   ]
  },
  {
-  "Name": "Bartlomiej KORDALSKI",
+  "Name": "Kathy Dekens",
   "Score": 8,
   "Position": [
    {
@@ -50,7 +50,7 @@
   ]
  },
  {
-  "Name": "Kathy Dekens",
+  "Name": "Regis Fromont",
   "Score": 8,
   "Position": [
    {
@@ -60,7 +60,7 @@
   ]
  },
  {
-  "Name": "Sam PETERS",
+  "Name": "Daniel MOYSON",
   "Score": 7,
   "Position": [
    {
@@ -80,7 +80,7 @@
   ]
  },
  {
-  "Name": "Stephane Bouffouix",
+  "Name": "Maciej HRYNCZYSZYN",
   "Score": 7,
   "Position": [
    {
@@ -90,7 +90,7 @@
   ]
  },
  {
-  "Name": "Maciej HRYNCZYSZYN",
+  "Name": "Cyrille Maurice",
   "Score": 7,
   "Position": [
    {
@@ -100,7 +100,7 @@
   ]
  },
  {
-  "Name": "Volkan Dindar",
+  "Name": "Gino Ritiere",
   "Score": 7,
   "Position": [
    {
@@ -110,8 +110,8 @@
   ]
  },
  {
-  "Name": "Luiz Arroyo Gonçalves",
-  "Score": 6,
+  "Name": "Joost Boulpaep",
+  "Score": 7,
   "Position": [
    {
     "LastPos": 12,
@@ -120,8 +120,8 @@
   ]
  },
  {
-  "Name": "Taoufik Belmehdi",
-  "Score": 6,
+  "Name": "Nicolas Notte",
+  "Score": 7,
   "Position": [
    {
     "LastPos": 13,
@@ -130,8 +130,8 @@
   ]
  },
  {
-  "Name": "Celine Jost",
-  "Score": 6,
+  "Name": "Filip Bollaerts",
+  "Score": 7,
   "Position": [
    {
     "LastPos": 14,
@@ -140,8 +140,8 @@
   ]
  },
  {
-  "Name": "Daniel MOYSON",
-  "Score": 6,
+  "Name": "Emilia Bozek",
+  "Score": 7,
   "Position": [
    {
     "LastPos": 15,
@@ -150,11 +150,41 @@
   ]
  },
  {
-  "Name": "Werner Bruers",
-  "Score": 6,
+  "Name": "BART MACHIELS",
+  "Score": 7,
   "Position": [
    {
     "LastPos": 16,
+    "ScoreDate": "2021-06-14"
+   }
+  ]
+ },
+ {
+  "Name": "Sam PETERS",
+  "Score": 7,
+  "Position": [
+   {
+    "LastPos": 17,
+    "ScoreDate": "2021-06-14"
+   }
+  ]
+ },
+ {
+  "Name": "Volkan Dindar",
+  "Score": 7,
+  "Position": [
+   {
+    "LastPos": 18,
+    "ScoreDate": "2021-06-14"
+   }
+  ]
+ },
+ {
+  "Name": "Muhammad Mohsin",
+  "Score": 7,
+  "Position": [
+   {
+    "LastPos": 19,
     "ScoreDate": "2021-06-14"
    }
   ]
@@ -164,43 +194,13 @@
   "Score": 6,
   "Position": [
    {
-    "LastPos": 17,
-    "ScoreDate": "2021-06-14"
-   }
-  ]
- },
- {
-  "Name": "Gino Ritiere",
-  "Score": 6,
-  "Position": [
-   {
-    "LastPos": 18,
-    "ScoreDate": "2021-06-14"
-   }
-  ]
- },
- {
-  "Name": "Joost Boulpaep",
-  "Score": 6,
-  "Position": [
-   {
-    "LastPos": 19,
-    "ScoreDate": "2021-06-14"
-   }
-  ]
- },
- {
-  "Name": "BART MACHIELS",
-  "Score": 6,
-  "Position": [
-   {
     "LastPos": 20,
     "ScoreDate": "2021-06-14"
    }
   ]
  },
  {
-  "Name": "Muhammad Mohsin",
+  "Name": "Taoufik Belmehdi",
   "Score": 6,
   "Position": [
    {
@@ -210,7 +210,7 @@
   ]
  },
  {
-  "Name": "Cyrille Maurice",
+  "Name": "LAURENT GRYSON",
   "Score": 6,
   "Position": [
    {
@@ -220,7 +220,7 @@
   ]
  },
  {
-  "Name": "Thiago Dimbarre",
+  "Name": "Stephane Bouffouix",
   "Score": 6,
   "Position": [
    {
@@ -230,7 +230,7 @@
   ]
  },
  {
-  "Name": "Jean-François CANON",
+  "Name": "Celine Jost",
   "Score": 6,
   "Position": [
    {
@@ -240,8 +240,8 @@
   ]
  },
  {
-  "Name": "LAURENT GRYSON",
-  "Score": 5,
+  "Name": "Werner Bruers",
+  "Score": 6,
   "Position": [
    {
     "LastPos": 25,
@@ -250,8 +250,8 @@
   ]
  },
  {
-  "Name": "BART VAN HEMELRIJCK",
-  "Score": 5,
+  "Name": "Johann Ahrens",
+  "Score": 6,
   "Position": [
    {
     "LastPos": 26,
@@ -260,8 +260,8 @@
   ]
  },
  {
-  "Name": "Pascal Wilikens",
-  "Score": 5,
+  "Name": "Luiz Arroyo Gonçalves",
+  "Score": 6,
   "Position": [
    {
     "LastPos": 27,
@@ -270,8 +270,8 @@
   ]
  },
  {
-  "Name": "Johann Ahrens",
-  "Score": 5,
+  "Name": "Thiago Dimbarre",
+  "Score": 6,
   "Position": [
    {
     "LastPos": 28,
@@ -280,8 +280,8 @@
   ]
  },
  {
-  "Name": "Didier Siemons",
-  "Score": 5,
+  "Name": "Jean-François CANON",
+  "Score": 6,
   "Position": [
    {
     "LastPos": 29,
@@ -290,7 +290,7 @@
   ]
  },
  {
-  "Name": "Blaise Biajila",
+  "Name": "Marc Nihon",
   "Score": 5,
   "Position": [
    {
@@ -310,7 +310,7 @@
   ]
  },
  {
-  "Name": "Joachim Landuyt",
+  "Name": "Nicolas Deombrun",
   "Score": 5,
   "Position": [
    {
@@ -320,7 +320,7 @@
   ]
  },
  {
-  "Name": "Marc Nihon",
+  "Name": "Cao Tam Dan Pham",
   "Score": 5,
   "Position": [
    {
@@ -330,7 +330,7 @@
   ]
  },
  {
-  "Name": "Cao Tam Dan Pham",
+  "Name": "BART VAN HEMELRIJCK",
   "Score": 5,
   "Position": [
    {
@@ -340,8 +340,8 @@
   ]
  },
  {
-  "Name": "Benoit Missen",
-  "Score": 4,
+  "Name": "Didier Siemons",
+  "Score": 5,
   "Position": [
    {
     "LastPos": 35,
@@ -350,8 +350,8 @@
   ]
  },
  {
-  "Name": "Nicolas Notte",
-  "Score": 4,
+  "Name": "Pascal Wilikens",
+  "Score": 5,
   "Position": [
    {
     "LastPos": 36,
@@ -360,8 +360,8 @@
   ]
  },
  {
-  "Name": "Raj Ranjan Dash",
-  "Score": 4,
+  "Name": "Sreedhar Reddy Medipally",
+  "Score": 5,
   "Position": [
    {
     "LastPos": 37,
@@ -370,8 +370,8 @@
   ]
  },
  {
-  "Name": "Bart Vercammen",
-  "Score": 4,
+  "Name": "Blaise Biajila",
+  "Score": 5,
   "Position": [
    {
     "LastPos": 38,
@@ -380,8 +380,8 @@
   ]
  },
  {
-  "Name": "Sreedhar Reddy Medipally",
-  "Score": 4,
+  "Name": "Joachim Landuyt",
+  "Score": 5,
   "Position": [
    {
     "LastPos": 39,
@@ -390,7 +390,7 @@
   ]
  },
  {
-  "Name": "Stéphane Muller",
+  "Name": "Benoit Missen",
   "Score": 4,
   "Position": [
    {
@@ -400,7 +400,7 @@
   ]
  },
  {
-  "Name": "David Follen",
+  "Name": "Sreelakshmi Thippeswamy",
   "Score": 4,
   "Position": [
    {
@@ -410,7 +410,7 @@
   ]
  },
  {
-  "Name": "Alain Devillers",
+  "Name": "Raj Ranjan Dash",
   "Score": 4,
   "Position": [
    {
@@ -420,7 +420,7 @@
   ]
  },
  {
-  "Name": "Emilia Bozek",
+  "Name": "David Follen",
   "Score": 4,
   "Position": [
    {
@@ -430,7 +430,7 @@
   ]
  },
  {
-  "Name": "Nicolas Deombrun",
+  "Name": "Alain Devillers",
   "Score": 4,
   "Position": [
    {
@@ -440,7 +440,7 @@
   ]
  },
  {
-  "Name": "Filip Bollaerts",
+  "Name": "Stéphane Muller",
   "Score": 4,
   "Position": [
    {
@@ -450,8 +450,8 @@
   ]
  },
  {
-  "Name": "Martine Van der Haeghen",
-  "Score": 3,
+  "Name": "Bart Vercammen",
+  "Score": 4,
   "Position": [
    {
     "LastPos": 46,
@@ -460,7 +460,7 @@
   ]
  },
  {
-  "Name": "Sreelakshmi Thippeswamy",
+  "Name": "Christopher Nolan",
   "Score": 3,
   "Position": [
    {
@@ -470,7 +470,7 @@
   ]
  },
  {
-  "Name": "Rodolphe Fouquet",
+  "Name": "Martine Van der Haeghen",
   "Score": 3,
   "Position": [
    {
@@ -480,7 +480,7 @@
   ]
  },
  {
-  "Name": "Christopher Nolan",
+  "Name": "Rodolphe Fouquet",
   "Score": 3,
   "Position": [
    {
