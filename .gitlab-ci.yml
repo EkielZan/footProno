@@ -41,16 +41,6 @@ build:
   only:
     - branches
 
-test:
-  stage: test
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - "[ -f ./version ] && export VERSION=$(cat ./version)"
-    - docker version
-    - docker scan $CONTAINER_TEST_IMAGE
-  only:
-    - branches
-
 release-image:
   stage: release
   script:
