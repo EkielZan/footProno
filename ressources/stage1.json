@@ -94,14 +94,14 @@
     "Team1": "Hungary",
     "ScoreT1": 0,
     "Team2": "Portugal",
-    "ScoreT2": 0,
+    "ScoreT2": 3,
     "Date": "2021-06-15 18:00",
     "Stage": "0"
 },
 {
     "MatchID": 11,
     "Team1": "France",
-    "ScoreT1": 0,
+    "ScoreT1": 1,
     "Team2": "Germany",
     "ScoreT2": 0,
     "Date": "2021-06-15 21:00",
@@ -112,7 +112,7 @@
     "Team1": "Finland",
     "ScoreT1": 0,
     "Team2": "Russia",
-    "ScoreT2": 0,
+    "ScoreT2": 1,
     "Date": "2021-06-16 16:00",
     "Stage": "1"
 },
@@ -121,7 +121,7 @@
     "Team1": "Turkey",
     "ScoreT1": 0,
     "Team2": "Wales",
-    "ScoreT2": 0,
+    "ScoreT2": 2,
     "Date": "2021-06-16 18:00",
     "Stage": "1"
 },

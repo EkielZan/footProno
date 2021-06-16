@@ -17,6 +17,9 @@ import (
 //All working files
 var stage1File = "./ressources/stage1.json"
 var stage1PronoFile = "./ressources/MatchDay1Test.json"
+var stage2PronoFile = "./ressources/MatchDay2Test.json"
+
+//var stage3PronoFile = "./ressources/MatchDay3Test.json"
 var champFile = "./ressources/champList.json"
 var statusFile = "./ressources/status.json"
 var configFile = "./ressources/config.json"
@@ -36,6 +39,7 @@ func preLoad() {
 	//shortPlayers = readSavedPlayers()
 	log.Println("Reading Players Pronostics")
 	players = readJsonPlayers(stage1PronoFile)
+	players = append(players, readJsonPlayers(stage2PronoFile)...)
 	log.Println("Reading Config")
 	config = loadConfig()
 	saveConfig(config)
