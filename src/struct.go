@@ -25,27 +25,17 @@ type LastPosition struct {
 	ScoreDate string `json:"ScoreDate"`
 }
 
-//Match from json files
-type Match struct {
-	MatchID int    `json:"MatchID"`
-	Team1   string `json:"Team1"`
-	ScoreT1 int    `json:"ScoreT1"`
-	Team2   string `json:"Team2"`
-	ScoreT2 int    `json:"ScoreT2"`
-	Date    string `json:"Date"`
-	Stage   int    `json:"Stage"`
-	Winner  string `json:"Winner"`
-}
-
 // PrMatch
 type PrMatch struct {
 	MatchID int    `json:"MatchID"`
 	Team1   string `json:"Team1"`
 	ScoreT1 int    `json:"ScoreT1"`
+	ScoreP1 int    `json:"ScoreP1"`
 	Team2   string `json:"Team2"`
 	ScoreT2 int    `json:"ScoreT2"`
+	ScoreP2 int    `json:"ScoreP2"`
 	Date    string `json:"Date"`
-	Stage   string `json:"Stage"`
+	Stage   int    `json:"Stage"`
 	Winner  string `json:"Winner"`
 	ScoreP  int    `json:"ScoreP"`
 }
