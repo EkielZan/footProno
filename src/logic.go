@@ -25,7 +25,7 @@ var statusFile = "./ressources/status.json"
 var configFile = "./ressources/config.json"
 var stat Statistics
 var config Config
-var officialScores []Match
+var officialScores []PrMatch
 var players []Player
 var champPlayer []Player
 
@@ -39,9 +39,7 @@ func preLoad() {
 	//shortPlayers = readSavedPlayers()
 	log.Println("Reading Players Pronostics")
 	players = initJsonPlayers(stage1PronoFile, 0)
-
 	players = updatePlayers(stage2PronoFile, players)
-
 	log.Println("Reading Config")
 	config = loadConfig()
 	saveConfig(config)
@@ -115,19 +113,19 @@ func initJsonPlayers(strFile string, stage int) []Player {
 					score = 0
 				}
 				matchProno.Team1 = oS.Team1
-				matchProno.ScoreT1 = score
+				matchProno.ScoreP1 = score
 				//We check the score if 10 then it's 0
 				score, _ = strconv.Atoi(i.(map[string]interface{})[oS.Team2].(string))
 				if score == 10 {
 					score = 0
 				}
 				matchProno.Team2 = oS.Team2
-				matchProno.ScoreT2 = score
+				matchProno.ScoreP2 = score
 				matchProno.Date = oS.Date
 				//We compare Score to know who is winner according to player
-				if matchProno.ScoreT1 == matchProno.ScoreT2 {
+				if matchProno.ScoreP1 == matchProno.ScoreP2 {
 					matchProno.Winner = "Draw"
-				} else if matchProno.ScoreT1 > matchProno.ScoreT2 {
+				} else if matchProno.ScoreP1 > matchProno.ScoreP2 {
 					matchProno.Winner = matchProno.Team1
 				} else {
 					matchProno.Winner = matchProno.Team2
@@ -157,8 +155,8 @@ func updatePlayers(strFile string, pPlayers []Player) []Player {
 	return tPlayers
 }
 
-func readJsonMatches(strFile string) []Match {
-	var officialScores []Match
+func readJsonMatches(strFile string) []PrMatch {
+	var officialScores []PrMatch
 	// Open our jsonFile
 	raw, err := ioutil.ReadFile(strFile)
 	if err != nil {
@@ -214,7 +212,7 @@ func loadConfig() Config {
 
 // Api Calls
 func getMatches(w http.ResponseWriter, r *http.Request) {
-	var officialScores2 []Match
+	var officialScores2 []PrMatch
 	LastMatchID := config.LastMatchID
 	for _, p := range officialScores {
 		if p.MatchID > LastMatchID && p.Winner == "Draw" {
@@ -286,10 +284,12 @@ func calculateScore() []Player {
 					if match.Team1 == oS.Team1 && match.Team2 == oS.Team2 {
 						if match.Winner == oS.Winner {
 							MatchscoreTemp += 1
-							if match.ScoreT1 == oS.ScoreT1 && match.ScoreT2 == oS.ScoreT2 {
+							if match.ScoreP1 == oS.ScoreT1 && match.ScoreP2 == oS.ScoreT2 {
 								MatchscoreTemp += 2
 							}
 						}
+						match.ScoreT1 = oS.ScoreT1
+						match.ScoreT2 = oS.ScoreT2
 						match.ScoreP = MatchscoreTemp
 						playerScoreTemp += match.ScoreP
 					}
