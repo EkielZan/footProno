@@ -6,7 +6,7 @@
     "Team2": "Italy",
     "ScoreT2": 3,
     "Date": "2021-06-11 21:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 1,
@@ -15,7 +15,7 @@
     "Team2": "Switzerland",
     "ScoreT2": 1,
     "Date": "2021-06-12 15:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 2,
@@ -24,7 +24,7 @@
     "Team2": "Finland",
     "ScoreT2": 1,
     "Date": "2021-06-12 18:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 3,
@@ -33,7 +33,7 @@
     "Team2": "Russia",
     "ScoreT2": 0,
     "Date": "2021-06-12 21:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 4,
@@ -42,7 +42,7 @@
     "Team2": "Croatia",
     "ScoreT2": 0,
     "Date": "2021-06-13 15:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 5,
@@ -51,7 +51,7 @@
     "Team2": "North Macedonia",
     "ScoreT2": 1,
     "Date": "2021-06-13 18:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 6,
@@ -60,7 +60,7 @@
     "Team2": "Ukraine",
     "ScoreT2": 2,
     "Date": "2021-06-13 21:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 7,
@@ -69,7 +69,7 @@
     "Team2": "Czech Republic",
     "ScoreT2": 2,
     "Date": "2021-06-14 15:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 8,
@@ -78,7 +78,7 @@
     "Team2": "Slovakia",
     "ScoreT2": 2,
     "Date": "2021-06-14 18:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 9,
@@ -87,7 +87,7 @@
     "Team2": "Sweden",
     "ScoreT2": 0,
     "Date": "2021-06-14 21:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 10,
@@ -96,7 +96,7 @@
     "Team2": "Portugal",
     "ScoreT2": 3,
     "Date": "2021-06-15 18:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 11,
@@ -105,7 +105,7 @@
     "Team2": "Germany",
     "ScoreT2": 0,
     "Date": "2021-06-15 21:00",
-    "Stage": "0"
+    "Stage": 0
 },
 {
     "MatchID": 12,
@@ -114,7 +114,7 @@
     "Team2": "Russia",
     "ScoreT2": 1,
     "Date": "2021-06-16 16:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 13,
@@ -123,7 +123,7 @@
     "Team2": "Wales",
     "ScoreT2": 2,
     "Date": "2021-06-16 18:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 14,
@@ -132,7 +132,7 @@
     "Team2": "Switzerland",
     "ScoreT2": 0,
     "Date": "2021-06-16 21:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 15,
@@ -141,7 +141,7 @@
     "Team2": "North Macedonia",
     "ScoreT2": 0,
     "Date": "2021-06-17 15:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 16,
@@ -150,7 +150,7 @@
     "Team2": "Belgium",
     "ScoreT2": 0,
     "Date": "2021-06-17 18:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 17,
@@ -159,7 +159,7 @@
     "Team2": "Austria",
     "ScoreT2": 0,
     "Date": "2021-06-17 21:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 18,
@@ -168,7 +168,7 @@
     "Team2": "Slovakia",
     "ScoreT2": 0,
     "Date": "2021-06-18 15:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 19,
@@ -177,7 +177,7 @@
     "Team2": "Czech Republic",
     "ScoreT2": 0,
     "Date": "2021-06-18 18:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 20,
@@ -186,7 +186,7 @@
     "Team2": "Scotland",
     "ScoreT2": 0,
     "Date": "2021-06-18 21:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 21,
@@ -195,7 +195,7 @@
     "Team2": "France",
     "ScoreT2": 0,
     "Date": "2021-06-19 15:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 22,
@@ -204,7 +204,7 @@
     "Team2": "Germany",
     "ScoreT2": 0,
     "Date": "2021-06-19 18:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 23,
@@ -213,7 +213,7 @@
     "Team2": "Poland",
     "ScoreT2": 0,
     "Date": "2021-06-19 21:00",
-    "Stage": "1"
+    "Stage": 1
 },
 {
     "MatchID": 24,
@@ -222,7 +222,7 @@
     "Team2": "Wales",
     "ScoreT2": 0,
     "Date": "2021-06-20 18:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 25,
@@ -231,7 +231,7 @@
     "Team2": "Turkey",
     "ScoreT2": 0,
     "Date": "2021-06-20 18:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 26,
@@ -240,7 +240,7 @@
     "Team2": "Austria",
     "ScoreT2": 0,
     "Date": "2021-06-21 18:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 27,
@@ -249,7 +249,7 @@
     "Team2": "Netherlands",
     "ScoreT2": 0,
     "Date": "2021-06-21 18:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 28,
@@ -258,7 +258,7 @@
     "Team2": "Denmark",
     "ScoreT2": 0,
     "Date": "2021-06-21 21:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 29,
@@ -267,7 +267,7 @@
     "Team2": "Belgium",
     "ScoreT2": 0,
     "Date": "2021-06-21 21:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 30,
@@ -276,7 +276,7 @@
     "Team2": "Scotland",
     "ScoreT2": 0,
     "Date": "2021-06-22 21:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 31,
@@ -285,7 +285,7 @@
     "Team2": "England",
     "ScoreT2": 0,
     "Date": "2021-06-22 21:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 32,
@@ -294,7 +294,7 @@
     "Team2": "Poland",
     "ScoreT2": 0,
     "Date": "2021-06-23 18:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 33,
@@ -303,7 +303,7 @@
     "Team2": "Spain",
     "ScoreT2": 0,
     "Date": "2021-06-23 18:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 34,
@@ -312,7 +312,7 @@
     "Team2": "France",
     "ScoreT2": 0,
     "Date": "2021-06-23 21:00",
-    "Stage": "2"
+    "Stage": 2
 },
 {
     "MatchID": 35,
@@ -321,6 +321,6 @@
     "Team2": "Hungary",
     "ScoreT2": 0,
     "Date": "2021-06-23 21:00",
-    "Stage": "2"
+    "Stage": 2
 }
 ]

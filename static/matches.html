@@ -48,6 +48,7 @@
                 <div class="description">
                   <table style="width:100%">
                     <tr>
+                      <th>ID</th>
                       <th>Date</th>
                       <th>Teams</th>
                       <th>Score</th>
@@ -55,6 +56,7 @@
                       <th>Stage</th>
                     </tr>
                     <tr v-for="match in matches">
+                      <td>{{match.MatchID}}</td>
                       <td>{{match.Date}}</td>
                       <td>{{match.Team1}} - {{match.Team2}}</td>
                       <td>{{match.ScoreT1}} - {{match.ScoreT2}}</td>
