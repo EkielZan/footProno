@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"net/http"
-	"sort"
 	"strconv"
 
 	"github.com/gorilla/mux"
@@ -25,11 +24,6 @@ func getMatches(w http.ResponseWriter, r *http.Request) {
 
 func getPlayer(w http.ResponseWriter, r *http.Request) {
 	reload()
-	scoredPlayers := calculateScore()
-	sort.Slice(scoredPlayers, func(i, j int) bool {
-		return scoredPlayers[i].Score > scoredPlayers[j].Score
-	})
-	scoredPlayers = setRank(scoredPlayers)
 	playerID, _ := strconv.Atoi(mux.Vars(r)["id"])
 	var player Player
 	for _, p := range scoredPlayers {
@@ -57,12 +51,6 @@ func getStat(w http.ResponseWriter, r *http.Request) {
 
 func getScore(w http.ResponseWriter, r *http.Request) {
 	reload()
-	scoredPlayers := calculateScore()
-	sort.Slice(scoredPlayers, func(i, j int) bool {
-		return scoredPlayers[i].Score > scoredPlayers[j].Score
-	})
-	scoredPlayers = setRank(scoredPlayers)
-	savePlayers(scoredPlayers)
 	marshalled, _ := json.MarshalIndent(scoredPlayers, "", " ")
 	Respond(w, marshalled)
 }

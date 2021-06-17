@@ -5,9 +5,10 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
+	"sort"
 	"strconv"
-	"time"
 )
 
 //All working files
@@ -19,11 +20,14 @@ var stage2PronoFile = "./ressources/MatchDay2Test.json"
 var champFile = "./ressources/champList.json"
 var statusFile = "./ressources/status.json"
 var configFile = "./ressources/config.json"
+
+//
 var stat Statistics
 var config Config
 var officialScores []PrMatch
 var players []Player
 var champPlayer []Player
+var scoredPlayers []Player
 
 //Preload json File in Memory
 func preLoad() {
@@ -52,6 +56,11 @@ func load() {
 	players = initJsonPlayers(stage1PronoFile, 0)
 	players = updatePlayers(stage2PronoFile, players, 1)
 	//players = updatePlayers(stage2PronoFile, players, 2)
+	scoredPlayers = calculateScore()
+	sort.Slice(scoredPlayers, func(i, j int) bool {
+		return scoredPlayers[i].Score > scoredPlayers[j].Score
+	})
+	scoredPlayers = setRank(scoredPlayers)
 }
 
 //Read datas to Fill Struct
@@ -76,6 +85,32 @@ func readChampion(strFile string) []Player {
 		champPlayer = append(champPlayer, player)
 	}
 	return champPlayer
+}
+
+func readJsonMatches(strFile string) []PrMatch {
+	var officialScores []PrMatch
+	// Open our jsonFile
+	raw, err := ioutil.ReadFile(strFile)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+	err = json.Unmarshal([]byte(raw), &officialScores)
+	if err != nil {
+		panic(err)
+	}
+	//We compare Score to know who is Real winner
+	for idx, oS := range officialScores {
+		if oS.ScoreT1 == oS.ScoreT2 {
+			oS.Winner = "Draw"
+		} else if oS.ScoreT1 > oS.ScoreT2 {
+			oS.Winner = oS.Team1
+		} else {
+			oS.Winner = oS.Team2
+		}
+		officialScores[idx] = oS
+	}
+	return officialScores
 }
 
 func initJsonPlayers(strFile string, stage int) []Player {
@@ -155,47 +190,7 @@ func updatePlayers(strFile string, pPlayers []Player, stage int) []Player {
 	return tPlayers
 }
 
-func readJsonMatches(strFile string) []PrMatch {
-	var officialScores []PrMatch
-	// Open our jsonFile
-	raw, err := ioutil.ReadFile(strFile)
-	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
-	}
-	err = json.Unmarshal([]byte(raw), &officialScores)
-	if err != nil {
-		panic(err)
-	}
-	//We compare Score to know who is Real winner
-	for idx, oS := range officialScores {
-		if oS.ScoreT1 == oS.ScoreT2 {
-			oS.Winner = "Draw"
-		} else if oS.ScoreT1 > oS.ScoreT2 {
-			oS.Winner = oS.Team1
-		} else {
-			oS.Winner = oS.Team2
-		}
-		officialScores[idx] = oS
-	}
-	return officialScores
-}
-
-func loadConfig() Config {
-	// Open our jsonFile
-	raw, err := ioutil.ReadFile(configFile)
-	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
-	}
-	err = json.Unmarshal([]byte(raw), &config)
-	if err != nil {
-		panic(err)
-	}
-	return config
-}
-
-/* func readSavedPlayers() []ShortPlayer {
+func readSavedPlayers() []ShortPlayer {
 	var savedPlayer []ShortPlayer
 	// Open our jsonFile
 	raw, err := ioutil.ReadFile(statusFile)
@@ -208,11 +203,12 @@ func loadConfig() Config {
 		panic(err)
 	}
 	return savedPlayer
-} */
+}
 
 //Other func
 func calculateScore() []Player {
 	var tempPlayers []Player
+	savedPlayers := readSavedPlayers()
 	LastMatchID := config.LastMatchID
 	for _, player := range players {
 		playerScoreTemp := 0
@@ -238,6 +234,18 @@ func calculateScore() []Player {
 			}
 			tempMatches = append(tempMatches, match)
 		}
+		for _, savedPlayer := range savedPlayers {
+			if savedPlayer.ID == player.ID {
+				player.Amount = savedPlayer.Amount
+				if player.Amount > 0 {
+					player.Status = "Up"
+				} else if player.Amount == 0 {
+					player.Status = "Stay"
+				} else {
+					player.Status = "Down"
+				}
+			}
+		}
 		player.Matches = tempMatches
 		player.Score = playerScoreTemp
 		tempPlayers = append(tempPlayers, player)
@@ -254,24 +262,55 @@ func setRank(players []Player) []Player {
 
 // Save datas
 func savePlayers(players []Player) {
-	now := time.Now()
+	savedPlayers := readSavedPlayers()
 	var toSaveSlice []ShortPlayer
-	for idx, player := range players {
+	//max := len(players)
+	for _, player := range scoredPlayers {
 		var toSavePlayer ShortPlayer
+		for _, savedPlayer := range savedPlayers {
+			if savedPlayer.ID == player.ID {
+				toSavePlayer.LastPosition = savedPlayer.CurrentPosition
+			}
+		}
 		toSavePlayer.Name = player.Name
-		var tempPosition LastPosition
-		tempPositionSlice := player.Positions
-		tempPosition.Position = idx + 1
-		tempPosition.ScoreDate = now.Format("2006-01-02")
-		toSavePlayer.Positions = append(tempPositionSlice, tempPosition)
-		toSavePlayer.Score = player.Score
+		toSavePlayer.CurrentPosition = player.Rank
+		toSavePlayer.Amount = toSavePlayer.LastPosition - toSavePlayer.CurrentPosition
+		toSavePlayer.ID = player.ID
 		toSaveSlice = append(toSaveSlice, toSavePlayer)
 	}
+	sort.Slice(toSaveSlice, func(i, j int) bool {
+		return toSaveSlice[i].ID > toSaveSlice[j].ID
+	})
 	marshalled, _ := json.MarshalIndent(toSaveSlice, "", " ")
 	_ = ioutil.WriteFile(statusFile, marshalled, 0644)
+}
+
+//Config Management
+func loadConfig() Config {
+	// Open our jsonFile
+	raw, err := ioutil.ReadFile(configFile)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+	err = json.Unmarshal([]byte(raw), &config)
+	if err != nil {
+		panic(err)
+	}
+	return config
 }
 
 func saveConfig(config Config) {
 	marshalled, _ := json.MarshalIndent(config, "", " ")
 	_ = ioutil.WriteFile(configFile, marshalled, 0644)
+}
+
+func refresh(w http.ResponseWriter, r *http.Request) {
+	config = loadConfig()
+	if config.Refresh {
+		fmt.Println("We refresh the rank difference")
+		savePlayers(players)
+		config.Refresh = false
+		saveConfig(config)
+	}
 }

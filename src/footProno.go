@@ -42,6 +42,7 @@ func main() {
 	router.HandleFunc("/getScores", getScore)
 	router.HandleFunc("/player/{id}", getPlayer)
 	router.HandleFunc("/stats", getStat)
+	router.HandleFunc("/refresh", refresh)
 
 	//TODO Remove if not necessary
 	router.PathPrefix("/").Handler(static)

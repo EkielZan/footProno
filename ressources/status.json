@@ -1,392 +1,275 @@
 [
  {
-  "Name": "William De Keyzer",
-  "Score": 19,
-  "Position": [
-   {
-    "LastPos": 1,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Ravi KUMAR",
-  "Score": 16,
-  "Position": [
-   {
-    "LastPos": 2,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Sreedhar Reddy Medipally",
-  "Score": 14,
-  "Position": [
-   {
-    "LastPos": 3,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Bartlomiej KORDALSKI",
-  "Score": 13,
-  "Position": [
-   {
-    "LastPos": 4,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "BART MACHIELS",
-  "Score": 12,
-  "Position": [
-   {
-    "LastPos": 5,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Joachim Landuyt",
-  "Score": 12,
-  "Position": [
-   {
-    "LastPos": 6,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Thiago Dimbarre",
-  "Score": 11,
-  "Position": [
-   {
-    "LastPos": 7,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Blaise Biajila",
-  "Score": 11,
-  "Position": [
-   {
-    "LastPos": 8,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Somika Dixit",
-  "Score": 11,
-  "Position": [
-   {
-    "LastPos": 9,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
+  "ID": 51,
   "Name": "Stephane Bouffouix",
-  "Score": 11,
-  "Position": [
-   {
-    "LastPos": 10,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "Amount": 8,
+  "CurrentPosition": 10,
+  "LastPosition": 18
  },
  {
+  "ID": 50,
   "Name": "Nicolas Deombrun",
-  "Score": 11,
-  "Position": [
-   {
-    "LastPos": 11,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "Amount": 18,
+  "CurrentPosition": 11,
+  "LastPosition": 29
  },
  {
-  "Name": "Kathy Dekens",
-  "Score": 11,
-  "Position": [
-   {
-    "LastPos": 12,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Emilia Bozek",
-  "Score": 11,
-  "Position": [
-   {
-    "LastPos": 13,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Filip Bollaerts",
-  "Score": 10,
-  "Position": [
-   {
-    "LastPos": 14,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Johann Ahrens",
-  "Score": 10,
-  "Position": [
-   {
-    "LastPos": 15,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Werner Bruers",
-  "Score": 10,
-  "Position": [
-   {
-    "LastPos": 16,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Jean-François CANON",
-  "Score": 10,
-  "Position": [
-   {
-    "LastPos": 17,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Regis Fromont",
-  "Score": 10,
-  "Position": [
-   {
-    "LastPos": 18,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Cyrille Maurice",
-  "Score": 10,
-  "Position": [
-   {
-    "LastPos": 19,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "BART VAN HEMELRIJCK",
-  "Score": 10,
-  "Position": [
-   {
-    "LastPos": 20,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
+  "ID": 49,
   "Name": "Maciej HRYNCZYSZYN",
-  "Score": 10,
-  "Position": [
-   {
-    "LastPos": 21,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "Amount": 0,
+  "CurrentPosition": 21,
+  "LastPosition": 21
  },
  {
-  "Name": "LAURENT GRYSON",
-  "Score": 10,
-  "Position": [
-   {
-    "LastPos": 22,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "ID": 47,
+  "Name": "Sreedhar Reddy Medipally",
+  "Amount": 1,
+  "CurrentPosition": 3,
+  "LastPosition": 4
  },
  {
-  "Name": "Muhammad Mohsin",
-  "Score": 10,
-  "Position": [
-   {
-    "LastPos": 23,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "ID": 46,
+  "Name": "Bartlomiej KORDALSKI",
+  "Amount": 7,
+  "CurrentPosition": 4,
+  "LastPosition": 11
  },
  {
-  "Name": "Daniel MOYSON",
-  "Score": 9,
-  "Position": [
-   {
-    "LastPos": 24,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "ID": 45,
+  "Name": "Joachim Landuyt",
+  "Amount": 17,
+  "CurrentPosition": 6,
+  "LastPosition": 23
  },
  {
-  "Name": "Celine Jost",
-  "Score": 9,
-  "Position": [
-   {
-    "LastPos": 25,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
+  "ID": 44,
   "Name": "Luiz Arroyo Gonçalves",
-  "Score": 9,
-  "Position": [
-   {
-    "LastPos": 26,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "Amount": -13,
+  "CurrentPosition": 26,
+  "LastPosition": 13
  },
  {
-  "Name": "Nicolas Poppe",
-  "Score": 9,
-  "Position": [
-   {
-    "LastPos": 27,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "ID": 41,
+  "Name": "Daniel MOYSON",
+  "Amount": -8,
+  "CurrentPosition": 24,
+  "LastPosition": 16
  },
  {
-  "Name": "David Follen",
-  "Score": 9,
-  "Position": [
-   {
-    "LastPos": 28,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "ID": 39,
+  "Name": "Jean-François CANON",
+  "Amount": -7,
+  "CurrentPosition": 17,
+  "LastPosition": 10
  },
  {
-  "Name": "Alain Devillers",
-  "Score": 8,
-  "Position": [
-   {
-    "LastPos": 29,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Sam PETERS",
-  "Score": 8,
-  "Position": [
-   {
-    "LastPos": 30,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Didier Siemons",
-  "Score": 8,
-  "Position": [
-   {
-    "LastPos": 31,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Raj Ranjan Dash",
-  "Score": 7,
-  "Position": [
-   {
-    "LastPos": 32,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
-  "Name": "Rodolphe Fouquet",
-  "Score": 7,
-  "Position": [
-   {
-    "LastPos": 33,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
+  "ID": 38,
   "Name": "Sreelakshmi Thippeswamy",
-  "Score": 7,
-  "Position": [
-   {
-    "LastPos": 34,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "Amount": -6,
+  "CurrentPosition": 34,
+  "LastPosition": 28
  },
  {
-  "Name": "Machhendranath SAPRE",
-  "Score": 7,
-  "Position": [
-   {
-    "LastPos": 35,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "ID": 37,
+  "Name": "Raj Ranjan Dash",
+  "Amount": -2,
+  "CurrentPosition": 32,
+  "LastPosition": 30
  },
  {
-  "Name": "Martine Van der Haeghen",
-  "Score": 6,
-  "Position": [
-   {
-    "LastPos": 36,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "ID": 36,
+  "Name": "LAURENT GRYSON",
+  "Amount": 0,
+  "CurrentPosition": 22,
+  "LastPosition": 22
  },
  {
-  "Name": "Bart Vercammen",
-  "Score": 6,
-  "Position": [
-   {
-    "LastPos": 37,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
- },
- {
+  "ID": 35,
   "Name": "Guillaume Regnier",
-  "Score": 6,
-  "Position": [
-   {
-    "LastPos": 38,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "Amount": -2,
+  "CurrentPosition": 38,
+  "LastPosition": 36
  },
  {
+  "ID": 32,
+  "Name": "Cyrille Maurice",
+  "Amount": -10,
+  "CurrentPosition": 19,
+  "LastPosition": 9
+ },
+ {
+  "ID": 31,
+  "Name": "Machhendranath SAPRE",
+  "Amount": -2,
+  "CurrentPosition": 35,
+  "LastPosition": 33
+ },
+ {
+  "ID": 30,
+  "Name": "Ravi KUMAR",
+  "Amount": 0,
+  "CurrentPosition": 2,
+  "LastPosition": 2
+ },
+ {
+  "ID": 29,
+  "Name": "Muhammad Mohsin",
+  "Amount": -11,
+  "CurrentPosition": 23,
+  "LastPosition": 12
+ },
+ {
+  "ID": 28,
+  "Name": "Bart Vercammen",
+  "Amount": -3,
+  "CurrentPosition": 37,
+  "LastPosition": 34
+ },
+ {
+  "ID": 26,
+  "Name": "Rodolphe Fouquet",
+  "Amount": -2,
+  "CurrentPosition": 33,
+  "LastPosition": 31
+ },
+ {
+  "ID": 25,
+  "Name": "Somika Dixit",
+  "Amount": -3,
+  "CurrentPosition": 9,
+  "LastPosition": 6
+ },
+ {
+  "ID": 23,
+  "Name": "BART VAN HEMELRIJCK",
+  "Amount": -6,
+  "CurrentPosition": 20,
+  "LastPosition": 14
+ },
+ {
+  "ID": 21,
+  "Name": "Emilia Bozek",
+  "Amount": 6,
+  "CurrentPosition": 13,
+  "LastPosition": 19
+ },
+ {
+  "ID": 20,
+  "Name": "Sam PETERS",
+  "Amount": -13,
+  "CurrentPosition": 30,
+  "LastPosition": 17
+ },
+ {
+  "ID": 19,
+  "Name": "Martine Van der Haeghen",
+  "Amount": 2,
+  "CurrentPosition": 36,
+  "LastPosition": 38
+ },
+ {
+  "ID": 17,
+  "Name": "Nicolas Poppe",
+  "Amount": -2,
+  "CurrentPosition": 27,
+  "LastPosition": 25
+ },
+ {
+  "ID": 16,
+  "Name": "William De Keyzer",
+  "Amount": 0,
+  "CurrentPosition": 1,
+  "LastPosition": 1
+ },
+ {
+  "ID": 15,
+  "Name": "David Follen",
+  "Amount": 9,
+  "CurrentPosition": 28,
+  "LastPosition": 37
+ },
+ {
+  "ID": 14,
+  "Name": "Alain Devillers",
+  "Amount": 6,
+  "CurrentPosition": 29,
+  "LastPosition": 35
+ },
+ {
+  "ID": 13,
   "Name": "Stephen Wincote",
-  "Score": 6,
-  "Position": [
-   {
-    "LastPos": 39,
-    "ScoreDate": "2021-06-17"
-   }
-  ]
+  "Amount": 0,
+  "CurrentPosition": 39,
+  "LastPosition": 39
+ },
+ {
+  "ID": 11,
+  "Name": "Celine Jost",
+  "Amount": -1,
+  "CurrentPosition": 25,
+  "LastPosition": 24
+ },
+ {
+  "ID": 10,
+  "Name": "Kathy Dekens",
+  "Amount": -4,
+  "CurrentPosition": 12,
+  "LastPosition": 8
+ },
+ {
+  "ID": 9,
+  "Name": "Regis Fromont",
+  "Amount": -13,
+  "CurrentPosition": 18,
+  "LastPosition": 5
+ },
+ {
+  "ID": 8,
+  "Name": "Blaise Biajila",
+  "Amount": 19,
+  "CurrentPosition": 8,
+  "LastPosition": 27
+ },
+ {
+  "ID": 7,
+  "Name": "Werner Bruers",
+  "Amount": 10,
+  "CurrentPosition": 16,
+  "LastPosition": 26
+ },
+ {
+  "ID": 6,
+  "Name": "Didier Siemons",
+  "Amount": 1,
+  "CurrentPosition": 31,
+  "LastPosition": 32
+ },
+ {
+  "ID": 5,
+  "Name": "Johann Ahrens",
+  "Amount": 0,
+  "CurrentPosition": 15,
+  "LastPosition": 15
+ },
+ {
+  "ID": 3,
+  "Name": "Filip Bollaerts",
+  "Amount": -7,
+  "CurrentPosition": 14,
+  "LastPosition": 7
+ },
+ {
+  "ID": 2,
+  "Name": "BART MACHIELS",
+  "Amount": 15,
+  "CurrentPosition": 5,
+  "LastPosition": 20
+ },
+ {
+  "ID": 1,
+  "Name": "Thiago Dimbarre",
+  "Amount": -4,
+  "CurrentPosition": 7,
+  "LastPosition": 3
  }
 ]

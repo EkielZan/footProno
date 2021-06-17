@@ -60,7 +60,9 @@
                       <td>{{player.Score}}</td>
                       <td>{{player.Champ}}</td>
                       <td>{{player.Amount}}</td>
-                      <td>{{player.Status}}</td>
+                      <td v-if="player.Status == 'Up'"></td>
+                      <td v-if="player.Status == 'Down'"><div class=".red-arrow">&nbsp;</div></td>
+                      <td v-if="player.Status == 'Stay'"></td>
                     </tr>
                   </table>
                 </div>

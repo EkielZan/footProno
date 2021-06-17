@@ -22,3 +22,7 @@ body {
   background-color: #ee8229;
   border-radius: 25px;
 }
+
+.iconify{
+  background: url('./ressources/typcn-arrow-down-thick.svg?color=red') no-repeat center center contain;
+}

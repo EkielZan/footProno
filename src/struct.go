@@ -2,26 +2,26 @@ package main
 
 //Player
 type Player struct {
-	ID        int            `json:"ID"`
-	Name      string         `json:"Name"`
-	Email     string         `json:"Email"`
-	Score     int            `json:"Score"`
-	Matches   []PrMatch      `json:"Matches"`
-	Champ     string         `json:"Champ"`
-	Positions []LastPosition `json:"Position"`
-	Status    string         `json:"Status"`
-	Amount    int            `json:"Amount"`
-	Rank      int            `json:"Rank"`
+	ID      int       `json:"ID"`
+	Name    string    `json:"Name"`
+	Email   string    `json:"Email"`
+	Score   int       `json:"Score"`
+	Matches []PrMatch `json:"Matches"`
+	Champ   string    `json:"Champ"`
+	Status  string    `json:"Status"`
+	Amount  int       `json:"Amount"`
+	Rank    int       `json:"Rank"`
 }
 
 type ShortPlayer struct {
-	Name      string         `json:"Name"`
-	Score     int            `json:"Score"`
-	Positions []LastPosition `json:"Position"`
+	ID              int    `json:"ID"`
+	Name            string `json:"Name"`
+	Amount          int    `json:"Amount"`
+	CurrentPosition int    `json:"CurrentPosition"`
+	LastPosition    int    `json:"LastPosition"`
 }
 
 type LastPosition struct {
-	Position  int    `json:"LastPos"`
 	ScoreDate string `json:"ScoreDate"`
 }
 
@@ -56,7 +56,6 @@ type spaHandler struct {
 
 //Config
 type Config struct {
-	LastSave      string `json:"LastSave"`
-	LastMatchDate string `json:"LastMatchDate"`
-	LastMatchID   int    `json:"LastMatchID"`
+	LastMatchID int  `json:"LastMatchID"`
+	Refresh     bool `json:"Refresh"`
 }
