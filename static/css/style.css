@@ -5,8 +5,8 @@ body {
 .project-name {
   font-size: 25px;
   color: white !important;
-  text-shadow: 1px 1px rgba(0,0,0,0.2);
-  display:inline;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  display: inline;
 }
 
 .description .title,
@@ -23,6 +23,7 @@ body {
   border-radius: 25px;
 }
 
-.iconify{
-  background: url('./ressources/typcn-arrow-down-thick.svg?color=red') no-repeat center center contain;
+.red-arrow {
+  background: url("./img/arrow-down-thick.svg?color=red") no-repeat center
+    center contain;
 }

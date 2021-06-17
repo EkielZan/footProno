@@ -60,9 +60,9 @@
                       <td>{{player.Score}}</td>
                       <td>{{player.Champ}}</td>
                       <td>{{player.Amount}}</td>
-                      <td v-if="player.Status == 'Up'"></td>
-                      <td v-if="player.Status == 'Down'"><div class=".red-arrow">&nbsp;</div></td>
-                      <td v-if="player.Status == 'Stay'"></td>
+                      <td v-if="player.Status == 'Up'"><img class=".red-arrow" src="img/green-arrow-up.svg"></img></td>
+                      <td v-if="player.Status == 'Down'"><img class=".red-arrow" src="img/red-arrow-down.svg"></img></td>
+                      <td v-if="player.Status == 'Stay'"><img class=".red-arrow" src="img/blue-arrow-right.svg"></img></td>
                     </tr>
                   </table>
                 </div>
