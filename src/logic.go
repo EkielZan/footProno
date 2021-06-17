@@ -5,13 +5,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"net/http"
 	"os"
-	"sort"
 	"strconv"
 	"time"
-
-	"github.com/gorilla/mux"
 )
 
 //All working files
@@ -39,7 +35,9 @@ func preLoad() {
 	//shortPlayers = readSavedPlayers()
 	log.Println("Reading Players Pronostics")
 	players = initJsonPlayers(stage1PronoFile, 0)
+
 	players = updatePlayers(stage2PronoFile, players)
+
 	log.Println("Reading Config")
 	config = loadConfig()
 	saveConfig(config)
@@ -113,19 +111,19 @@ func initJsonPlayers(strFile string, stage int) []Player {
 					score = 0
 				}
 				matchProno.Team1 = oS.Team1
-				matchProno.ScoreP1 = score
+				matchProno.ScoreT1 = score
 				//We check the score if 10 then it's 0
 				score, _ = strconv.Atoi(i.(map[string]interface{})[oS.Team2].(string))
 				if score == 10 {
 					score = 0
 				}
 				matchProno.Team2 = oS.Team2
-				matchProno.ScoreP2 = score
+				matchProno.ScoreT2 = score
 				matchProno.Date = oS.Date
 				//We compare Score to know who is winner according to player
-				if matchProno.ScoreP1 == matchProno.ScoreP2 {
+				if matchProno.ScoreT1 == matchProno.ScoreT2 {
 					matchProno.Winner = "Draw"
-				} else if matchProno.ScoreP1 > matchProno.ScoreP2 {
+				} else if matchProno.ScoreT1 > matchProno.ScoreT2 {
 					matchProno.Winner = matchProno.Team1
 				} else {
 					matchProno.Winner = matchProno.Team2
@@ -210,65 +208,6 @@ func loadConfig() Config {
 	return savedPlayer
 } */
 
-// Api Calls
-func getMatches(w http.ResponseWriter, r *http.Request) {
-	var officialScores2 []PrMatch
-	LastMatchID := config.LastMatchID
-	for _, p := range officialScores {
-		if p.MatchID > LastMatchID && p.Winner == "Draw" {
-			p.Winner = ""
-		}
-		officialScores2 = append(officialScores2, p)
-	}
-	marshalled, _ := json.MarshalIndent(officialScores2, "", " ")
-	Respond(w, marshalled)
-}
-
-func getPlayer(w http.ResponseWriter, r *http.Request) {
-	reload()
-	scoredPlayers := calculateScore()
-	sort.Slice(scoredPlayers, func(i, j int) bool {
-		return scoredPlayers[i].Score > scoredPlayers[j].Score
-	})
-	scoredPlayers = setRank(scoredPlayers)
-	playerID, _ := strconv.Atoi(mux.Vars(r)["id"])
-	var player Player
-	for _, p := range scoredPlayers {
-		if p.ID == playerID {
-			player = p
-			var tempMatches []PrMatch
-			LastMatchID := config.LastMatchID
-			for _, m := range player.Matches {
-				if m.MatchID <= LastMatchID {
-					tempMatches = append(tempMatches, m)
-				}
-			}
-			player.Matches = tempMatches
-		}
-	}
-	marshalled, _ := json.MarshalIndent(player, "", " ")
-	Respond(w, marshalled)
-}
-
-func getStat(w http.ResponseWriter, r *http.Request) {
-	reload()
-	marshalled, _ := json.MarshalIndent(stat, "", " ")
-	Respond(w, marshalled)
-}
-
-func getScore(w http.ResponseWriter, r *http.Request) {
-	reload()
-	scoredPlayers := calculateScore()
-	sort.Slice(scoredPlayers, func(i, j int) bool {
-		return scoredPlayers[i].Score > scoredPlayers[j].Score
-	})
-	scoredPlayers = setRank(scoredPlayers)
-	//players = computeRank(players)
-	savePlayers(scoredPlayers)
-	marshalled, _ := json.MarshalIndent(scoredPlayers, "", " ")
-	Respond(w, marshalled)
-}
-
 //Other func
 func calculateScore() []Player {
 	var tempPlayers []Player
@@ -284,12 +223,10 @@ func calculateScore() []Player {
 					if match.Team1 == oS.Team1 && match.Team2 == oS.Team2 {
 						if match.Winner == oS.Winner {
 							MatchscoreTemp += 1
-							if match.ScoreP1 == oS.ScoreT1 && match.ScoreP2 == oS.ScoreT2 {
+							if match.ScoreT1 == oS.ScoreT1 && match.ScoreT2 == oS.ScoreT2 {
 								MatchscoreTemp += 2
 							}
 						}
-						match.ScoreT1 = oS.ScoreT1
-						match.ScoreT2 = oS.ScoreT2
 						match.ScoreP = MatchscoreTemp
 						playerScoreTemp += match.ScoreP
 					}
