@@ -34,10 +34,7 @@ func preLoad() {
 	log.Println("Reading Saved Players")
 	//shortPlayers = readSavedPlayers()
 	log.Println("Reading Players Pronostics")
-	players = initJsonPlayers(stage1PronoFile, 0)
-
-	players = updatePlayers(stage2PronoFile, players)
-
+	load()
 	log.Println("Reading Config")
 	config = loadConfig()
 	saveConfig(config)
@@ -46,9 +43,15 @@ func preLoad() {
 //reload json File in Memory
 func reload() {
 	officialScores = readJsonMatches(stage1File)
-	//players = readJsonPlayers(stage1PronoFile)
+	load()
 	config = loadConfig()
 	saveConfig(config)
+}
+
+func load() {
+	players = initJsonPlayers(stage1PronoFile, 0)
+	players = updatePlayers(stage2PronoFile, players, 1)
+	//players = updatePlayers(stage2PronoFile, players, 2)
 }
 
 //Read datas to Fill Struct
@@ -101,7 +104,6 @@ func initJsonPlayers(strFile string, stage int) []Player {
 		}
 		// We itare to create real pronostics for players
 		for _, oS := range officialScores {
-			fmt.Println(oS.Stage)
 			if oS.Stage == stage {
 				var matchProno PrMatch
 				matchProno.MatchID = oS.MatchID
@@ -111,19 +113,19 @@ func initJsonPlayers(strFile string, stage int) []Player {
 					score = 0
 				}
 				matchProno.Team1 = oS.Team1
-				matchProno.ScoreT1 = score
+				matchProno.ScoreP1 = score
 				//We check the score if 10 then it's 0
 				score, _ = strconv.Atoi(i.(map[string]interface{})[oS.Team2].(string))
 				if score == 10 {
 					score = 0
 				}
 				matchProno.Team2 = oS.Team2
-				matchProno.ScoreT2 = score
+				matchProno.ScoreP2 = score
 				matchProno.Date = oS.Date
 				//We compare Score to know who is winner according to player
-				if matchProno.ScoreT1 == matchProno.ScoreT2 {
+				if matchProno.ScoreP1 == matchProno.ScoreP2 {
 					matchProno.Winner = "Draw"
-				} else if matchProno.ScoreT1 > matchProno.ScoreT2 {
+				} else if matchProno.ScoreP1 > matchProno.ScoreP2 {
 					matchProno.Winner = matchProno.Team1
 				} else {
 					matchProno.Winner = matchProno.Team2
@@ -138,10 +140,10 @@ func initJsonPlayers(strFile string, stage int) []Player {
 	return players
 }
 
-func updatePlayers(strFile string, pPlayers []Player) []Player {
+func updatePlayers(strFile string, pPlayers []Player, stage int) []Player {
 	// Open our jsonFile
 	var tPlayers []Player
-	playersT := initJsonPlayers(stage2PronoFile, 1)
+	playersT := initJsonPlayers(stage2PronoFile, stage)
 	for _, player := range playersT {
 		for _, pPlayer := range pPlayers {
 			if pPlayer.Name == player.Name {
@@ -223,11 +225,13 @@ func calculateScore() []Player {
 					if match.Team1 == oS.Team1 && match.Team2 == oS.Team2 {
 						if match.Winner == oS.Winner {
 							MatchscoreTemp += 1
-							if match.ScoreT1 == oS.ScoreT1 && match.ScoreT2 == oS.ScoreT2 {
+							if match.ScoreP1 == oS.ScoreT1 && match.ScoreP2 == oS.ScoreT2 {
 								MatchscoreTemp += 2
 							}
 						}
 						match.ScoreP = MatchscoreTemp
+						match.ScoreT1 = oS.ScoreT1
+						match.ScoreT2 = oS.ScoreT2
 						playerScoreTemp += match.ScoreP
 					}
 				}
