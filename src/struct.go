@@ -33,7 +33,7 @@ type Match struct {
 	Team2   string `json:"Team2"`
 	ScoreT2 int    `json:"ScoreT2"`
 	Date    string `json:"Date"`
-	Stage   string `json:"Stage"`
+	Stage   int    `json:"Stage"`
 	Winner  string `json:"Winner"`
 }
 
