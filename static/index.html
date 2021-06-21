@@ -51,18 +51,22 @@
                       <th>Name</th>
                       <th>Score</th>
                       <th>Champion</th>
+                      <!--
                       <th></th>
                       <th></th>
+                      -->
                     </tr>
                     <tr v-for="player in players">
                       <td>{{player.Rank}}</td>
                       <td><a href="player.html?id={{player.ID}}">{{player.Name}}</a></td>
                       <td>{{player.Score}}</td>
                       <td>{{player.Champ}}</td>
+                      <!--
                       <td>{{player.Amount}}</td>
                       <td v-if="player.Status == 'Up'"><img class=".red-arrow" src="img/green-arrow-up.svg"></img></td>
                       <td v-if="player.Status == 'Down'"><img class=".red-arrow" src="img/red-arrow-down.svg"></img></td>
                       <td v-if="player.Status == 'Stay'"><img class=".red-arrow" src="img/blue-arrow-right.svg"></img></td>
+                      -->
                     </tr>
                   </table>
                 </div>

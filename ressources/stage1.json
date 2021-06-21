@@ -164,7 +164,7 @@
 {
     "MatchID": 18,
     "Team1": "Sweden",
-    "ScoreT1": 0,
+    "ScoreT1": 1,
     "Team2": "Slovakia",
     "ScoreT2": 0,
     "Date": "2021-06-18 15:00",
@@ -173,9 +173,9 @@
 {
     "MatchID": 19,
     "Team1": "Croatia",
-    "ScoreT1": 0,
+    "ScoreT1": 1,
     "Team2": "Czech Republic",
-    "ScoreT2": 0,
+    "ScoreT2": 1,
     "Date": "2021-06-18 18:00",
     "Stage": 1
 },
@@ -191,34 +191,34 @@
 {
     "MatchID": 21,
     "Team1": "Hungary",
-    "ScoreT1": 0,
+    "ScoreT1": 1,
     "Team2": "France",
-    "ScoreT2": 0,
+    "ScoreT2": 1,
     "Date": "2021-06-19 15:00",
     "Stage": 1
 },
 {
     "MatchID": 22,
     "Team1": "Portugal",
-    "ScoreT1": 0,
+    "ScoreT1": 2,
     "Team2": "Germany",
-    "ScoreT2": 0,
+    "ScoreT2": 4,
     "Date": "2021-06-19 18:00",
     "Stage": 1
 },
 {
     "MatchID": 23,
     "Team1": "Spain",
-    "ScoreT1": 0,
+    "ScoreT1": 1,
     "Team2": "Poland",
-    "ScoreT2": 0,
+    "ScoreT2": 1,
     "Date": "2021-06-19 21:00",
     "Stage": 1
 },
 {
     "MatchID": 24,
     "Team1": "Italy",
-    "ScoreT1": 0,
+    "ScoreT1": 1,
     "Team2": "Wales",
     "ScoreT2": 0,
     "Date": "2021-06-20 18:00",
@@ -227,9 +227,9 @@
 {
     "MatchID": 25,
     "Team1": "Switzerland",
-    "ScoreT1": 0,
+    "ScoreT1": 3,
     "Team2": "Turkey",
-    "ScoreT2": 0,
+    "ScoreT2": 1,
     "Date": "2021-06-20 18:00",
     "Stage": 2
 },

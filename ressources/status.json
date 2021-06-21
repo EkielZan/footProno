@@ -2,177 +2,177 @@
  {
   "ID": 51,
   "Name": "Stephane Bouffouix",
-  "Amount": 8,
-  "CurrentPosition": 10,
-  "LastPosition": 18
+  "Amount": -15,
+  "CurrentPosition": 25,
+  "LastPosition": 10
  },
  {
   "ID": 50,
   "Name": "Nicolas Deombrun",
-  "Amount": 18,
-  "CurrentPosition": 11,
-  "LastPosition": 29
+  "Amount": 1,
+  "CurrentPosition": 10,
+  "LastPosition": 11
  },
  {
   "ID": 49,
   "Name": "Maciej HRYNCZYSZYN",
-  "Amount": 0,
-  "CurrentPosition": 21,
+  "Amount": 6,
+  "CurrentPosition": 15,
   "LastPosition": 21
  },
  {
   "ID": 47,
   "Name": "Sreedhar Reddy Medipally",
-  "Amount": 1,
+  "Amount": 0,
   "CurrentPosition": 3,
-  "LastPosition": 4
+  "LastPosition": 3
  },
  {
   "ID": 46,
   "Name": "Bartlomiej KORDALSKI",
-  "Amount": 7,
-  "CurrentPosition": 4,
-  "LastPosition": 11
+  "Amount": -8,
+  "CurrentPosition": 12,
+  "LastPosition": 4
  },
  {
   "ID": 45,
   "Name": "Joachim Landuyt",
-  "Amount": 17,
-  "CurrentPosition": 6,
-  "LastPosition": 23
+  "Amount": 4,
+  "CurrentPosition": 2,
+  "LastPosition": 6
  },
  {
   "ID": 44,
   "Name": "Luiz Arroyo Gonçalves",
-  "Amount": -13,
+  "Amount": 0,
   "CurrentPosition": 26,
-  "LastPosition": 13
+  "LastPosition": 26
  },
  {
   "ID": 41,
   "Name": "Daniel MOYSON",
-  "Amount": -8,
-  "CurrentPosition": 24,
-  "LastPosition": 16
+  "Amount": 4,
+  "CurrentPosition": 20,
+  "LastPosition": 24
  },
  {
   "ID": 39,
   "Name": "Jean-François CANON",
-  "Amount": -7,
-  "CurrentPosition": 17,
-  "LastPosition": 10
+  "Amount": -6,
+  "CurrentPosition": 23,
+  "LastPosition": 17
  },
  {
   "ID": 38,
   "Name": "Sreelakshmi Thippeswamy",
-  "Amount": -6,
-  "CurrentPosition": 34,
-  "LastPosition": 28
- },
- {
-  "ID": 37,
-  "Name": "Raj Ranjan Dash",
-  "Amount": -2,
-  "CurrentPosition": 32,
-  "LastPosition": 30
- },
- {
-  "ID": 36,
-  "Name": "LAURENT GRYSON",
-  "Amount": 0,
-  "CurrentPosition": 22,
-  "LastPosition": 22
- },
- {
-  "ID": 35,
-  "Name": "Guillaume Regnier",
-  "Amount": -2,
-  "CurrentPosition": 38,
-  "LastPosition": 36
- },
- {
-  "ID": 32,
-  "Name": "Cyrille Maurice",
-  "Amount": -10,
-  "CurrentPosition": 19,
-  "LastPosition": 9
- },
- {
-  "ID": 31,
-  "Name": "Machhendranath SAPRE",
-  "Amount": -2,
-  "CurrentPosition": 35,
-  "LastPosition": 33
- },
- {
-  "ID": 30,
-  "Name": "Ravi KUMAR",
-  "Amount": 0,
-  "CurrentPosition": 2,
-  "LastPosition": 2
- },
- {
-  "ID": 29,
-  "Name": "Muhammad Mohsin",
-  "Amount": -11,
-  "CurrentPosition": 23,
-  "LastPosition": 12
- },
- {
-  "ID": 28,
-  "Name": "Bart Vercammen",
   "Amount": -3,
   "CurrentPosition": 37,
   "LastPosition": 34
  },
  {
+  "ID": 37,
+  "Name": "Raj Ranjan Dash",
+  "Amount": 0,
+  "CurrentPosition": 32,
+  "LastPosition": 32
+ },
+ {
+  "ID": 36,
+  "Name": "LAURENT GRYSON",
+  "Amount": 18,
+  "CurrentPosition": 4,
+  "LastPosition": 22
+ },
+ {
+  "ID": 35,
+  "Name": "Guillaume Regnier",
+  "Amount": 11,
+  "CurrentPosition": 27,
+  "LastPosition": 38
+ },
+ {
+  "ID": 32,
+  "Name": "Cyrille Maurice",
+  "Amount": -5,
+  "CurrentPosition": 24,
+  "LastPosition": 19
+ },
+ {
+  "ID": 31,
+  "Name": "Machhendranath SAPRE",
+  "Amount": -3,
+  "CurrentPosition": 38,
+  "LastPosition": 35
+ },
+ {
+  "ID": 30,
+  "Name": "Ravi KUMAR",
+  "Amount": -4,
+  "CurrentPosition": 6,
+  "LastPosition": 2
+ },
+ {
+  "ID": 29,
+  "Name": "Muhammad Mohsin",
+  "Amount": 7,
+  "CurrentPosition": 16,
+  "LastPosition": 23
+ },
+ {
+  "ID": 28,
+  "Name": "Bart Vercammen",
+  "Amount": 16,
+  "CurrentPosition": 21,
+  "LastPosition": 37
+ },
+ {
   "ID": 26,
   "Name": "Rodolphe Fouquet",
-  "Amount": -2,
-  "CurrentPosition": 33,
-  "LastPosition": 31
+  "Amount": -3,
+  "CurrentPosition": 36,
+  "LastPosition": 33
  },
  {
   "ID": 25,
   "Name": "Somika Dixit",
-  "Amount": -3,
-  "CurrentPosition": 9,
-  "LastPosition": 6
+  "Amount": -9,
+  "CurrentPosition": 18,
+  "LastPosition": 9
  },
  {
   "ID": 23,
   "Name": "BART VAN HEMELRIJCK",
-  "Amount": -6,
-  "CurrentPosition": 20,
-  "LastPosition": 14
+  "Amount": -10,
+  "CurrentPosition": 30,
+  "LastPosition": 20
  },
  {
   "ID": 21,
   "Name": "Emilia Bozek",
-  "Amount": 6,
-  "CurrentPosition": 13,
-  "LastPosition": 19
+  "Amount": -4,
+  "CurrentPosition": 17,
+  "LastPosition": 13
  },
  {
   "ID": 20,
   "Name": "Sam PETERS",
-  "Amount": -13,
-  "CurrentPosition": 30,
-  "LastPosition": 17
+  "Amount": 2,
+  "CurrentPosition": 28,
+  "LastPosition": 30
  },
  {
   "ID": 19,
   "Name": "Martine Van der Haeghen",
-  "Amount": 2,
-  "CurrentPosition": 36,
-  "LastPosition": 38
+  "Amount": -3,
+  "CurrentPosition": 39,
+  "LastPosition": 36
  },
  {
   "ID": 17,
   "Name": "Nicolas Poppe",
-  "Amount": -2,
-  "CurrentPosition": 27,
-  "LastPosition": 25
+  "Amount": 16,
+  "CurrentPosition": 11,
+  "LastPosition": 27
  },
  {
   "ID": 16,
@@ -184,92 +184,92 @@
  {
   "ID": 15,
   "Name": "David Follen",
-  "Amount": 9,
-  "CurrentPosition": 28,
-  "LastPosition": 37
+  "Amount": -3,
+  "CurrentPosition": 31,
+  "LastPosition": 28
  },
  {
   "ID": 14,
   "Name": "Alain Devillers",
-  "Amount": 6,
-  "CurrentPosition": 29,
-  "LastPosition": 35
+  "Amount": -4,
+  "CurrentPosition": 33,
+  "LastPosition": 29
  },
  {
   "ID": 13,
   "Name": "Stephen Wincote",
-  "Amount": 0,
-  "CurrentPosition": 39,
+  "Amount": 5,
+  "CurrentPosition": 34,
   "LastPosition": 39
  },
  {
   "ID": 11,
   "Name": "Celine Jost",
-  "Amount": -1,
-  "CurrentPosition": 25,
-  "LastPosition": 24
+  "Amount": 3,
+  "CurrentPosition": 22,
+  "LastPosition": 25
  },
  {
   "ID": 10,
   "Name": "Kathy Dekens",
-  "Amount": -4,
-  "CurrentPosition": 12,
-  "LastPosition": 8
+  "Amount": -17,
+  "CurrentPosition": 29,
+  "LastPosition": 12
  },
  {
   "ID": 9,
   "Name": "Regis Fromont",
-  "Amount": -13,
-  "CurrentPosition": 18,
-  "LastPosition": 5
+  "Amount": 5,
+  "CurrentPosition": 13,
+  "LastPosition": 18
  },
  {
   "ID": 8,
   "Name": "Blaise Biajila",
-  "Amount": 19,
+  "Amount": 0,
   "CurrentPosition": 8,
-  "LastPosition": 27
+  "LastPosition": 8
  },
  {
   "ID": 7,
   "Name": "Werner Bruers",
-  "Amount": 10,
-  "CurrentPosition": 16,
-  "LastPosition": 26
+  "Amount": 7,
+  "CurrentPosition": 9,
+  "LastPosition": 16
  },
  {
   "ID": 6,
   "Name": "Didier Siemons",
-  "Amount": 1,
-  "CurrentPosition": 31,
-  "LastPosition": 32
+  "Amount": -4,
+  "CurrentPosition": 35,
+  "LastPosition": 31
  },
  {
   "ID": 5,
   "Name": "Johann Ahrens",
-  "Amount": 0,
-  "CurrentPosition": 15,
+  "Amount": 8,
+  "CurrentPosition": 7,
   "LastPosition": 15
  },
  {
   "ID": 3,
   "Name": "Filip Bollaerts",
-  "Amount": -7,
+  "Amount": 0,
   "CurrentPosition": 14,
-  "LastPosition": 7
+  "LastPosition": 14
  },
  {
   "ID": 2,
   "Name": "BART MACHIELS",
-  "Amount": 15,
+  "Amount": 0,
   "CurrentPosition": 5,
-  "LastPosition": 20
+  "LastPosition": 5
  },
  {
   "ID": 1,
   "Name": "Thiago Dimbarre",
-  "Amount": -4,
-  "CurrentPosition": 7,
-  "LastPosition": 3
+  "Amount": -12,
+  "CurrentPosition": 19,
+  "LastPosition": 7
  }
 ]
