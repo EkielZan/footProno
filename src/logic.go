@@ -15,7 +15,7 @@ import (
 var stage1File = "./ressources/stage1.json"
 var stage1PronoFile = "./ressources/MatchDay1Test.json"
 var stage2PronoFile = "./ressources/MatchDay2Test.json"
-var stage3PronoFile2 = "./ressources/MatchDay3.json"
+var stage3PronoFile2 = "./ressources/MatchDay3Test.json"
 
 //var stage3PronoFile = "./ressources/MatchDay3Test.json"
 var champFile = "./ressources/champList.json"
@@ -144,17 +144,19 @@ func initJsonPlayers(strFile string, stage int) []Player {
 				var matchProno PrMatch
 				matchProno.MatchID = oS.MatchID
 				//We check the score if 10 then it's 0
-				score, _ := strconv.Atoi(i.(map[string]interface{})[oS.Team1].(string))
+				score, done := convertInterface(i.(map[string]interface{})[oS.Team1])
 				if score == 10 {
 					score = 0
 				}
+				matchProno.Done = done
 				matchProno.Team1 = oS.Team1
 				matchProno.ScoreP1 = score
 				//We check the score if 10 then it's 0
-				score, _ = strconv.Atoi(i.(map[string]interface{})[oS.Team2].(string))
+				score, done = convertInterface(i.(map[string]interface{})[oS.Team2])
 				if score == 10 {
 					score = 0
 				}
+				matchProno.Done = done
 				matchProno.Team2 = oS.Team2
 				matchProno.ScoreP2 = score
 				matchProno.Date = oS.Date
@@ -175,11 +177,27 @@ func initJsonPlayers(strFile string, stage int) []Player {
 	}
 	return players
 }
-
+func convertInterface(myInterface interface{}) (int, bool) {
+	done := false
+	test := myInterface
+	tmpStr := ""
+	switch v := test.(type) {
+	case int:
+		fmt.Println(v)
+	case string:
+		tmpStr = test.(string)
+		done = true
+	default:
+		tmpStr = ""
+	}
+	score, _ := strconv.Atoi(tmpStr)
+	return score, done
+}
 func updatePlayers(strFile string, pPlayers []Player, stage int) []Player {
 	// Open our jsonFile
 	var tPlayers []Player
-	playersT := initJsonPlayers(stage2PronoFile, stage)
+	fmt.Println(strFile)
+	playersT := initJsonPlayers(strFile, stage)
 	for _, player := range playersT {
 		for _, pPlayer := range pPlayers {
 			if pPlayer.Name == player.Name {
@@ -220,15 +238,18 @@ func calculateScore() []Player {
 				MatchscoreTemp = 0
 				if match.MatchID <= LastMatchID {
 					if match.Team1 == oS.Team1 && match.Team2 == oS.Team2 {
-						if match.Winner == oS.Winner {
-							MatchscoreTemp += 1
-							if match.ScoreP1 == oS.ScoreT1 && match.ScoreP2 == oS.ScoreT2 {
-								MatchscoreTemp += 2
+						if match.Done {
+							if match.Winner == oS.Winner {
+								MatchscoreTemp += 1
+								if match.ScoreP1 == oS.ScoreT1 && match.ScoreP2 == oS.ScoreT2 {
+									MatchscoreTemp += 2
+								}
 							}
 						}
 						match.ScoreP = MatchscoreTemp
 						match.ScoreT1 = oS.ScoreT1
 						match.ScoreT2 = oS.ScoreT2
+						match.OWinner = oS.Winner
 						playerScoreTemp += match.ScoreP
 					}
 				}

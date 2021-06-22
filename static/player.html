@@ -5,11 +5,11 @@
 <head>
   <title>Euro 2020 - Contest</title>
   <meta charset="utf-8" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/card.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/grid.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/message.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" />
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/card.css" />
+  <link rel="stylesheet" href="css/grid.css" />
+  <link rel="stylesheet" href="css/message.css" />
+  <link rel="stylesheet" href="css/semantic.min.css" />
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -53,18 +53,36 @@
                       <th>Date</th>
                       <th>Teams</th>
                       <th>Pronos</th>
-                      <!-- <th>Score</th> -->
                       <th>Winner</th>
+                      <th>Score</th> 
+                      <th>Official Winner</th>
                       <th>Points</th>
                     </tr>
-                    <tr v-for="match in players.Matches">
-                      <td>{{match.MatchID}}</td>
-                      <td>{{match.Date}}</td>
-                      <td>{{match.Team1}} - {{match.Team2}}</td>
-                      <td>{{match.ScoreP1}} - {{match.ScoreP2}} ( {{match.ScoreT1}} - {{match.ScoreT2}}) </td>
-                      <td>{{match.Winner}}</td>
-                      <td>{{match.ScoreP}}</td>
-                    </tr>
+                    <template v-for="match in players.Matches">
+                      <tr v-if="match.Winner == match.OWinner" class="trGreen">
+                        <td>{{match.MatchID}}</td>
+                        <td>{{match.Date}}</td>
+                        <td>{{match.Team1}} - {{match.Team2}}</td>
+                        <td>{{match.ScoreP1}} - {{match.ScoreP2}} </td>
+                        <td>{{match.Winner}}</td>
+                        <td>{{match.ScoreT1}} - {{match.ScoreT2}}</td>
+                        <td>{{match.OWinner}}</td>
+                        <td v-if="match.Done == true">{{match.ScoreP}}</td>
+                        <td v-else>NC</td>
+                      </tr>
+                      <tr v-else class="trRed">
+                        <td>{{match.MatchID}}</td>
+                        <td>{{match.Date}}</td>
+                        <td>{{match.Team1}} - {{match.Team2}}</td>
+                        <td>{{match.ScoreP1}} - {{match.ScoreP2}} </td>
+                        <td>{{match.Winner}}</td>
+                        <td>{{match.ScoreT1}} - {{match.ScoreT2}}</td>
+                        <td>{{match.OWinner}}</td>
+                        <td v-if="match.Done == true">{{match.ScoreP}}</td>
+                        <td v-else>NC</td>
+                      </tr>
+
+                  </template>
                   </table>
                 </div>
               </div>

@@ -37,7 +37,9 @@ type PrMatch struct {
 	Date    string `json:"Date"`
 	Stage   int    `json:"Stage"`
 	Winner  string `json:"Winner"`
+	OWinner string `json:"OWinner"`
 	ScoreP  int    `json:"ScoreP"`
+	Done    bool   `json:"Done"`
 }
 
 //Statistics

@@ -27,3 +27,19 @@ body {
   background: url("./img/arrow-down-thick.svg?color=red") no-repeat center
     center contain;
 }
+
+.fontRed {
+  color :#e43c30;
+}
+
+.fontGreen {
+  color : #0a851e;
+}
+
+.trRed{
+  background : rgb(255, 0, 0, 0.1);
+}
+
+.trGreen{
+  background : rgb(0, 255, 0, 0.1);
+}

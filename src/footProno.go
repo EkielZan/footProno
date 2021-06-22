@@ -12,10 +12,6 @@ import (
 
 var Version = "Development"
 
-/* func home(w http.ResponseWriter, r *http.Request) {
-	Respond(w, []byte(`{"message": "hello people"}`))
-} */
-
 func main() {
 	err := godotenv.Load()
 	if err != nil {
