@@ -290,9 +290,9 @@
 {
     "MatchID": 32,
     "Team1": "Sweden",
-    "ScoreT1": 0,
+    "ScoreT1": 3,
     "Team2": "Poland",
-    "ScoreT2": 0,
+    "ScoreT2": 2,
     "Date": "2021-06-23 18:00",
     "Stage": 2
 },
@@ -301,25 +301,25 @@
     "Team1": "Slovakia",
     "ScoreT1": 0,
     "Team2": "Spain",
-    "ScoreT2": 0,
+    "ScoreT2": 5,
     "Date": "2021-06-23 18:00",
     "Stage": 2
 },
 {
     "MatchID": 34,
     "Team1": "Portugal",
-    "ScoreT1": 0,
+    "ScoreT1": 2,
     "Team2": "France",
-    "ScoreT2": 0,
+    "ScoreT2": 2,
     "Date": "2021-06-23 21:00",
     "Stage": 2
 },
 {
     "MatchID": 35,
     "Team1": "Germany",
-    "ScoreT1": 0,
+    "ScoreT1": 2,
     "Team2": "Hungary",
-    "ScoreT2": 0,
+    "ScoreT2": 2,
     "Date": "2021-06-23 21:00",
     "Stage": 2
 }
