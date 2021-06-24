@@ -137,7 +137,7 @@ const app = new Vue({
     fetchStats: function () {
       const self = this;
       self.loading = true;
-      request = "/stats";
+      request = "/getMiscData";
       axios
         .get(request)
         .then(function (response) {

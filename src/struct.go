@@ -48,6 +48,7 @@ type Statistics struct {
 	Fall     string `json:"Fall"`
 	ButProno int    `json:"ButProno"`
 	ButReal  int    `json:"ButReal"`
+	Version  string `json:"Version"`
 }
 
 //spaHandler

@@ -43,7 +43,7 @@ func getPlayer(w http.ResponseWriter, r *http.Request) {
 	Respond(w, marshalled)
 }
 
-func getStat(w http.ResponseWriter, r *http.Request) {
+func getMiscData(w http.ResponseWriter, r *http.Request) {
 	reload()
 	marshalled, _ := json.MarshalIndent(stat, "", " ")
 	Respond(w, marshalled)

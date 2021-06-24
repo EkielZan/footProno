@@ -27,6 +27,7 @@ func main() {
 	}
 
 	updateJavaScript(serverPort, serverHost)
+	stat.Version = Version
 	log.Println("Version:\t", Version)
 	log.Println("Running Web Server Api on " + serverHost + " " + serverPort)
 	router := mux.NewRouter()
@@ -37,7 +38,7 @@ func main() {
 	router.HandleFunc("/matches", getMatches)
 	router.HandleFunc("/getScores", getScore)
 	router.HandleFunc("/player/{id}", getPlayer)
-	router.HandleFunc("/stats", getStat)
+	router.HandleFunc("/getMiscData", getMiscData)
 	router.HandleFunc("/refresh", refresh)
 
 	//TODO Remove if not necessary
