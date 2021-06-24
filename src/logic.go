@@ -196,7 +196,6 @@ func convertInterface(myInterface interface{}) (int, bool) {
 func updatePlayers(strFile string, pPlayers []Player, stage int) []Player {
 	// Open our jsonFile
 	var tPlayers []Player
-	fmt.Println(strFile)
 	playersT := initJsonPlayers(strFile, stage)
 	for _, player := range playersT {
 		for _, pPlayer := range pPlayers {
