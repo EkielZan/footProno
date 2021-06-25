@@ -29,12 +29,13 @@ version:
     paths:
       - version
   only:
-    - branches
+    - master
 
 build:
   stage: build
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - export VERSION=build
     - "[ -f ./version ] && export VERSION=$(cat ./version)"
     - DOCKER_BUILDKIT=1 docker build --pull -t $CONTAINER_TEST_IMAGE --build-arg VERSION=$VERSION -f Dockerfile .
     - docker push $CONTAINER_TEST_IMAGE
@@ -45,6 +46,7 @@ release-image:
   stage: release
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - export VERSION=build
     - "[ -f ./version ] && export VERSION=$(cat ./version)"
     - docker pull $CONTAINER_TEST_IMAGE
     - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
