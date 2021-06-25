@@ -9,6 +9,7 @@ import (
 	"os"
 	"sort"
 	"strconv"
+	"strings"
 )
 
 //All working files
@@ -134,7 +135,7 @@ func initJsonPlayers(strFile string, stage int) []Player {
 		player.Email = i.(map[string]interface{})["Email"].(string)
 		player.Name = i.(map[string]interface{})["Name"].(string)
 		for _, v := range champPlayer {
-			if v.Name == player.Name {
+			if strings.EqualFold(v.Name, player.Name) {
 				player.Champ = v.Champ
 			}
 		}
@@ -199,7 +200,7 @@ func updatePlayers(strFile string, pPlayers []Player, stage int) []Player {
 	playersT := initJsonPlayers(strFile, stage)
 	for _, player := range playersT {
 		for _, pPlayer := range pPlayers {
-			if pPlayer.Name == player.Name {
+			if strings.EqualFold(pPlayer.Name, player.Name) {
 				pPlayer.Matches = append(pPlayer.Matches, player.Matches...)
 				tPlayers = append(tPlayers, pPlayer)
 			}
