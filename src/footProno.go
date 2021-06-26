@@ -42,6 +42,7 @@ func main() {
 	router.HandleFunc("/refresh", refresh)
 	router.HandleFunc("/scp/{id}", scoreByPlayer)
 	router.HandleFunc("/GetLeaderboard", getLeaderboard)
+	router.HandleFunc("/GetOfficialMatches", getOfficialMatches)
 
 	//TODO Remove if not necessary
 	router.PathPrefix("/").Handler(static)

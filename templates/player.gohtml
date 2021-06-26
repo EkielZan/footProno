@@ -16,13 +16,13 @@
 <body>
   <div id="app">
     <div class="ui grid">
-    <div class="ui row centered">
+      <div class="ui row centered">
         <div class="">
-            <div class="ui white message centered">
-                <a href="/">Home</a> / <a href="matches.html">Matches</a>
-            </div>
+          <div class="ui white message centered">
+            <a href="/">Home</a> / <a href="matches.html">Matches</a>
+          </div>
         </div>
-    </div>
+      </div>
       <div class="ui row centered">
         <div class="centered">
           <div class="ui text container ing">
@@ -42,40 +42,56 @@
                       <th>Teams</th>
                       <th>Pronos</th>
                       <th>Winner</th>
-                      <th>Score</th> 
+                      <th>Score</th>
                       <th>Official Winner</th>
                       <th>Points</th>
                     </tr>
                     {{range .Matches}}
-                        {{if (eq .Winner .OWinner) }}
-                            <tr v-if="match.Winner == match.OWinner" class="trGreen">
-                        {{else}}
-                            <tr v-if="match.Winner == match.OWinner" class="trRed"></tr>
-                        {{end}}
-                        <td>{{.MatchID}}</td>
-                        <td>{{.Date}}</td>
-                        <td>{{.Team1}} - {{.Team2}}</td>
-                        <td>{{.ScoreP1}} - {{.ScoreP2}} </td>
-                        <td>{{.Winner}}</td>
-                        <td>{{.ScoreT1}} - {{.ScoreT2}}</td>
-                        <td>{{.OWinner}}</td>
-                        {{if .Done}} 
-                            <td>{{.ScoreP}}</td>
-                        {{else}} 
-                            <td>NC</td>
-                        {{end}}
-                      </tr>
+                    {{if (eq .Winner .OWinner) }}
+                    <tr v-if="match.Winner == match.OWinner" class="trGreen">
+                      {{else}}
+                    <tr v-if="match.Winner == match.OWinner" class="trRed"></tr>
                     {{end}}
-                  </template>
+                    <td>{{.MatchID}}</td>
+                    <td>{{.Date}}</td>
+                    <td>{{.Team1}} - {{.Team2}}</td>
+                    <td>{{.ScoreP1}} - {{.ScoreP2}} </td>
+                    <td>{{.Winner}}</td>
+                    <td>{{.ScoreT1}} - {{.ScoreT2}}</td>
+                    <td>{{.OWinner}}</td>
+                    {{if .Done}}
+                    <td>{{.ScoreP}}</td>
+                    {{else}}
+                    <td>NC</td>
+                    {{end}}
+                    </tr>
+                    {{end}}
+                    </template>
                   </table>
                 </div>
               </div>
             </div>
             <br>
+            <div class="ing">
+              <div class="content">
+                <div class="header">
+                  <div class=" project-name">
+                    Statistics
+                  </div>
+                </div>
+                <div class="description">
+                  Coming Soon<br>
+                </div>
+              </div>
+            </div>
+            <div class="description">
+              Version : {{.stat.Version}}<br>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </body>
+
 </html>

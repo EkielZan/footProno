@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="en">
 
 <head>
@@ -19,7 +18,7 @@
       <div class="ui row centered">
         <div class="">
           <div class="ui white message centered">
-              <a href="/">Home</a> / <a href="matches.html">Matches</a>
+            <a href="/">Home</a> / <a href="/GetOfficialMatches">Matches</a>
           </div>
         </div>
       </div>
@@ -30,30 +29,23 @@
               <div class="content">
                 <div class="header">
                   <div class=" project-name">
-                    Matches
+                    Leaderboard
                   </div>
                 </div>
                 <div class="description">
                   <table style="width:100%">
                     <tr>
-                      <th>ID</th>
-                      <th>Date</th>
-                      <th>Teams</th>
+                      <th>Pos</th>
+                      <th>Name</th>
                       <th>Score</th>
-                      <th>Winner</th>
-                      <th>Stage</th>
+                      <th>Champion</th>
                     </tr>
-                    {{rang .Matches}}
+                    {{range .scoredPlayers}}
                     <tr>
-                      <td>{{.MatchID}}</td>
-                      <td>{{.Date}}</td>
-                      <td>{{.Team1}} - {{.Team2}}</td>
-                      <td>{{.ScoreT1}} - {{.ScoreT2}}</td>
-                      <td>{{.Winner}}</td>
-                      {{if (eq .Stage 0)}}<td >Day 1</td>
-                      {{if (eq .Stage 1)}}<td >Day 2</td>
-                      {{if (eq .Stage 2)}}<td >Day 3</td>
-
+                      <td>{{.Rank}}</td>
+                      <td><a href="scp/{{.ID}}">{{.Name}}</a></td>
+                      <td>{{.Score}}</td>
+                      <td>{{.Champ}}</td>
                     </tr>
                     {{end}}
                   </table>
@@ -61,10 +53,26 @@
               </div>
             </div>
             <br>
+            <div class="ing">
+              <div class="content">
+                <div class="header">
+                  <div class=" project-name">
+                    Statistics
+                  </div>
+                </div>
+                <div class="description">
+                  Coming Soon<br>
+                </div>
+              </div>
+            </div>
+            <div class="description">
+              Version : {{.stat.Version}}<br>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </body>
+
 </html>

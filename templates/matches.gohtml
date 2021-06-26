@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="en">
 
 <head>
@@ -19,26 +18,9 @@
       <div class="ui row centered">
         <div class="">
           <div class="ui white message centered">
-              <a href="/">Home</a> / <a href="matches.html">Matches</a>
+            <a href="/">Home</a> / <a href="/GetOfficialMatches">Matches</a>
           </div>
         </div>
-      </div>
-      <div v-show="onError" class="row">
-        <div class="eight wide column centered ">
-          <div class="ui red message">{{onError.message}}</div>
-        </div>
-      </div>
-      <div v-show="invalidConfig" class="row">
-        <div class="eight wide column centered ">
-          <div class="ui attached message">
-            <div class="header">
-              Invalid Configuration
-            </div>
-          </div>
-        </div>
-      </div>
-      <div v-show="loading" class="row">
-        <div class="ui large active centered inline loader"></div>
       </div>
       <div class="ui row centered">
         <div class="centered">
@@ -60,19 +42,39 @@
                       <th>Winner</th>
                       <th>Stage</th>
                     </tr>
-                    <tr v-for="match in matches">
-                      <td>{{match.MatchID}}</td>
-                      <td>{{match.Date}}</td>
-                      <td>{{match.Team1}} - {{match.Team2}}</td>
-                      <td>{{match.ScoreT1}} - {{match.ScoreT2}}</td>
-                      <td>{{match.Winner}}</td>
-                      <td v-if="match.Stage == 0">Day 1</td>
-                      <td v-if="match.Stage == 1">Day 2</td>
-                      <td v-if="match.Stage == 2">Day 3</td>
+                    {{range .officialScores2}}
+                    <tr>
+                      <td>{{.MatchID}}</td>
+                      <td>{{.Date}}</td>
+                      <td>{{.Team1}} - {{.Team2}}</td>
+                      <td>{{.ScoreT1}} - {{.ScoreT2}}</td>
+                      <td>{{.Winner}}</td>
+                      {{if (eq .Stage 0)}}<td>Day 1</td>
+                      {{else if (eq .Stage 1)}}<td>Day 2</td>
+                      {{else if (eq .Stage 2)}}
+                      <td>Day 3</td>
+                      {{end}}
                     </tr>
+                    {{end}}
                   </table>
                 </div>
               </div>
+            </div>
+            <br>
+            <div class="ing">
+              <div class="content">
+                <div class="header">
+                  <div class=" project-name">
+                    Statistics
+                  </div>
+                </div>
+                <div class="description">
+                  Coming Soon<br>
+                </div>
+              </div>s
+            </div>
+            <div class="description">
+              Version : {{.stat.Version}}<br>
             </div>
           </div>
         </div>
@@ -80,4 +82,5 @@
     </div>
   </div>
 </body>
+
 </html>
