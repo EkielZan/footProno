@@ -45,7 +45,6 @@ func main() {
 	router.HandleFunc("/glb", getLeaderboard)
 	router.HandleFunc("/gom", getOfficialMatches)
 
-	//TODO Remove if not necessary
 	router.PathPrefix("/").Handler(static)
 	fileServer := http.FileServer(http.Dir("static"))
 	router.PathPrefix("/js").Handler(http.StripPrefix("/", fileServer))
@@ -59,7 +58,6 @@ func main() {
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
-	//log.Fatal(srv.ListenAndServe())
 	log.Println("Ready to received calls")
 	log.Fatal(srv.ListenAndServeTLS("certs/server.crt", "certs/server.key"))
 
