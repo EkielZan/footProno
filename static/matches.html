@@ -61,10 +61,13 @@
                         <td>{{match.Team1}} - {{match.Team2}}</td>
                         <td>{{match.ScoreT1}} - {{match.ScoreT2}}</td>
                         <td>{{match.Winner}}</td>
-                        <td v-if="match.Stage == 0">Day 1</td>
-                        <td v-if="match.Stage == 1">Day 2</td>
-                        <td v-if="match.Stage == 2">Day 3</td>
+                        <td v-if="match.Stage == 0">Matchday 1</td>
+                        <td v-if="match.Stage == 1">Matchday 2</td>
+                        <td v-if="match.Stage == 2">Matchday 3</td>
                         <td v-if="match.Stage == 3">Round of 16</td>
+                        <td v-if="match.Stage == 4">Quarter</td>
+                        <td v-if="match.Stage == 5">Semi</td>
+                        <td v-if="match.Stage == 6">Final</td>
                       </tr>
                     </table>
                   </div>
