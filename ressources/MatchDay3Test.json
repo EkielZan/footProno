@@ -561,7 +561,7 @@
         "Start time": "06/21/2021 10:42:34",
         "Completion time": "06/21/2021 10:43:37",
         "Email": "Nicolas.Notte@ing.com",
-        "Name": "Nicolas NOTTE",
+        "Name": "Nicolas Notte",
         "Ukraine": "2",
         "Austria": "1",
         "North Macedonia": "10",
@@ -917,7 +917,11 @@
         "Start time": "06/21/2021 12:33:03",
         "Completion time": "06/21/2021 13:26:21",
         "Email": "Cao.Tam.Dan.Pham@ing.com",
-        "Name": "Cao T�m Dan Pham",
+        "Name": "Cao Tam Dan Pham",
+        "Wales": "3",
+        "Italy": "0",
+        "Switzerland": "2",
+        "Turkey": "1",
         "Ukraine": "2",
         "Austria": "2",
         "North Macedonia": "",
@@ -1201,5 +1205,12 @@
         "France": "3",
         "Germany": "2",
         "Hungary": "1"
+    },
+    {
+        "ID": "42",
+        "Start time": "06/10/2021 08:49:25",
+        "Completion time": "06/10/2021 08:50:29",
+        "Email": "raj.ranjan.dash@ing.com",
+        "Name": "Raj Ranjan Dash"
     }
 ]

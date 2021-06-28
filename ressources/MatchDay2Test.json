@@ -1182,7 +1182,7 @@
         "Start time": "06/16/2021 10:36:21",
         "Completion time": "06/16/2021 10:38:09",
         "Email": "Nicolas.Notte@ing.com",
-        "Name": "Nicolas NOTTE",
+        "Name": "Nicolas Notte",
         "Finland": "1",
         "Russia": "2",
         "Turkey": "2",
@@ -1331,5 +1331,11 @@
         "Germany": "1",
         "Spain": "3",
         "Poland": ""
+    },{
+                "ID": "44",
+                "Start time": "06/15/2021 11:17:40",
+                "Completion time": "06/15/2021 12:27:19",
+        "Email": "Cao.Tam.Dan.Pham@ing.com",
+        "Name": "Cao Tam Dan Pham"
     }
 ]
