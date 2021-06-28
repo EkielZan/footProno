@@ -16,7 +16,8 @@ import (
 var stage1File = "./ressources/stage1.json"
 var stage1PronoFile = "./ressources/MatchDay1Test.json"
 var stage2PronoFile = "./ressources/MatchDay2Test.json"
-var stage3PronoFile2 = "./ressources/MatchDay3Test.json"
+var stage3PronoFile = "./ressources/MatchDay3Test.json"
+var R16PronoFile = "./ressources/MatchDayR16.json"
 
 //var stage3PronoFile = "./ressources/MatchDay3Test.json"
 var champFile = "./ressources/champList.json"
@@ -57,7 +58,8 @@ func reload() {
 func load() {
 	players = initJsonPlayers(stage1PronoFile, 0)
 	players = updatePlayers(stage2PronoFile, players, 1)
-	players = updatePlayers(stage3PronoFile2, players, 2)
+	players = updatePlayers(stage3PronoFile, players, 2)
+	players = updatePlayers(R16PronoFile, players, 3)
 	scoredPlayers = calculateScore()
 	sort.Slice(scoredPlayers, func(i, j int) bool {
 		return scoredPlayers[i].Score > scoredPlayers[j].Score
