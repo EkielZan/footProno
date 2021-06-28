@@ -28,7 +28,12 @@ func scoreByPlayer(w http.ResponseWriter, r *http.Request) {
 			player.Matches = tempMatches
 		}
 	}
-	tmpl.Execute(w, player)
+
+	tmpl.Execute(w, M{
+		// We can pass as many things as we like
+		"player": player,
+		"stat":   stat,
+	})
 }
 
 func getLeaderboard(w http.ResponseWriter, r *http.Request) {

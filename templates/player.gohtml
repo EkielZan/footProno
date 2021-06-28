@@ -30,9 +30,9 @@
               <div class="content">
                 <div class="header">
                   <div class=" project-name">
-                    {{.Name}}
+                    {{.player.Name}}
                   </div>
-                  <br>Rank : {{.Rank}} - Points : {{.Score}}
+                  <br>Rank : {{.player.Rank}} - Points : {{.player.Score}}
                 </div>
                 <div class="description">
                   <table style="width:100%">
@@ -46,11 +46,11 @@
                       <th>Official Winner</th>
                       <th>Points</th>
                     </tr>
-                    {{range .Matches}}
+                    {{range .player.Matches}}
                     {{if (eq .Winner .OWinner) }}
-                    <tr v-if="match.Winner == match.OWinner" class="trGreen">
+                    <tr class="trGreen">
                       {{else}}
-                    <tr v-if="match.Winner == match.OWinner" class="trRed"></tr>
+                    <tr class="trRed">
                     {{end}}
                     <td>{{.MatchID}}</td>
                     <td>{{.Date}}</td>

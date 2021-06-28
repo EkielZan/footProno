@@ -49,10 +49,13 @@
                       <td>{{.Team1}} - {{.Team2}}</td>
                       <td>{{.ScoreT1}} - {{.ScoreT2}}</td>
                       <td>{{.Winner}}</td>
-                      {{if (eq .Stage 0)}}<td>Day 1</td>
-                      {{else if (eq .Stage 1)}}<td>Day 2</td>
-                      {{else if (eq .Stage 2)}}
-                      <td>Day 3</td>
+                      {{if (eq .Stage 0)}}<td>Matchday 1</td>
+                      {{else if (eq .Stage 1)}}<td>Matchday 2</td>
+                      {{else if (eq .Stage 2)}}<td>Matchday 3</td>
+                      {{else if (eq .Stage 3)}}<td>Round of 16</td>
+                      {{else if (eq .Stage 4)}}<td>Quarter</td>
+                      {{else if (eq .Stage 5)}}<td>Semi</td>
+                      {{else if (eq .Stage 6)}}<td>Final</td>
                       {{end}}
                     </tr>
                     {{end}}
@@ -71,7 +74,7 @@
                 <div class="description">
                   Coming Soon<br>
                 </div>
-              </div>s
+              </div>
             </div>
             <div class="description">
               Version : {{.stat.Version}}<br>
