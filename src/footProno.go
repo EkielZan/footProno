@@ -40,9 +40,10 @@ func main() {
 	router.HandleFunc("/player/{id}", getPlayer)
 	router.HandleFunc("/getMiscData", getMiscData)
 	router.HandleFunc("/refresh", refresh)
+	//new_ui
 	router.HandleFunc("/scp/{id}", scoreByPlayer)
-	router.HandleFunc("/GetLeaderboard", getLeaderboard)
-	router.HandleFunc("/GetOfficialMatches", getOfficialMatches)
+	router.HandleFunc("/glb", getLeaderboard)
+	router.HandleFunc("/gom", getOfficialMatches)
 
 	//TODO Remove if not necessary
 	router.PathPrefix("/").Handler(static)
