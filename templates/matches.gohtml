@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Euro 2020 - Contest</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/card.css" />
+  <link rel="stylesheet" href="css/grid.css" />
+  <link rel="stylesheet" href="css/message.css" />
+  <link rel="stylesheet" href="css/semantic.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="ui grid">
+      <div class="ui row centered">
+        <div class="">
+          <div class="ui white message centered">
+            <a href="/">Home</a> / <a href="/gom">Matches</a>
+          </div>
+        </div>
+      </div>
+      <div class="ui row centered">
+        <div class="centered">
+          <div class="ui text container ing">
+            <div class="ing">
+              <div class="content">
+                <div class="header">
+                  <div class=" project-name">
+                    Matches
+                  </div>
+                </div>
+                <div class="description">
+                  <table style="width:100%">
+                    <tr>
+                      <th>ID</th>
+                      <th>Date</th>
+                      <th>Teams</th>
+                      <th>Score</th>
+                      <th>Winner</th>
+                      <th>Stage</th>
+                    </tr>
+                    {{range .officialScores2}}
+                    <tr>
+                      <td>{{.MatchID}}</td>
+                      <td>{{.Date}}</td>
+                      <td>{{.Team1}} - {{.Team2}}</td>
+                      <td>{{.ScoreT1}} - {{.ScoreT2}}</td>
+                      <td>{{.Winner}}</td>
+                      {{if (eq .Stage 0)}}<td>Matchday 1</td>
+                      {{else if (eq .Stage 1)}}<td>Matchday 2</td>
+                      {{else if (eq .Stage 2)}}<td>Matchday 3</td>
+                      {{else if (eq .Stage 3)}}<td>Round of 16</td>
+                      {{else if (eq .Stage 4)}}<td>Quarter</td>
+                      {{else if (eq .Stage 5)}}<td>Semi</td>
+                      {{else if (eq .Stage 6)}}<td>Final</td>
+                      {{end}}
+                    </tr>
+                    {{end}}
+                  </table>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="ing">
+              <div class="content">
+                <div class="header">
+                  <div class=" project-name">
+                    Statistics
+                  </div>
+                </div>
+                <div class="description">
+                  Coming Soon<br>
+                </div>
+              </div>
+            </div>
+            <div class="description">
+              Version : {{.stat.Version}}<br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

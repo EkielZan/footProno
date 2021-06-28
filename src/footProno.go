@@ -31,18 +31,25 @@ func main() {
 	log.Println("Version:\t", Version)
 	log.Println("Running Web Server Api on " + serverHost + " " + serverPort)
 	router := mux.NewRouter()
-	static := spaHandler{staticPath: "static", indexPath: "index.html"}
+	//static := spaHandler{staticPath: "static", indexPath: "index.html"}
 
 	preLoad()
 	log.Println("Preparing to Serve Api")
-	router.HandleFunc("/matches", getMatches)
-	router.HandleFunc("/getScores", getScore)
-	router.HandleFunc("/player/{id}", getPlayer)
-	router.HandleFunc("/getMiscData", getMiscData)
-	router.HandleFunc("/refresh", refresh)
+	/*
+		router.HandleFunc("/matches", getMatches)
+		router.HandleFunc("/getScores", getScore)
+		router.HandleFunc("/player/{id}", getPlayer)
+		router.HandleFunc("/getMiscData", getMiscData)
+		router.HandleFunc("/refresh", refresh)
+		//new_ui
+	*/
+	//router.HandleFunc("/scp/{id}", scoreByPlayer)
 
-	//TODO Remove if not necessary
-	router.PathPrefix("/").Handler(static)
+	router.HandleFunc("/glb", getLeaderboard)
+	router.HandleFunc("/gom", getOfficialMatches)
+	router.HandleFunc("/scp/{id}", scoreByPlayer)
+	router.HandleFunc("/", getLeaderboard)
+
 	fileServer := http.FileServer(http.Dir("static"))
 	router.PathPrefix("/js").Handler(http.StripPrefix("/", fileServer))
 	router.PathPrefix("/css").Handler(http.StripPrefix("/", fileServer))
@@ -55,7 +62,6 @@ func main() {
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
-	//log.Fatal(srv.ListenAndServe())
 	log.Println("Ready to received calls")
 	log.Fatal(srv.ListenAndServeTLS("certs/server.crt", "certs/server.key"))
 
