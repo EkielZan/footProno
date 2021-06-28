@@ -11,7 +11,7 @@ import (
 type M map[string]interface{}
 
 func scoreByPlayer(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("templates/player.html"))
+	tmpl := template.Must(template.ParseFiles("templates/player.gohtml"))
 	reload()
 	playerID, _ := strconv.Atoi(mux.Vars(r)["id"])
 	var player Player
@@ -32,7 +32,7 @@ func scoreByPlayer(w http.ResponseWriter, r *http.Request) {
 }
 
 func getLeaderboard(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("templates/leaderboard.html"))
+	tmpl := template.Must(template.ParseFiles("templates/leaderboard.gohtml"))
 	reload()
 	//tmpl.Execute(w, scoredPlayers)
 	tmpl.Execute(w, M{
@@ -43,7 +43,7 @@ func getLeaderboard(w http.ResponseWriter, r *http.Request) {
 }
 
 func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("templates/matches.html"))
+	tmpl := template.Must(template.ParseFiles("templates/matches.gohtml"))
 	var officialScores2 []PrMatch
 	LastMatchID := config.LastMatchID
 	for _, p := range officialScores {

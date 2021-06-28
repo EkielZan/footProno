@@ -1,3 +1,4 @@
+{{define "header"}}
 <!doctype html>
 <html lang="en">
 
@@ -22,6 +23,29 @@
           </div>
         </div>
       </div>
+{{end}}
+
+{{define "footer"}}
+<br>
+<div class="ing">
+    <div class="content">
+    <div class="header">
+        <div class=" project-name">
+        Statistics
+        </div>
+    </div>
+    <div class="description">
+        Coming Soon<br>
+    </div>
+    </div>
+</div>
+<div class="description">
+    Version : {{.Version}}<br>
+</div>
+{{end}}
+
+
+{{define "leader"}}
       <div class="ui row centered">
         <div class="centered">
           <div class="ui text container ing">
@@ -29,58 +53,32 @@
               <div class="content">
                 <div class="header">
                   <div class=" project-name">
-                    Matches
+                    Leaderboard
                   </div>
                 </div>
                 <div class="description">
                   <table style="width:100%">
                     <tr>
-                      <th>ID</th>
-                      <th>Date</th>
-                      <th>Teams</th>
+                      <th>Pos</th>
+                      <th>Name</th>
                       <th>Score</th>
-                      <th>Winner</th>
-                      <th>Stage</th>
+                      <th>Champion</th>
                     </tr>
-                    {{range .officialScores2}}
+                    {{range .scoredPlayers}}
                     <tr>
-                      <td>{{.MatchID}}</td>
-                      <td>{{.Date}}</td>
-                      <td>{{.Team1}} - {{.Team2}}</td>
-                      <td>{{.ScoreT1}} - {{.ScoreT2}}</td>
-                      <td>{{.Winner}}</td>
-                      {{if (eq .Stage 0)}}<td>Day 1</td>
-                      {{else if (eq .Stage 1)}}<td>Day 2</td>
-                      {{else if (eq .Stage 2)}}
-                      <td>Day 3</td>
-                      {{end}}
+                      <td>{{.Rank}}</td>
+                      <td><a href="scp/{{.ID}}">{{.Name}}</a></td>
+                      <td>{{.Score}}</td>
+                      <td>{{.Champ}}</td>
                     </tr>
                     {{end}}
                   </table>
                 </div>
               </div>
             </div>
-            <br>
-            <div class="ing">
-              <div class="content">
-                <div class="header">
-                  <div class=" project-name">
-                    Statistics
-                  </div>
-                </div>
-                <div class="description">
-                  Coming Soon<br>
-                </div>
-              </div>s
-            </div>
-            <div class="description">
-              Version : {{.stat.Version}}<br>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+{{end}}
 
-</html>
+
+{{template "header"}}
+{{template "leader" .}}
+{{template "footer" .stat}}

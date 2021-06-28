@@ -31,21 +31,25 @@ func main() {
 	log.Println("Version:\t", Version)
 	log.Println("Running Web Server Api on " + serverHost + " " + serverPort)
 	router := mux.NewRouter()
-	static := spaHandler{staticPath: "static", indexPath: "index.html"}
+	//static := spaHandler{staticPath: "static", indexPath: "index.html"}
 
 	preLoad()
 	log.Println("Preparing to Serve Api")
-	router.HandleFunc("/matches", getMatches)
-	router.HandleFunc("/getScores", getScore)
-	router.HandleFunc("/player/{id}", getPlayer)
-	router.HandleFunc("/getMiscData", getMiscData)
-	router.HandleFunc("/refresh", refresh)
-	//new_ui
-	router.HandleFunc("/scp/{id}", scoreByPlayer)
+	/*
+		router.HandleFunc("/matches", getMatches)
+		router.HandleFunc("/getScores", getScore)
+		router.HandleFunc("/player/{id}", getPlayer)
+		router.HandleFunc("/getMiscData", getMiscData)
+		router.HandleFunc("/refresh", refresh)
+		//new_ui
+	*/
+	//router.HandleFunc("/scp/{id}", scoreByPlayer)
+
 	router.HandleFunc("/glb", getLeaderboard)
 	router.HandleFunc("/gom", getOfficialMatches)
+	router.HandleFunc("/scp/{id}", scoreByPlayer)
+	router.HandleFunc("/", getLeaderboard)
 
-	router.PathPrefix("/").Handler(static)
 	fileServer := http.FileServer(http.Dir("static"))
 	router.PathPrefix("/js").Handler(http.StripPrefix("/", fileServer))
 	router.PathPrefix("/css").Handler(http.StripPrefix("/", fileServer))
