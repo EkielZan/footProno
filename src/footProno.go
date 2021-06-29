@@ -37,6 +37,7 @@ func main() {
 
 	router.HandleFunc("/glb", getLeaderboard)
 	router.HandleFunc("/gom", getOfficialMatches)
+	router.HandleFunc("/gt", getTeams)
 	router.HandleFunc("/scp/{id}", scoreByPlayer)
 	router.HandleFunc("/", getLeaderboard)
 

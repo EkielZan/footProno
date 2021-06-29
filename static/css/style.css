@@ -43,3 +43,8 @@ body {
 .trGreen{
   background : rgb(0, 255, 0, 0.1);
 }
+
+table.centered {
+  float: none;
+  display: inline;
+}

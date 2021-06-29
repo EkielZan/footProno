@@ -1,0 +1,122 @@
+[
+    {
+        "TeamName": "Italy",
+        "Group" : "A",
+        "Active": true
+    },
+    {
+        "TeamName": "Switzerland",
+        "Group": "A",
+        "Active": true
+    },
+    {
+        "TeamName": "Turkey",
+        "Group": "A",
+        "Active": false
+    },
+    {
+        "TeamName": "Wales",
+        "Group": "A",
+        "Active": false
+    },
+    {
+        "TeamName": "Belgium",
+        "Group": "B",
+        "Active": true
+    },
+    {
+        "TeamName": "Russia",
+        "Group": "B",
+        "Active": false
+    },
+    {
+        "TeamName": "Denmark",
+        "Group": "B",
+        "Active": true
+    },
+    {
+        "TeamName": "Finland",
+        "Group": "B",
+        "Active": false
+    },
+    {
+        "TeamName": "Ukraine",
+        "Group": "C",
+        "Active": true
+    },
+    {
+        "TeamName": "Netherlands",
+        "Group": "C",
+        "Active": false
+    },
+    {
+        "TeamName": "Austria",
+        "Group": "C",
+        "Active": false
+    },
+    {
+        "TeamName": "North Macedonia",
+        "Group": "C",
+        "Active": false
+    },
+    {
+        "TeamName": "England",
+        "Group": "D",
+        "Active": true
+    },
+    {
+        "TeamName": "Croatia",
+        "Group": "D",
+        "Active": false
+    },
+    {
+        "TeamName": "Czech Republic",
+        "Group": "D",
+        "Active": true
+    },
+    {
+        "TeamName": "Scotland",
+        "Group": "D",
+        "Active": false
+    },
+    {
+        "TeamName": "Spain",
+        "Group": "E",
+        "Active": true
+    },
+    {
+        "TeamName": "Poland",
+        "Group": "E",
+        "Active": false
+    },
+    {
+        "TeamName": "Sweden",
+        "Group": "E",
+        "Active": true
+    },
+    {
+        "TeamName": "Slovakia",
+        "Group": "E",
+        "Active": false
+    },
+    {
+        "TeamName": "Germany",
+        "Group": "F",
+        "Active": true
+    },
+    {
+        "TeamName": "France",
+        "Group": "F",
+        "Active": false
+    },
+    {
+        "TeamName": "Portugal",
+        "Group": "F",
+        "Active": false
+    },
+    {
+        "TeamName": "Hungary",
+        "Group": "F",
+        "Active": false
+    }
+]

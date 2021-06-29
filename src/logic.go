@@ -13,6 +13,7 @@ import (
 )
 
 //All working files
+var teamsFile = "./ressources/teams.json"
 var stage1File = "./ressources/stage1.json"
 var stage1PronoFile = "./ressources/MatchDay1Test.json"
 var stage2PronoFile = "./ressources/MatchDay2Test.json"
@@ -31,9 +32,12 @@ var officialScores []PrMatch
 var players []Player
 var champPlayer []Player
 var scoredPlayers []Player
+var teams []Team
 
 //Preload json File in Memory
 func preLoad() {
+	log.Println("Reading Teams List")
+	teams = readTeams(teamsFile)
 	log.Println("Reading Players Champions")
 	champPlayer = readChampion(champFile)
 	log.Println("Reading Official Match Scores")
@@ -56,6 +60,7 @@ func reload() {
 }
 
 func load() {
+	teams = readTeams(teamsFile)
 	players = initJsonPlayers(stage1PronoFile, 0)
 	players = updatePlayers(stage2PronoFile, players, 1)
 	players = updatePlayers(stage3PronoFile, players, 2)
@@ -93,6 +98,20 @@ func readChampion(strFile string) []Player {
 	return champPlayer
 }
 
+//Read datas to Fill Struct
+func readTeams(strFile string) []Team {
+	var teams []Team
+	raw, err := ioutil.ReadFile(strFile)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+	err = json.Unmarshal([]byte(raw), &teams)
+	if err != nil {
+		panic(err)
+	}
+	return teams
+}
 func readJsonMatches(strFile string) []PrMatch {
 	var officialScores []PrMatch
 	// Open our jsonFile

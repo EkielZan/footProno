@@ -58,3 +58,9 @@ type Config struct {
 	LastMatchID int  `json:"LastMatchID"`
 	Refresh     bool `json:"Refresh"`
 }
+
+type Team struct {
+	TeamName string `json:"TeamName"`
+	Group    string `json:"Group"`
+	Active   bool   `json:"Active"`
+}

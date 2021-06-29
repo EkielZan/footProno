@@ -47,6 +47,17 @@ func getLeaderboard(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func getTeams(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.Must(template.ParseFiles("templates/teams.gohtml"))
+	reload()
+	//tmpl.Execute(w, scoredPlayers)
+	tmpl.Execute(w, M{
+		// We can pass as many things as we like
+		"teams": teams,
+		"stat":  stat,
+	})
+}
+
 func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("templates/matches.gohtml"))
 	var officialScores2 []PrMatch
