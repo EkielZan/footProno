@@ -5,7 +5,8 @@
         "Completion time": "06/01/2021 15:31:43",
         "Email": "celine.jost@ing.com",
         "Name": "Celine Jost",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "5",
@@ -13,7 +14,8 @@
         "Completion time": "06/01/2021 15:42:10",
         "Email": "ramesh.tirumanadham@ing.com",
         "Name": "Ramesh TIRUMANADHAM",
-        "Champ": "Scotland"
+        "Champ": "Scotland",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "6",
@@ -21,7 +23,8 @@
         "Completion time": "06/01/2021 15:42:42",
         "Email": "blaise.biajila@ing.com",
         "Name": "Blaise Biajila",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "7",
@@ -29,7 +32,8 @@
         "Completion time": "06/01/2021 15:43:00",
         "Email": "kathy.dekens@ing.com",
         "Name": "Kathy Dekens",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "8",
@@ -37,7 +41,8 @@
         "Completion time": "06/01/2021 15:43:10",
         "Email": "Guillaume.Regnier@ing.com",
         "Name": "Guillaume Regnier",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "9",
@@ -45,7 +50,8 @@
         "Completion time": "06/01/2021 15:44:01",
         "Email": "alain.devillers@ing.com",
         "Name": "Alain Devillers",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "10",
@@ -53,7 +59,8 @@
         "Completion time": "06/01/2021 15:44:21",
         "Email": "Sreelakshmi.Thippeswamy1@ing.com",
         "Name": "Sreelakshmi Thippeswamy",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "11",
@@ -61,7 +68,8 @@
         "Completion time": "06/01/2021 15:44:22",
         "Email": "Ravi.Kumar2@ing.com",
         "Name": "Ravi KUMAR",
-        "Champ": "France"
+        "Champ": "Belgium",
+        "ChangeChamp" : "1"
     },
     {
         "ID": "12",
@@ -69,7 +77,8 @@
         "Completion time": "06/01/2021 15:44:54",
         "Email": "Machhendranath.Sapre@ing.com",
         "Name": "Machhendranath SAPRE",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "13",
@@ -77,7 +86,8 @@
         "Completion time": "06/01/2021 15:46:10",
         "Email": "bart.vercammen@ing.com",
         "Name": "Bart Vercammen",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "14",
@@ -85,7 +95,8 @@
         "Completion time": "06/01/2021 15:47:35",
         "Email": "William.De.Keyzer@ing.com",
         "Name": "William De Keyzer",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "15",
@@ -93,7 +104,8 @@
         "Completion time": "06/01/2021 15:48:14",
         "Email": "Mark.BRUYNINCKX@ing.com",
         "Name": "Mark BRUYNINCKX",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "16",
@@ -101,7 +113,8 @@
         "Completion time": "06/01/2021 15:48:17",
         "Email": "bartlomiej.kordalski@ing.com",
         "Name": "Bartlomiej KORDALSKI",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "17",
@@ -109,7 +122,8 @@
         "Completion time": "06/01/2021 15:52:11",
         "Email": "regis.fromont@ing.com",
         "Name": "Regis Fromont",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "18",
@@ -117,7 +131,8 @@
         "Completion time": "06/01/2021 15:52:41",
         "Email": "Ulas.Atilgan1@ing.com",
         "Name": "Ulas Atilgan",
-        "Champ": "Turkey"
+        "Champ": "Turkey",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "19",
@@ -125,7 +140,8 @@
         "Completion time": "06/01/2021 15:53:18",
         "Email": "Eva.Novacean@ing.com",
         "Name": "Eva Novacean",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "20",
@@ -133,7 +149,8 @@
         "Completion time": "06/01/2021 15:54:11",
         "Email": "Patel.KAUSHLENDRA@ing.com",
         "Name": "Patel KAUSHLENDRA",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "21",
@@ -141,7 +158,8 @@
         "Completion time": "06/01/2021 15:55:10",
         "Email": "thiago.dimbarre@ing.com",
         "Name": "Thiago Dimbarre",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "22",
@@ -149,7 +167,8 @@
         "Completion time": "06/01/2021 15:56:18",
         "Email": "Stephen.Wincote@ing.com",
         "Name": "Stephen Wincote",
-        "Champ": "Spain"
+        "Champ": "Spain",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "23",
@@ -157,7 +176,8 @@
         "Completion time": "06/01/2021 15:57:59",
         "Email": "cyrille.maurice@ing.com",
         "Name": "Cyrille Maurice",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "24",
@@ -165,7 +185,8 @@
         "Completion time": "06/01/2021 16:07:31",
         "Email": "marc.nihon@ing.com",
         "Name": "Marc Nihon",
-        "Champ": "England"
+        "Champ": "England",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "25",
@@ -173,7 +194,8 @@
         "Completion time": "06/01/2021 16:07:50",
         "Email": "Sam.De.Coninck@ing.com",
         "Name": "Sam DE CONINCK",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "26",
@@ -181,7 +203,8 @@
         "Completion time": "06/01/2021 16:14:54",
         "Email": "Sreedhar.Reddy.Medipally@ing.com",
         "Name": "Sreedhar Reddy Medipally",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "27",
@@ -189,7 +212,8 @@
         "Completion time": "06/01/2021 16:38:05",
         "Email": "Daniel.Moyson@ing.com",
         "Name": "Daniel MOYSON",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "28",
@@ -197,7 +221,8 @@
         "Completion time": "06/01/2021 17:41:48",
         "Email": "Volkan.Dindar@ing.com",
         "Name": "Volkan Dindar",
-        "Champ": "Spain"
+        "Champ": "Spain",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "29",
@@ -205,7 +230,8 @@
         "Completion time": "06/01/2021 18:48:42",
         "Email": "raja.katakam@ing.com",
         "Name": "Raja Katakam",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "30",
@@ -213,7 +239,8 @@
         "Completion time": "06/02/2021 08:21:42",
         "Email": "bart.van-hemelrijck@ing.com",
         "Name": "BART VAN HEMELRIJCK",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "31",
@@ -221,7 +248,8 @@
         "Completion time": "06/02/2021 08:31:16",
         "Email": "jean-francois.canon@ing.com",
         "Name": "Jean-François CANON",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "32",
@@ -229,7 +257,8 @@
         "Completion time": "06/02/2021 10:39:48",
         "Email": "raj.ranjan.dash@ing.com",
         "Name": "Raj Ranjan Dash",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "33",
@@ -237,7 +266,8 @@
         "Completion time": "06/02/2021 10:53:23",
         "Email": "pascal.wilikens@ing.com",
         "Name": "Pascal Wilikens",
-        "Champ": "Spain"
+        "Champ": "Spain",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "34",
@@ -245,7 +275,8 @@
         "Completion time": "06/02/2021 10:57:48",
         "Email": "rodolphe.fouquet@ing.com",
         "Name": "Rodolphe Fouquet",
-        "Champ": "England"
+        "Champ": "England",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "35",
@@ -253,7 +284,8 @@
         "Completion time": "06/02/2021 12:00:50",
         "Email": "Nicolas.Poppe@ing.com",
         "Name": "Nicolas Poppe",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "36",
@@ -261,7 +293,8 @@
         "Completion time": "06/02/2021 15:22:31",
         "Email": "Muhammad.Mohsin@ing.com",
         "Name": "Muhammad Mohsin",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "37",
@@ -269,7 +302,8 @@
         "Completion time": "06/02/2021 15:53:40",
         "Email": "Joachim.Landuyt@ing.com",
         "Name": "Joachim Landuyt",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "38",
@@ -277,7 +311,8 @@
         "Completion time": "06/03/2021 11:03:49",
         "Email": "Cao.Tam.Dan.Pham@ing.com",
         "Name": "Cao Tam Dan Pham",
-        "Champ": "Spain"
+        "Champ": "Spain",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "39",
@@ -285,7 +320,8 @@
         "Completion time": "06/03/2021 12:11:06",
         "Email": "Benoit.Missen@ing.com",
         "Name": "Benoit Missen",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "40",
@@ -293,7 +329,8 @@
         "Completion time": "06/03/2021 17:41:57",
         "Email": "Maciej.HRYNCZYSZYN@ing.com",
         "Name": "Maciej HRYNCZYSZYN",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "41",
@@ -301,7 +338,8 @@
         "Completion time": "06/04/2021 07:59:50",
         "Email": "Bart-Caris@ing.com",
         "Name": "Bart Caris",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "42",
@@ -309,7 +347,8 @@
         "Completion time": "06/04/2021 13:56:04",
         "Email": "Taoufik.Belmehdi@ing.com",
         "Name": "Taoufik Belmehdi",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "43",
@@ -317,7 +356,8 @@
         "Completion time": "06/04/2021 13:57:15",
         "Email": "joost.boulpaep@ing.com",
         "Name": "Joost Boulpaep",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "44",
@@ -325,7 +365,8 @@
         "Completion time": "06/04/2021 13:57:27",
         "Email": "Bart.Machiels@ing.com",
         "Name": "BART MACHIELS",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "45",
@@ -333,7 +374,8 @@
         "Completion time": "06/04/2021 15:28:33",
         "Email": "Johann.Ahrens@ing.com",
         "Name": "Johann Ahrens",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "46",
@@ -341,7 +383,8 @@
         "Completion time": "06/07/2021 09:15:04",
         "Email": "Christopher.Nolan@ing.com",
         "Name": "Christopher Nolan",
-        "Champ": "Scotland"
+        "Champ": "Scotland",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "47",
@@ -349,7 +392,8 @@
         "Completion time": "06/07/2021 09:15:23",
         "Email": "David.Follen@ing.com",
         "Name": "David Follen",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "48",
@@ -357,7 +401,8 @@
         "Completion time": "06/07/2021 09:16:38",
         "Email": "emilia.bozek1@ing.com",
         "Name": "Emilia Bozek",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "49",
@@ -365,7 +410,8 @@
         "Completion time": "06/07/2021 09:19:04",
         "Email": "Gino.Ritiere@ing.com",
         "Name": "Gino Ritiere",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "50",
@@ -373,7 +419,8 @@
         "Completion time": "06/07/2021 09:30:08",
         "Email": "Laurent.Gryson@ing.com",
         "Name": "LAURENT GRYSON",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "51",
@@ -381,7 +428,8 @@
         "Completion time": "06/07/2021 09:34:31",
         "Email": "Stephane.Muller@ing.com",
         "Name": "Stephane Muller",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "52",
@@ -389,7 +437,8 @@
         "Completion time": "06/07/2021 09:38:18",
         "Email": "Sam.Peters@ing.com",
         "Name": "Sam PETERS",
-        "Champ": "Germany"
+        "Champ": "Germany",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "53",
@@ -397,7 +446,8 @@
         "Completion time": "06/07/2021 09:45:56",
         "Email": "filip.bollaerts@ing.com",
         "Name": "Filip Bollaerts",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "54",
@@ -405,7 +455,8 @@
         "Completion time": "06/07/2021 09:46:41",
         "Email": "luiz.arroyo.goncalves@ing.com",
         "Name": "Luiz Arroyo Gonçalves",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "55",
@@ -413,7 +464,8 @@
         "Completion time": "06/07/2021 09:57:42",
         "Email": "didier.siemons@ing.com",
         "Name": "Didier Siemons",
-        "Champ": "Italy"
+        "Champ": "Italy",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "56",
@@ -421,7 +473,8 @@
         "Completion time": "06/07/2021 10:00:51",
         "Email": "martine.van-der-haeghen@ing.com",
         "Name": "Martine Van der Haeghen",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "57",
@@ -429,7 +482,8 @@
         "Completion time": "06/07/2021 10:23:09",
         "Email": "Nicolas.Deombrun2@ing.com",
         "Name": "Nicolas Deombrun",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "58",
@@ -437,7 +491,8 @@
         "Completion time": "06/07/2021 10:30:25",
         "Email": "werner.bruers@ing.com",
         "Name": "Werner Bruers",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "59",
@@ -445,7 +500,8 @@
         "Completion time": "06/07/2021 15:45:44",
         "Email": "Nrupen.Addula@ing.com",
         "Name": "Nrupen Addula",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "60",
@@ -453,7 +509,8 @@
         "Completion time": "06/08/2021 08:49:54",
         "Email": "Somika.Dixit@ing.com",
         "Name": "Somika Dixit",
-        "Champ": "France"
+        "Champ": "France",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "61",
@@ -461,7 +518,8 @@
         "Completion time": "06/08/2021 08:49:54",
         "Email": "Stephane.Bouffouix@ing.com",
         "Name": "Stephane Bouffouix",
-        "Champ": "Belgium"
+        "Champ": "Belgium",
+        "ChangeChamp" : "0"
     },
     {
         "ID": "62",

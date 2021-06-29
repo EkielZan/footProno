@@ -86,6 +86,8 @@ func readChampion(strFile string) []Player {
 		player.Email = i.(map[string]interface{})["Email"].(string)
 		player.Name = i.(map[string]interface{})["Name"].(string)
 		player.Champ = i.(map[string]interface{})["Champ"].(string)
+		player.ChangeChamp, _ = convertInterface(i.(map[string]interface{})["ChangeChamp"])
+		player.BonusMalus = 0
 		champPlayer = append(champPlayer, player)
 	}
 	return champPlayer
@@ -139,6 +141,8 @@ func initJsonPlayers(strFile string, stage int) []Player {
 		for _, v := range champPlayer {
 			if strings.EqualFold(v.Name, player.Name) {
 				player.Champ = v.Champ
+				player.ChangeChamp = v.ChangeChamp
+				player.BonusMalus = player.ChangeChamp * 5
 			}
 		}
 		// We itare to create real pronostics for players
@@ -184,17 +188,21 @@ func convertInterface(myInterface interface{}) (int, bool) {
 	done := false
 	test := myInterface
 	tmpStr := ""
+	RtInt := 0
 	switch v := test.(type) {
-	case int:
+	case bool:
 		fmt.Println(v)
+	case int:
+		RtInt = test.(int)
 	case string:
 		tmpStr = test.(string)
 		done = true
+		RtInt, _ = strconv.Atoi(tmpStr)
 	default:
 		tmpStr = ""
+		RtInt, _ = strconv.Atoi(tmpStr)
 	}
-	score, _ := strconv.Atoi(tmpStr)
-	return score, done
+	return RtInt, done
 }
 func updatePlayers(strFile string, pPlayers []Player, stage int) []Player {
 	// Open our jsonFile
@@ -271,6 +279,9 @@ func calculateScore() []Player {
 			}
 		}
 		player.Matches = tempMatches
+		if player.ChangeChamp > 0 {
+			playerScoreTemp = playerScoreTemp - (5 * player.ChangeChamp)
+		}
 		player.Score = playerScoreTemp
 		tempPlayers = append(tempPlayers, player)
 	}

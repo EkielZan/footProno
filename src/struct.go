@@ -2,15 +2,17 @@ package main
 
 //Player
 type Player struct {
-	ID      int       `json:"ID"`
-	Name    string    `json:"Name"`
-	Email   string    `json:"Email"`
-	Score   int       `json:"Score"`
-	Matches []PrMatch `json:"Matches"`
-	Champ   string    `json:"Champ"`
-	Status  string    `json:"Status"`
-	Amount  int       `json:"Amount"`
-	Rank    int       `json:"Rank"`
+	ID          int       `json:"ID"`
+	Name        string    `json:"Name"`
+	Email       string    `json:"Email"`
+	Score       int       `json:"Score"`
+	Matches     []PrMatch `json:"Matches"`
+	Champ       string    `json:"Champ"`
+	Status      string    `json:"Status"`
+	Amount      int       `json:"Amount"`
+	Rank        int       `json:"Rank"`
+	ChangeChamp int       `json:"ChangeChamp"`
+	BonusMalus  int       `json:"BonusMalus"`
 }
 
 type ShortPlayer struct {
@@ -49,12 +51,6 @@ type Statistics struct {
 	ButProno int    `json:"ButProno"`
 	ButReal  int    `json:"ButReal"`
 	Version  string `json:"Version"`
-}
-
-//spaHandler
-type spaHandler struct {
-	staticPath string
-	indexPath  string
 }
 
 //Config
