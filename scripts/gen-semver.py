@@ -24,7 +24,6 @@ def tag_repo(tag):
 
 
 def bump(latest):
-    # TODO decide what to bump
     # Then use bump_patch, bump_minor or bump_major
     return semver.bump_patch(latest)
 

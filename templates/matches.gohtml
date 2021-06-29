@@ -43,13 +43,8 @@
                       <th>Stage</th>
                     </tr>
                     {{range .officialScores2}}
-                    <tr class="
-                    {{if (ge .Stage $.config.NextPhase)}}
-                      trGreen{{if (eq .Stage 4)}}ier{{else if (eq .Stage 5)}}er{{else if (eq .Stage 6)}}est{{end}}
-                      {{else}}
-                     trRed
-                    {{end}}
-                    ">
+                    <!-- TODO : change this bad one liner for generated html readability -->
+                    <tr class="{{if (ge .Stage $.config.NextPhase)}}trGreen{{if (eq .Stage 4)}}ier{{else if (eq .Stage 5)}}er{{else if (eq .Stage 6)}}est{{end}}{{else}}trRed{{end}}">
                       <td>{{.MatchID}}</td>
                       <td>{{.Date}}</td>
                       <td>{{.Team1}} - {{.Team2}}</td>
