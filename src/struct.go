@@ -13,6 +13,7 @@ type Player struct {
 	Rank        int       `json:"Rank"`
 	ChangeChamp int       `json:"ChangeChamp"`
 	BonusMalus  int       `json:"BonusMalus"`
+	ChampActive bool      `json:"ChampActive"`
 }
 
 type ShortPlayer struct {

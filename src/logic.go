@@ -164,6 +164,7 @@ func initJsonPlayers(strFile string, stage int) []Player {
 				player.BonusMalus = player.ChangeChamp * 5
 			}
 		}
+		player.ChampActive = false
 		// We itare to create real pronostics for players
 		for _, oS := range officialScores {
 			if oS.Stage == stage {
@@ -300,6 +301,12 @@ func calculateScore() []Player {
 		player.Matches = tempMatches
 		if player.ChangeChamp > 0 {
 			playerScoreTemp = playerScoreTemp - (5 * player.ChangeChamp)
+		}
+		player.ChampActive = false
+		for _, team := range teams {
+			if player.Champ == team.TeamName && team.Active {
+				player.ChampActive = true
+			}
 		}
 		player.Score = playerScoreTemp
 		tempPlayers = append(tempPlayers, player)

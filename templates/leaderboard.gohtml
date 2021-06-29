@@ -38,6 +38,7 @@
                       <th>Pos</th>
                       <th>Name</th>
                       <th>Score</th>
+                      <th>Bonus</th>
                       <th>Champion</th>
                     </tr>
                     {{range .scoredPlayers}}
@@ -45,7 +46,8 @@
                       <td>{{.Rank}}</td>
                       <td><a href="scp/{{.ID}}">{{.Name}}</a></td>
                       <td>{{.Score}}</td>
-                      <td>{{.Champ}}</td>
+                      <td>{{if .ChampActive}}(+5){{end}}</td>
+                      <td {{if not .ChampActive}} class="strike" {{end}} >{{.Champ}}</td>
                     </tr>
                     {{end}}
                   </table>

@@ -48,3 +48,7 @@ table.centered {
   float: none;
   display: inline;
 }
+
+.strike {
+  text-decoration: line-through;
+}

@@ -34,9 +34,10 @@
                   </div>
                   <br>Rank : {{.player.Rank}} - Points : {{.player.Score}} - Champion : {{.player.Champ}} <br> Bonus/Malus :
                   {{if (gt .player.ChangeChamp 0) }}  
-                  -
+                  - {{.player.BonusMalus}}
+                  {{else}}
+                  +5
                   {{end}}
-                  {{.player.BonusMalus}}
                 </div>
                 <div class="description">
                   <table style="width:100%">
