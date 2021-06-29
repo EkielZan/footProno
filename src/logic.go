@@ -36,6 +36,8 @@ var teams []Team
 
 //Preload json File in Memory
 func preLoad() {
+	log.Println("Reading Config")
+	config = loadConfig()
 	log.Println("Reading Teams List")
 	teams = readTeams(teamsFile)
 	log.Println("Reading Players Champions")
@@ -46,8 +48,6 @@ func preLoad() {
 	//shortPlayers = readSavedPlayers()
 	log.Println("Reading Players Pronostics")
 	load()
-	log.Println("Reading Config")
-	config = loadConfig()
 	saveConfig(config)
 }
 
@@ -55,11 +55,11 @@ func preLoad() {
 func reload() {
 	officialScores = readJsonMatches(stage1File)
 	load()
-	config = loadConfig()
 	saveConfig(config)
 }
 
 func load() {
+	config = loadConfig()
 	teams = readTeams(teamsFile)
 	players = initJsonPlayers(stage1PronoFile, 0)
 	players = updatePlayers(stage2PronoFile, players, 1)

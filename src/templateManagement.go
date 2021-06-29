@@ -33,6 +33,7 @@ func scoreByPlayer(w http.ResponseWriter, r *http.Request) {
 		// We can pass as many things as we like
 		"player": player,
 		"stat":   stat,
+		"config": config,
 	})
 }
 
@@ -44,6 +45,7 @@ func getLeaderboard(w http.ResponseWriter, r *http.Request) {
 		// We can pass as many things as we like
 		"scoredPlayers": scoredPlayers,
 		"stat":          stat,
+		"config":        config,
 	})
 }
 
@@ -53,12 +55,14 @@ func getTeams(w http.ResponseWriter, r *http.Request) {
 	//tmpl.Execute(w, scoredPlayers)
 	tmpl.Execute(w, M{
 		// We can pass as many things as we like
-		"teams": teams,
-		"stat":  stat,
+		"teams":  teams,
+		"stat":   stat,
+		"config": config,
 	})
 }
 
 func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
+	reload()
 	tmpl := template.Must(template.ParseFiles("templates/matches.gohtml"))
 	var officialScores2 []PrMatch
 	LastMatchID := config.LastMatchID
@@ -72,5 +76,6 @@ func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
 		// We can pass as many things as we like
 		"officialScores2": officialScores2,
 		"stat":            stat,
+		"config":          config,
 	})
 }
