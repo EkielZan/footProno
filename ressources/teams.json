@@ -92,7 +92,7 @@
     {
         "TeamName": "Sweden",
         "Group": "E",
-        "Active": true
+        "Active": false
     },
     {
         "TeamName": "Slovakia",
@@ -102,7 +102,7 @@
     {
         "TeamName": "Germany",
         "Group": "F",
-        "Active": true
+        "Active": false
     },
     {
         "TeamName": "France",
