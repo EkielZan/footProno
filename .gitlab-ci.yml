@@ -40,7 +40,7 @@ build:
     - DOCKER_BUILDKIT=1 docker build --pull -t $CONTAINER_TEST_IMAGE --build-arg VERSION=$VERSION -f Dockerfile .
     - docker push $CONTAINER_TEST_IMAGE
   only:
-    - branches
+    - master
 
 release-image:
   stage: release
