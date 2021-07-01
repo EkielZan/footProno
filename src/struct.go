@@ -47,8 +47,6 @@ type PrMatch struct {
 
 //Statistics
 type Statistics struct {
-	Rise     string `json:"Rise"`
-	Fall     string `json:"Fall"`
 	ButProno int    `json:"ButProno"`
 	ButReal  int    `json:"ButReal"`
 	Version  string `json:"Version"`

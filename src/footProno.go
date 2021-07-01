@@ -26,7 +26,7 @@ func main() {
 		serverHost = "localhost" //localhost
 	}
 
-	updateJavaScript(serverPort, serverHost)
+	//updateJavaScript(serverPort, serverHost)
 	stat.Version = Version
 	log.Println("Version:\t", Version)
 	log.Println("Running Web Server Api on " + serverHost + " " + serverPort)

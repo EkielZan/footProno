@@ -36,6 +36,7 @@ var teams []Team
 
 //Preload json File in Memory
 func preLoad() {
+	stat.ButReal = 0
 	log.Println("Reading Config")
 	config = loadConfig()
 	log.Println("Reading Teams List")
@@ -53,6 +54,7 @@ func preLoad() {
 
 //reload json File in Memory
 func reload() {
+	stat.ButReal = 0
 	officialScores = readJsonMatches(stage1File)
 	load()
 	saveConfig(config)
@@ -126,6 +128,8 @@ func readJsonMatches(strFile string) []PrMatch {
 	}
 	//We compare Score to know who is Real winner
 	for idx, oS := range officialScores {
+		stat.ButReal += oS.ScoreT1
+		stat.ButReal += oS.ScoreT2
 		if oS.ScoreT1 == oS.ScoreT2 {
 			oS.Winner = "Draw"
 		} else if oS.ScoreT1 > oS.ScoreT2 {
@@ -175,6 +179,7 @@ func initJsonPlayers(strFile string, stage int) []Player {
 				if score == 10 {
 					score = 0
 				}
+				stat.ButProno += score
 				matchProno.Done = done
 				matchProno.Team1 = oS.Team1
 				matchProno.ScoreP1 = score
@@ -183,6 +188,7 @@ func initJsonPlayers(strFile string, stage int) []Player {
 				if score == 10 {
 					score = 0
 				}
+				stat.ButProno += score
 				matchProno.Done = done
 				matchProno.Team2 = oS.Team2
 				matchProno.ScoreP2 = score
