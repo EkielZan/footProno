@@ -1,10 +1,7 @@
 package main
 
 import (
-	"io/ioutil"
-	"log"
 	"net/http"
-	"strings"
 )
 
 //Respond Write to the httpWrite the content of data
@@ -17,6 +14,7 @@ func Respond(w http.ResponseWriter, data []byte) {
 	w.Write([]byte(data))
 }
 
+/*
 func updateJavaScript(port string, host string) {
 	input, err := ioutil.ReadFile("static/js/app.tpl.js")
 	if err != nil {
@@ -39,3 +37,4 @@ func updateJavaScript(port string, host string) {
 		log.Fatalln(err)
 	}
 }
+*/
