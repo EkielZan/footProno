@@ -5,7 +5,6 @@ services:
 stages:
   - version
   - build
-  - test
   - release
 
 variables:
