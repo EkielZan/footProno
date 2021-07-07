@@ -434,9 +434,9 @@
 {
     "MatchID": 48,
     "Team1": "Italy",
-    "ScoreT1": 0,
+    "ScoreT1": 1,
     "Team2": "Spain",
-    "ScoreT2": 0,
+    "ScoreT2": 1,
     "Date": "2021-07-6 21:00",
     "Stage": 5
 },
@@ -451,7 +451,7 @@
 },
 {
     "MatchID": 50,
-    "Team1": "TBD",
+    "Team1": "Italy",
     "ScoreT1": 0,
     "Team2": "TBD",
     "ScoreT2": 0,
