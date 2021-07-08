@@ -32,7 +32,7 @@
     {
         "TeamName": "Denmark",
         "Group": "B",
-        "Active": true
+        "Active": false
     },
     {
         "TeamName": "Finland",
