@@ -1,0 +1,17 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Go",
+            "type": "shell",
+            "command": "cd src && CGO_ENABLED=0 GOOS=linux go build -installsuffix cgo -ldflags='-X main.Version=$VERSION' -o ../bin/footProno .",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
