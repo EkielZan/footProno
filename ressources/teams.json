@@ -62,7 +62,7 @@
     {
         "TeamName": "England",
         "Group": "D",
-        "Active": true
+        "Active": false
     },
     {
         "TeamName": "Croatia",

@@ -21,6 +21,7 @@ var stage3PronoFile = "./ressources/MatchDay3Test.json"
 var R16PronoFile = "./ressources/MatchDayR16.json"
 var QuarterPronoFile = "./ressources/MatchDayQuarter.json"
 var SemiPronoFile = "./ressources/MatchDaySemi.json"
+var FinalsPronoFile = "./ressources/Finals.json"
 
 //var stage3PronoFile = "./ressources/MatchDay3Test.json"
 var champFile = "./ressources/champList.json"
@@ -71,6 +72,7 @@ func load() {
 	players = updatePlayers(R16PronoFile, players, 3)
 	players = updatePlayers(QuarterPronoFile, players, 4)
 	players = updatePlayers(SemiPronoFile, players, 5)
+	players = updatePlayers(FinalsPronoFile, players, 6)
 	scoredPlayers = calculateScore()
 	sort.Slice(scoredPlayers, func(i, j int) bool {
 		return scoredPlayers[i].Score > scoredPlayers[j].Score
@@ -317,6 +319,9 @@ func calculateScore() []Player {
 			if player.Champ == team.TeamName && team.Active {
 				player.ChampActive = true
 			}
+		}
+		if player.ChampActive {
+			playerScoreTemp += 5
 		}
 		player.Score = playerScoreTemp
 		tempPlayers = append(tempPlayers, player)
