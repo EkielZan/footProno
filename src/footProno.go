@@ -40,7 +40,7 @@ func main() {
 	router.HandleFunc("/gt", getTeams)
 	router.HandleFunc("/scp/{id}", scoreByPlayer)
 	router.HandleFunc("/", getLeaderboard)
-        router.HandleFunc("/health", heatlth)
+	router.HandleFunc("/health", heatlth)
 
 	fileServer := http.FileServer(http.Dir("static"))
 	router.PathPrefix("/js").Handler(http.StripPrefix("/", fileServer))
