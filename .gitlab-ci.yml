@@ -29,6 +29,7 @@ version:
       - version
   only:
     - master
+    - v2_main
 
 build:
   stage: build
@@ -40,6 +41,7 @@ build:
     - docker push $CONTAINER_TEST_IMAGE
   only:
     - master
+    - v2_main
 
 release-image:
   stage: release
@@ -54,3 +56,4 @@ release-image:
     - docker push $CI_REGISTRY_IMAGE:$VERSION
   only:
     - master
+    - v2_main
