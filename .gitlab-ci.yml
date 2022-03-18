@@ -11,8 +11,6 @@ variables:
   # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
   DOCKER_HOST: tcp://docker:2376
   DOCKER_TLS_CERTDIR: "/certs"
-  CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
 
 version:
   image: python:3.7-stretch
@@ -37,8 +35,8 @@ build:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - export VERSION=build
     - "[ -f ./version ] && export VERSION=$(cat ./version)"
-    - DOCKER_BUILDKIT=1 docker build --pull -t $CONTAINER_TEST_IMAGE --build-arg VERSION=$VERSION -f Dockerfile .
-    - docker push $CONTAINER_TEST_IMAGE
+    - DOCKER_BUILDKIT=1 docker build --pull -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG --build-arg VERSION=$VERSION -f Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   only:
     - master
     - v2_main
@@ -49,11 +47,22 @@ release-image:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - export VERSION=build
     - "[ -f ./version ] && export VERSION=$(cat ./version)"
-    - docker pull $CONTAINER_TEST_IMAGE
-    - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
-    - docker tag $CONTAINER_TEST_IMAGE $CI_REGISTRY_IMAGE:$VERSION
-    - docker push $CONTAINER_RELEASE_IMAGE
+    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG $CI_REGISTRY_IMAGE:latest
+    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG $CI_REGISTRY_IMAGE:$VERSION
+    - docker push $CI_REGISTRY_IMAGE:latest
     - docker push $CI_REGISTRY_IMAGE:$VERSION
   only:
     - master
+
+release-image-v2:
+  stage: release
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - export VERSION=build
+    - "[ -f ./version ] && export VERSION=$(cat ./version)"
+    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG $CI_REGISTRY_IMAGE:$VERSION
+    - docker push $CI_REGISTRY_IMAGE:$VERSION
+  only:
     - v2_main
