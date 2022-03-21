@@ -32,9 +32,15 @@ func main() {
 	log.Println("Running Web Server Api on " + serverHost + " " + serverPort)
 	router := mux.NewRouter()
 
+	preLoad()
 	log.Println("Preparing to Serve Api")
 
+	router.HandleFunc("/glb", getLeaderboard)
 	router.HandleFunc("/gom", getOfficialMatches)
+	router.HandleFunc("/gom2", getOfficialMatches2)
+	router.HandleFunc("/gt", getTeams)
+	router.HandleFunc("/scp/{id}", scoreByPlayer)
+	router.HandleFunc("/", getLeaderboard)
 	router.HandleFunc("/health", heatlth)
 
 	fileServer := http.FileServer(http.Dir("static"))

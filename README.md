@@ -9,8 +9,13 @@
 ---
 
 footProno is a simple Go learning project. The aim of the tools is to provide a simple interface to manage football bet put in place in a small teams
-all info come from json file extracted from Excel sheets generated using Office Forms
+Front end is HTML + Vue.js
+Back end is GO
+Database is MariaDB
 
+Docker is used to host two containers:
+- MariaDB
+- Frontend and backend Server
 ### Screenshot
 
 [comment]: # "Screenshots To be added"
