@@ -1,1 +1,1 @@
-docker run -dit -p 3000:3000 --name footProno footprono:latest
+docker run -dit -p 4000:3000 --name footProno footprono:latest

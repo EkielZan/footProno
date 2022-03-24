@@ -1,8 +1,9 @@
 package main
 
 import (
+	"database/sql"
+	"io"
 	"net/http"
-        "io"
 )
 
 //Respond Write to the httpWrite the content of data
@@ -15,9 +16,16 @@ func Respond(w http.ResponseWriter, data []byte) {
 	w.Write([]byte(data))
 }
 
-func heatlth(w http.ResponseWriter, r *http.Request) {
-        io.WriteString(w, "I'm healthy")              
-}                                                     
+func health(w http.ResponseWriter, r *http.Request) {
+	// Create the database handle, confirm driver is present
+	db, _ := sql.Open("mysql", "lilnas:root@/footprono")
+	defer db.Close()
+
+	// Connect and check the server version
+	var version string
+	db.QueryRow("SELECT VERSION()").Scan(&version)
+	io.WriteString(w, "I'm healthy and version is : "+version)
+}
 
 /*
 func updateJavaScript(port string, host string) {

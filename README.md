@@ -1,21 +1,26 @@
 ## Table of Contents
 
-1. [General Info](#general-info)
-2. [Technologies](#technologies)
-3. [Installation](#installation)
+- [Table of Contents](#table-of-contents)
+- [### General Info](#-general-info)
+  - [Screenshot](#screenshot)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Collaboration](#collaboration)
 
 ### General Info
-
 ---
 
 footProno is a simple Go learning project. The aim of the tools is to provide a simple interface to manage football bet put in place in a small teams
-Front end is HTML + Vue.js
-Back end is GO
-Database is MariaDB
+
+ - Front end is HTML + Vue.js
+ - Back end is GO
+ - Database is MariaDB
 
 Docker is used to host two containers:
 - MariaDB
 - Frontend and backend Server
+
+Master branch is stale at the moment, v2_main is the new one with code almost rewritted from scratch.
 ### Screenshot
 
 [comment]: # "Screenshots To be added"

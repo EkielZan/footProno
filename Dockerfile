@@ -21,3 +21,4 @@ ADD ressources ressources
 ADD templates templates
 ADD certs certs
 CMD ["/footProno"]
+HEALTHCHECK --interval=10s --timeout=5s --start-period=5s --retries=3 CMD [ "/healthcheck" ]

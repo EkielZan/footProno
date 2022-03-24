@@ -1,8 +1,6 @@
 package main
 
 import (
-	"database/sql"
-	"fmt"
 	"net/http"
 	"text/template"
 )
@@ -10,18 +8,10 @@ import (
 type M map[string]interface{}
 
 func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
-	// Create the database handle, confirm driver is present
-	db, _ := sql.Open("mysql", "lilnas:@/footprono")
-	defer db.Close()
-
-	// Connect and check the server version
-	var version string
-	db.QueryRow("SELECT VERSION()").Scan(&version)
-	fmt.Println("Connected to:", version)
 
 	tmpl := template.Must(template.ParseFiles("templates/matches.gohtml"))
 	var officialScores2 []PrMatch
-	LastMatchID := config.LastMatchID
+	LastMatchID := config.Lastmatch
 	for _, p := range officialScores {
 		if p.MatchID > LastMatchID && p.Winner == "Draw" {
 			p.Winner = ""

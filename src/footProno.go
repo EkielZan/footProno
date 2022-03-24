@@ -19,7 +19,7 @@ func main() {
 	}
 	serverPort := os.Getenv("SERVER_PORT")
 	if serverPort == "" {
-		serverPort = "8090" //localhost
+		serverPort = "3000" //localhost
 	}
 	serverHost := os.Getenv("SERVER_NAME")
 	if serverHost == "" {
@@ -34,8 +34,8 @@ func main() {
 
 	log.Println("Preparing to Serve Api")
 
-	router.HandleFunc("/gom", getOfficialMatches)
-	router.HandleFunc("/health", heatlth)
+	router.HandleFunc("/", getOfficialMatches)
+	router.HandleFunc("/health", health)
 
 	fileServer := http.FileServer(http.Dir("static"))
 	router.PathPrefix("/js").Handler(http.StripPrefix("/", fileServer))
@@ -51,5 +51,4 @@ func main() {
 	}
 	log.Println("Ready to received calls")
 	log.Fatal(srv.ListenAndServeTLS("certs/server.crt", "certs/server.key"))
-
 }
