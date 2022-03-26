@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"io"
 	"net/http"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 //Respond Write to the httpWrite the content of data
@@ -24,7 +26,7 @@ func health(w http.ResponseWriter, r *http.Request) {
 	// Connect and check the server version
 	var version string
 	db.QueryRow("SELECT VERSION()").Scan(&version)
-	io.WriteString(w, "I'm healthy and version is : "+version)
+	io.WriteString(w, "I'm healthy and The DB version is : "+version)
 }
 
 /*

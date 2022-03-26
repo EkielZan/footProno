@@ -11,6 +11,8 @@ import (
 )
 
 var Version = "Development"
+var stat Statistics
+var config Config
 
 func main() {
 	err := godotenv.Load()
@@ -35,7 +37,13 @@ func main() {
 	log.Println("Preparing to Serve Api")
 
 	router.HandleFunc("/", getOfficialMatches)
+	router.HandleFunc("/gom", getOfficialMatches)
+	router.HandleFunc("/gt", getTeams)
 	router.HandleFunc("/health", health)
+	router.HandleFunc("/signin", Signin)
+	router.HandleFunc("/welcome", Welcome)
+	router.HandleFunc("/refresh", Refresh)
+	router.HandleFunc("/logout", Logout)
 
 	fileServer := http.FileServer(http.Dir("static"))
 	router.PathPrefix("/js").Handler(http.StripPrefix("/", fileServer))

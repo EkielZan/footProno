@@ -33,38 +33,40 @@
                   </div>
                 </div>
                 <div class="description">
-                  <table class="centered">
+                  <table style="width:100%">
                     <tr>
-                      <th>Name</th>
-                      <th>Group</th>
+                      <th> Id </th>
+                      <th> Name  </th>
+                      <th> Group </th>
+                      <th> Point </th>
+                      <th> Win </th>
+                      <th> Draw </th>
+                      <th> lose </th>
+                      <th> GF </th>
+                      <th> GA </th>
                     </tr>
                     {{range .teams}}
-                    {{if .Active}}
-                    <tr class="trGreen">
-                    {{else}}
-                    <tr class="trRed">
-                    {{end}}
-                      <td>{{.TeamName}}</td>
-                      <td>{{.Group}}</td>
-                    </tr>
+                      {{if ne .Active '1'}}
+                        <tr class="trGreen">
+                      {{else}}
+                        <tr class="trRed">
+                      {{end}}
+                        <td>{{.ID}}</td>
+                        <td>{{.Name}}</td>
+                        <td>{{.Groupid}}</td>
+                        <td>{{.Point}}</td>
+                        <td>{{.Win}}</td>
+                        <td>{{.Drawn}}</td>
+                        <td>{{.Lose}}</td>
+                        <td>{{.Goalfor}}</td>
+                        <td>{{.Goalagainst}}</td>
+                      </tr>
                     {{end}}
                   </table>
                 </div>
               </div>
             </div>
             <br>
-            <div class="ing">
-              <div class="content">
-                <div class="header">
-                  <div class=" project-name">
-                    Statistics
-                  </div>
-                </div>
-                <div class="description">
-                  Number of scored goals : {{.stat.ButReal}}<br>
-                </div>
-              </div>
-            </div>
             <div class="description">
               Version : {{.stat.Version}}<br>
             </div>
@@ -74,5 +76,4 @@
     </div>
   </div>
 </body>
-
 </html>

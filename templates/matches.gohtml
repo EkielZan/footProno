@@ -38,26 +38,17 @@
                       <th>ID</th>
                       <th>Date</th>
                       <th>Teams</th>
-                      <th>Score</th>
-                      <th>Winner</th>
                       <th>Stage</th>
+                      <th>Stadium</th>
                     </tr>
-                    {{range .officialScores2}}
+                    {{range .amams}}
                     <!-- TODO : change this bad one liner for generated html readability -->
-                    <tr class="{{if (ge .Stage $.config.NextPhase)}}trGreen{{if (eq .Stage 4)}}ier{{else if (eq .Stage 5)}}er{{else if (eq .Stage 6)}}est{{end}}{{else}}trRed{{end}}">
-                      <td>{{.MatchID}}</td>
+                    <tr>
+                      <td>{{.ID}}</td>
                       <td>{{.Date}}</td>
-                      <td>{{.Team1}} - {{.Team2}}</td>
-                      <td>{{.ScoreT1}} - {{.ScoreT2}}</td>
-                      <td>{{.Winner}}</td>
-                      {{if (eq .Stage 0)}}<td>Matchday 1</td>
-                      {{else if (eq .Stage 1)}}<td>Matchday 2</td>
-                      {{else if (eq .Stage 2)}}<td>Matchday 3</td>
-                      {{else if (eq .Stage 3)}}<td>Round of 16</td>
-                      {{else if (eq .Stage 4)}}<td>Quarter</td>
-                      {{else if (eq .Stage 5)}}<td>Semi</td>
-                      {{else if (eq .Stage 6)}}<td>Final</td>
-                      {{end}}
+                      <td>{{.Teama}} - {{.Teamb}}</td>
+                      <td>{{.Stage}}</td>
+                      <td>{{.Stadium}}</td>
                     </tr>
                     {{end}}
                   </table>
@@ -65,18 +56,6 @@
               </div>
             </div>
             <br>
-            <div class="ing">
-              <div class="content">
-                <div class="header">
-                  <div class=" project-name">
-                    Statistics
-                  </div>
-                </div>
-                <div class="description">
-                  Number of scored goals : {{.stat.ButReal}}<br>
-                </div>
-              </div>
-            </div>
             <div class="description">
               Version : {{.stat.Version}}<br>
             </div>
@@ -86,5 +65,4 @@
     </div>
   </div>
 </body>
-
 </html>

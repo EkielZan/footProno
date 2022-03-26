@@ -1,7 +1,6 @@
 package main
 
 import (
-	"database/sql"
 	"time"
 )
 
@@ -36,16 +35,16 @@ type PrMatch struct {
 
 //Team
 type Team struct {
-	ID          int            `json:"ID"`
-	Name        sql.NullString `json:"Name"`
-	Active      int            `json:"Active"`
-	Groupid     string         `json:"Group"`
-	Point       int            `json:"Point"`
-	Win         int            `json:"Win"`
-	Drawn       int            `json:"Draw"`
-	Lose        int            `json:"Lose"`
-	Goalfor     int            `json:"GFor"`
-	Goalagainst int            `json:"GAgainst"`
+	ID          int    `json:"ID"`
+	Name        string `json:"Name"`
+	Active      int    `json:"Active"`
+	Groupid     string `json:"Group"`
+	Point       int    `json:"Point"`
+	Win         int    `json:"Win"`
+	Drawn       int    `json:"Draw"`
+	Lose        int    `json:"Lose"`
+	Goalfor     int    `json:"GFor"`
+	Goalagainst int    `json:"GAgainst"`
 }
 
 type Match struct {
@@ -59,6 +58,15 @@ type Match struct {
 	Scoreb  int       `json:"ScoreB"`
 	Penb    int       `json:"PenB"`
 	Stadium int       `json:"Stadium"`
+}
+
+type Mama struct {
+	ID      int    `json:"ID"`
+	Stage   string `json:"Stage"`
+	Date    string `json:"Date"`
+	Teama   string `json:"TeamA"`
+	Teamb   string `json:"TeamB"`
+	Stadium string `json:"Stadium"`
 }
 type Pronostic struct {
 	ID     int `json:"PronoID"`
