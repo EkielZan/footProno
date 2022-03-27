@@ -1,18 +1,48 @@
 package main
 
 import (
+	"encoding/gob"
 	"log"
 	"net/http"
 	"os"
+	"text/template"
 	"time"
 
 	"github.com/gorilla/mux"
+	"github.com/gorilla/securecookie"
+	"github.com/gorilla/sessions"
 	"github.com/joho/godotenv"
 )
 
 var Version = "Development"
-var stat Statistics
+var stat Stats
 var config Config
+
+// store will hold all session data
+var store *sessions.CookieStore
+
+// tpl holds all parsed templates
+var tpl *template.Template
+
+func init() {
+	authKeyOne := securecookie.GenerateRandomKey(64)
+	encryptionKeyOne := securecookie.GenerateRandomKey(32)
+
+	store = sessions.NewCookieStore(
+		authKeyOne,
+		encryptionKeyOne,
+	)
+
+	store.Options = &sessions.Options{
+		Path:     "/",
+		MaxAge:   60 * 15,
+		HttpOnly: true,
+	}
+
+	gob.Register(User{})
+
+	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
+}
 
 func main() {
 	err := godotenv.Load()
@@ -30,20 +60,16 @@ func main() {
 
 	//updateJavaScript(serverPort, serverHost)
 	stat.Version = Version
-	log.Println("Version:\t", Version)
+	log.Println("Version:\t", stat.Version)
 	log.Println("Running Web Server Api on " + serverHost + " " + serverPort)
 	router := mux.NewRouter()
 
 	log.Println("Preparing to Serve Api")
 
-	router.HandleFunc("/", getOfficialMatches)
+	router.HandleFunc("/", index)
 	router.HandleFunc("/gom", getOfficialMatches)
 	router.HandleFunc("/gt", getTeams)
 	router.HandleFunc("/health", health)
-	router.HandleFunc("/signin", Signin)
-	router.HandleFunc("/welcome", Welcome)
-	router.HandleFunc("/refresh", Refresh)
-	router.HandleFunc("/logout", Logout)
 
 	fileServer := http.FileServer(http.Dir("static"))
 	router.PathPrefix("/js").Handler(http.StripPrefix("/", fileServer))

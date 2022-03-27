@@ -4,6 +4,10 @@ import (
 	"time"
 )
 
+type User struct {
+	Username      string
+	Authenticated bool
+}
 type ShortPlayer struct {
 	ID              int    `json:"ID"`
 	Name            string `json:"Name"`
@@ -93,17 +97,13 @@ type Stage struct {
 
 //Stats
 //Statistics
-type Statistics struct {
-	ButProno int    `json:"ButProno"`
-	ButReal  int    `json:"ButReal"`
-	Version  string `json:"Version"`
-}
 type Stats struct {
-	Nombrebut  int `json:"Nombrebut"`
-	Goodprono  int `json:"Goodprono"`
-	Goodwinner int `json:"Goodwinner"`
-	Redcard    int `json:"Redcard"`
-	Yellowcard int `json:"Yellowcard"`
+	Nombrebut  int    `json:"Nombrebut"`
+	Goodprono  int    `json:"Goodprono"`
+	Goodwinner int    `json:"Goodwinner"`
+	Redcard    int    `json:"Redcard"`
+	Yellowcard int    `json:"Yellowcard"`
+	Version    string `json:"Version"`
 }
 
 //Config

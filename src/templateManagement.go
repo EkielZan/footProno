@@ -10,6 +10,19 @@ import (
 
 type M map[string]interface{}
 
+// index serves the index html file
+func index(w http.ResponseWriter, r *http.Request) {
+	session, err := store.Get(r, "cookie-name")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	user := getUser(session)
+	tpl.ExecuteTemplate(w,
+		"index.gohtml",
+		user)
+}
+
 func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
 	// Create the database handle, confirm driver is present
 	db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono")

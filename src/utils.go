@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/gorilla/sessions"
 )
 
 //Respond Write to the httpWrite the content of data
@@ -16,6 +17,16 @@ func Respond(w http.ResponseWriter, data []byte) {
 	w.Header().Set("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT")
 	w.Header().Set("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
 	w.Write([]byte(data))
+}
+
+func getUser(s *sessions.Session) User {
+	val := s.Values["user"]
+	var user = User{}
+	user, ok := val.(User)
+	if !ok {
+		return User{Authenticated: false}
+	}
+	return user
 }
 
 func health(w http.ResponseWriter, r *http.Request) {
