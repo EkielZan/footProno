@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/gorilla/securecookie"
 	"github.com/gorilla/sessions"
 	"github.com/joho/godotenv"
 )
@@ -17,6 +16,7 @@ import (
 var Version = "Development"
 var stat Stats
 var config Config
+var cookieName = "footProno-secure-cookie"
 
 // store will hold all session data
 var store *sessions.CookieStore
@@ -25,22 +25,18 @@ var store *sessions.CookieStore
 var tpl *template.Template
 
 func init() {
-	authKeyOne := securecookie.GenerateRandomKey(64)
-	encryptionKeyOne := securecookie.GenerateRandomKey(32)
-
+	authKeyOne := []byte("whatwedointheshadows")
+	encryptionKeyOne := []byte("themandalorian22")
 	store = sessions.NewCookieStore(
 		authKeyOne,
 		encryptionKeyOne,
 	)
-
 	store.Options = &sessions.Options{
 		Path:     "/",
 		MaxAge:   60 * 15,
 		HttpOnly: true,
 	}
-
 	gob.Register(User{})
-
 	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
 }
 
@@ -57,9 +53,9 @@ func main() {
 	if serverHost == "" {
 		serverHost = "localhost" //localhost
 	}
-
 	//updateJavaScript(serverPort, serverHost)
 	stat.Version = Version
+
 	log.Println("Version:\t", stat.Version)
 	log.Println("Running Web Server Api on " + serverHost + " " + serverPort)
 	router := mux.NewRouter()
@@ -70,6 +66,9 @@ func main() {
 	router.HandleFunc("/gom", getOfficialMatches)
 	router.HandleFunc("/gt", getTeams)
 	router.HandleFunc("/health", health)
+	router.HandleFunc("/login", login)
+	router.HandleFunc("/logout", logout)
+	router.HandleFunc("/secret", secret)
 
 	fileServer := http.FileServer(http.Dir("static"))
 	router.PathPrefix("/js").Handler(http.StripPrefix("/", fileServer))
@@ -83,6 +82,6 @@ func main() {
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
-	log.Println("Ready to received calls")
+	log.Println("Ready to receive calls")
 	log.Fatal(srv.ListenAndServeTLS("certs/server.crt", "certs/server.key"))
 }

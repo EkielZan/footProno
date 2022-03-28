@@ -1,4 +1,4 @@
-{{define "leader"}}
+{{define "login"}}
       <div class="ui row centered">
         <div class="centered">
           <div class="ui text container ing">
@@ -10,23 +10,22 @@
                   </div>
                 </div>
                 <div class="description">
-    {{if .Authenticated }}
-    <a href="/secret">Welcome back! {{.Username}}</a>
-    {{end}}
-    {{ if not .Authenticated }}
-    <p>Please enter the code to access the information.</p>
-    <form action="/login" method="POST">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="code" placeholder="secret code" required>
-        <input type="submit" value="Submit">
-    </form>
-    {{ end }}
+                  {{if .Authenticated }}
+                  <a href="/secret">Welcome back! {{.Username}}</a>
+                  {{end}}
+                  {{ if not .Authenticated }}
+                  <p>Please enter the code to access the information.</p>
+                  <form action="/login" method="POST">
+                      <input type="text" name="username" placeholder="E-mail"><br><br>
+                      <input type="password" name="code" placeholder="Password" required><br><br>
+                      <input type="submit" value="Submit">
+                  </form>
+                  {{ end }}
                 </div>
               </div>
             </div>
 {{end}}
 
-
 {{template "header"}}
-{{template "leader" .}}
+{{template "login"}}
 {{template "footer" .stat}}

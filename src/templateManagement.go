@@ -20,7 +20,11 @@ func index(w http.ResponseWriter, r *http.Request) {
 	user := getUser(session)
 	tpl.ExecuteTemplate(w,
 		"index.gohtml",
-		user)
+		M{
+			// We can pass as many things as we like
+			"user": user,
+			"stat": stat,
+		})
 }
 
 func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
