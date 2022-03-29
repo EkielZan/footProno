@@ -37,7 +37,7 @@ build:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - export VERSION=build
     - "[ -f ./version ] && export VERSION=$(cat ./version)"
-    - DOCKER_BUILDKIT=1 docker build --pull -t $CONTAINER_TEST_IMAGE --build-arg VERSION=$VERSION -f #Dockerfile .
+    - DOCKER_BUILDKIT=1 docker build --pull -t $CONTAINER_TEST_IMAGE --build-arg VERSION=$VERSION -f Dockerfile .
     - docker push $CONTAINER_TEST_IMAGE
   only:
     - v2_main
