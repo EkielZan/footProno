@@ -11,7 +11,10 @@
                 </div>
                 <div class="description">
                   {{if .Authenticated }}
-                  <a href="/secret">Welcome back! {{.Username}}</a>
+                  <br>
+                  <p>Welcome back! {{.Username}}</p>
+                  <br>
+                  <a href="/logout">logout</a>
                   {{end}}
                   {{ if not .Authenticated }}
                   <p>Please enter the code to access the information.</p>
@@ -26,6 +29,6 @@
             </div>
 {{end}}
 
-{{template "header"}}
-{{template "login"}}
+{{template "header" .user}}
+{{template "login" .user}}
 {{template "footer" .stat}}

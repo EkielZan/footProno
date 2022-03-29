@@ -18,9 +18,11 @@
     <div class="ui grid">
       <div class="ui row centered">
         <div class="">
+        {{if .Authenticated }}
           <div class="ui white message centered">
             <a href="/">Home</a> / <a href="/gom">Matches</a> / <a href="/gt">Teams</a>
           </div>
+        {{end}}
         </div>
       </div>
 {{end}}

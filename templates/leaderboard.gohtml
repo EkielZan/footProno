@@ -1,27 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <title>Euro 2020 - Contest</title>
-  <meta charset="utf-8" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/card.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/grid.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/message.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" />
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-  <div id="app">
-    <div class="ui grid">
-      <div class="ui row centered">
-        <div class="">
-          <div class="ui white message centered">
-            <a href="/">Home</a> / <a href="/gom">Matches</a> / <a href="/gt">Teams</a>
-          </div>
-        </div>
-      </div>
+{{define "leaderboard"}}
       <div class="ui row centered">
         <div class="centered">
           <div class="ui text container ing">
@@ -29,7 +6,7 @@
               <div class="content">
                 <div class="header">
                   <div class=" project-name">
-                    Leaderboardéé
+                    Leaderboard
                   </div>
                 </div>
                 <div class="description">
@@ -67,14 +44,8 @@
                 </div>
               </div>
             </div>
-            <div class="description">
-              Version : {{.stat.Version}}<br>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+{{end}}
 
-</html>
+{{template "header" .user}}
+{{template "leaderboard" .user}}
+{{template "footer" .stat}}
