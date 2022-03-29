@@ -40,7 +40,7 @@ build:
     - DOCKER_BUILDKIT=1 docker build --pull -t $CONTAINER_TEST_IMAGE --build-arg VERSION=$VERSION -f #Dockerfile .
     - docker push $CONTAINER_TEST_IMAGE
   only:
-    - master
+    - v2_main
 
 # docker_image_build_release:
 #   image:
