@@ -1,40 +1,44 @@
 package main
 
-import (
-	"time"
-)
-
-type User struct {
-	Username      string
-	Authenticated bool
-}
-type ShortPlayer struct {
-	ID              int    `json:"ID"`
-	Name            string `json:"Name"`
-	Amount          int    `json:"Amount"`
-	CurrentPosition int    `json:"CurrentPosition"`
-	LastPosition    int    `json:"LastPosition"`
-}
-
-type LastPosition struct {
-	ScoreDate string `json:"ScoreDate"`
-}
+import "time"
 
 // PrMatch
-type PrMatch struct {
-	MatchID int    `json:"MatchID"`
-	Team1   string `json:"Team1"`
-	ScoreT1 int    `json:"ScoreT1"`
-	ScoreP1 int    `json:"ScoreP1"`
-	Team2   string `json:"Team2"`
-	ScoreT2 int    `json:"ScoreT2"`
-	ScoreP2 int    `json:"ScoreP2"`
-	Date    string `json:"Date"`
-	Stage   int    `json:"Stage"`
-	Winner  string `json:"Winner"`
-	OWinner string `json:"OWinner"`
-	ScoreP  int    `json:"ScoreP"`
-	Done    bool   `json:"Done"`
+type Pronostics struct {
+	MatchID int       `json:"MatchID"`
+	Team1   string    `json:"Team1"`
+	ScoreT1 int       `json:"ScoreT1"`
+	ScoreP1 int       `json:"ScoreP1"`
+	Team2   string    `json:"Team2"`
+	ScoreT2 int       `json:"ScoreT2"`
+	ScoreP2 int       `json:"ScoreP2"`
+	Date    time.Time `json:"Date"`
+	Stage   int       `json:"Stage"`
+	Winner  string    `json:"Winner"`
+	ScoreP  int       `json:"ScoreP"`
+	Done    bool      `json:"Done"`
+}
+
+type Match struct {
+	ID      int       `json:"ID"`
+	Stage   string    `json:"Stage"`
+	Date    time.Time `json:"Date"`
+	Teama   string    `json:"TeamA"`
+	Scorea  int       `json:"ScoreA"`
+	Pena    int       `json:"PenA"`
+	Teamb   string    `json:"TeamB"`
+	Scoreb  int       `json:"ScoreB"`
+	Penb    int       `json:"PenB"`
+	Stadium string    `json:"Stadium"`
+}
+
+//Match
+type Mama struct {
+	ID      int       `json:"ID"`
+	Stage   string    `json:"Stage"`
+	Date    time.Time `json:"Date"`
+	Teama   string    `json:"TeamA"`
+	Teamb   string    `json:"TeamB"`
+	Stadium string    `json:"Stadium"`
 }
 
 //Team
@@ -51,27 +55,6 @@ type Team struct {
 	Goalagainst int    `json:"GAgainst"`
 }
 
-type Match struct {
-	ID      int       `json:"ID"`
-	Stage   int       `json:"Stage"`
-	Date    time.Time `json:"Date"`
-	Teama   int       `json:"TeamA"`
-	Scorea  int       `json:"ScoreA"`
-	Pena    int       `json:"PenA"`
-	Teamb   int       `json:"TeamB"`
-	Scoreb  int       `json:"ScoreB"`
-	Penb    int       `json:"PenB"`
-	Stadium int       `json:"Stadium"`
-}
-
-type Mama struct {
-	ID      int    `json:"ID"`
-	Stage   string `json:"Stage"`
-	Date    string `json:"Date"`
-	Teama   string `json:"TeamA"`
-	Teamb   string `json:"TeamB"`
-	Stadium string `json:"Stadium"`
-}
 type Pronostic struct {
 	ID     int `json:"PronoID"`
 	User   int `json:"User"`
@@ -96,7 +79,6 @@ type Stage struct {
 }
 
 //Stats
-//Statistics
 type Stats struct {
 	Nombrebut  int    `json:"Nombrebut"`
 	Goodprono  int    `json:"Goodprono"`
@@ -115,30 +97,32 @@ type Config struct {
 
 //Player
 type Player struct {
-	ID          int       `json:"ID"`
-	Name        string    `json:"Name"`
-	Email       string    `json:"Email"`
-	Score       int       `json:"Score"`
-	Matches     []PrMatch `json:"Matches"`
-	Champ       string    `json:"Champ"`
-	Status      string    `json:"Status"`
-	Amount      int       `json:"Amount"`
-	ChangeChamp int       `json:"ChangeChamp"`
-	Rank        int       `json:"Rank"`
-	BonusMalus  int       `json:"BonusMalus"`
-	ChampActive bool      `json:"ChampActive"`
+	ID             int          `json:"ID"`
+	Matches        []Pronostics `json:"Matches"`
+	Status         string       `json:"Status"`
+	Email          string       `json:"Email"`
+	Firstname      string       `json:"Firstname"`
+	Lastname       string       `json:"Lastname"`
+	Score          int          `json:"Score"`
+	Champion       int          `json:"Champion"`
+	Champchange    int          `json:"Champchange"`
+	Rank           int          `json:"Rank"`
+	Position       int          `json:"Position"`
+	Positionbefore int          `json:"Positionbefore"`
+	Malus          int          `json:"Malus"`
+	Bonus          int          `json:"Bonus"`
+	Ngoodscores    int          `json:"Ngoodscores"`
+	Ngoodwinner    int          `json:"Ngoodwinner"`
+	ChampActive    bool         `json:"ChampActive"`
 }
-type Users struct {
-	ID             int    `json:"ID"`
-	Firstname      string `json:"Firstname"`
-	Lastname       string `json:"Lastname"`
-	Score          int    `json:"Score"`
-	Champion       int    `json:"Champion"`
-	Champchange    int    `json:"Champchange"`
-	Position       int    `json:"Position"`
-	Positionbefore int    `json:"Positionbefore"`
-	Malus          int    `json:"Malus"`
-	Bonus          int    `json:"Bonus"`
-	Ngoodscores    int    `json:"Ngoodscores"`
-	Ngoodwinner    int    `json:"Ngoodwinner"`
+
+type loginDetail struct {
+	Password  string
+	Firstname string
+	Lastname  string
+	Userid    int
+}
+type User struct {
+	Username      string
+	Authenticated bool
 }
