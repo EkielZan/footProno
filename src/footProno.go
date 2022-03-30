@@ -47,7 +47,7 @@ func main() {
 	}
 	serverPort := os.Getenv("SERVER_PORT")
 	if serverPort == "" {
-		serverPort = "3000" //localhost
+		serverPort = "4000" //localhost
 	}
 	serverHost := os.Getenv("SERVER_NAME")
 	if serverHost == "" {
@@ -68,7 +68,7 @@ func main() {
 	router.HandleFunc("/health", health)
 	router.HandleFunc("/login", login)
 	router.HandleFunc("/logout", logout)
-	router.HandleFunc("/secret", secret)
+	router.HandleFunc("/about", about)
 
 	fileServer := http.FileServer(http.Dir("static"))
 	router.PathPrefix("/js").Handler(http.StripPrefix("/", fileServer))
