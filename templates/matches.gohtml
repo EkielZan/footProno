@@ -15,17 +15,19 @@
                       <th>ID</th>
                       <th>Date</th>
                       <th>Teams</th>
+                      <th>Score</th>
                       <th>Stage</th>
                       <th>Stadium</th>
                     </tr>
-                    {{range .amams}}
+                    {{range .matches}}
                     <!-- TODO : change this bad one liner for generated html readability -->
                     <tr>
                       <td>{{.ID}}</td>
-                      <td>{{.Date}}</td>
+                      <td>{{.Date.Format "02/01/2006 15H04"}}</td>
                       <td>{{.Teama}} - {{.Teamb}}</td>
+                      <td>{{.Scorea}} - {{.Scoreb}}</td>
                       <td>{{.Stage}}</td>
-                      <td>{{.Stadium}}</td>
+                      <td align ="right" style="padding-right: 10px;">{{.Stadium}}</td>
                     </tr>
                     {{end}}
                   </table>

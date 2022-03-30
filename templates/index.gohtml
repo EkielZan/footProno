@@ -17,7 +17,7 @@
                   <a href="/logout">logout</a>
                   {{end}}
                   {{ if not .Authenticated }}
-                  <p>Please enter the code to access the information.</p>
+                  <p>Please enter your login information.</p>
                   <form action="/login" method="POST">
                       <input type="text" name="username" placeholder="E-mail"><br><br>
                       <input type="password" name="code" placeholder="Password" required><br><br>

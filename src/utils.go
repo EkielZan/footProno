@@ -31,9 +31,8 @@ func getUser(s *sessions.Session) User {
 
 func health(w http.ResponseWriter, r *http.Request) {
 	// Create the database handle, confirm driver is present
-	db, _ := sql.Open("mysql", "lilnas:root@/footprono")
+	db, _ := sql.Open("mysql", "lilnas:root@/footprono?parseTime=true")
 	defer db.Close()
-
 	// Connect and check the server version
 	var version string
 	db.QueryRow("SELECT VERSION()").Scan(&version)
