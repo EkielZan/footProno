@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/gorilla/sessions"
 )
 
 // login authenticates the user
@@ -57,30 +58,9 @@ func logout(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-// secret displays the secret message for authorized users
-func secret(w http.ResponseWriter, r *http.Request) {
-	session, err := store.Get(r, cookieName)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	user := getUser(session)
-	if auth := user.Authenticated; !auth {
-		session.AddFlash("You don't have access!")
-		err = session.Save(r, w)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		http.Redirect(w, r, "/", http.StatusFound)
-		return
-	}
-	tpl.ExecuteTemplate(w, "secret.gohtml", user.Username)
-}
-
 func checkLogin(login string, password string) bool {
 	// Create the database handle, confirm driver is present
-	db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono")
+	db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono?parseTime=true")
 	defer db.Close()
 	log.Println(login + " - " + password)
 	rows, err := db.Query("SELECT a.password,firstname,lastname,userid as count FROM authentication a, users u where a.userid = u.id and a.email=?;", login)
@@ -89,18 +69,27 @@ func checkLogin(login string, password string) bool {
 		log.Println("No user found in the DB : " + login)
 		return false
 	}
-	type loginDetail struct {
-		password  string
-		firstname string
-		lastname  string
-		userid    int
-	}
+
 	var ld loginDetail
 	for rows.Next() {
-		rows.Scan(&ld.password, &ld.firstname, &ld.lastname, &ld.userid)
+		rows.Scan(&ld.Password, &ld.Firstname, &ld.Lastname, &ld.Userid)
 	}
-	if ld.password == password {
+	if ld.Password == password {
 		return true
 	}
 	return false
+}
+
+func checkAuthentication(w http.ResponseWriter, r *http.Request, user User, session *sessions.Session) bool {
+	if auth := user.Authenticated; !auth {
+		session.AddFlash("You don't have access!")
+		err := session.Save(r, w)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return false
+		}
+		http.Redirect(w, r, "/", http.StatusFound)
+		return false
+	}
+	return true
 }
