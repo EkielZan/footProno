@@ -64,3 +64,8 @@ table.centered {
 .strike {
   text-decoration: line-through;
 }
+
+a.inl{
+  display:inline;
+  color: #b50101 !important;
+}

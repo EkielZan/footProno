@@ -24,7 +24,10 @@ func getUser(s *sessions.Session) User {
 	var user = User{}
 	user, ok := val.(User)
 	if !ok {
-		return User{Authenticated: false}
+		return User{
+			Username:      "",
+			Authenticated: false,
+		}
 	}
 	return user
 }
