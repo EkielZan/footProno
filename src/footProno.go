@@ -83,5 +83,5 @@ func main() {
 		ReadTimeout:  15 * time.Second,
 	}
 	log.Println("Ready to receive calls")
-	log.Fatal(srv.ListenAndServeTLS("certs/server.crt", "certs/server.key"))
+	log.Fatal(srv.ListenAndServe())
 }
