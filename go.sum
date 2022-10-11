@@ -10,3 +10,8 @@ github.com/gorilla/sessions v1.2.1 h1:DHd3rPN5lE3Ts3D8rKkQ8x/0kqfeNmBAaiSi+o7Fsg
 github.com/gorilla/sessions v1.2.1/go.mod h1:dk2InVEVJ0sfLlnXv9EAgkf6ecYs/i80K/zI+bUmuGM=
 github.com/joho/godotenv v1.3.0 h1:Zjp+RcGpHhGlrMbJzXTrZZPrWj+1vfm90La1wgB6Bhc=
 github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
+github.com/mattn/go-sqlite3 v1.14.15 h1:vfoHhTN1af61xCRSWzFIWzx2YskyMTwHLrExkBOjvxI=
+github.com/mattn/go-sqlite3 v1.14.15/go.mod h1:2eHXhiwb8IkHr+BDWZGa96P6+rkvnG63S2DGjv9HUNg=
+github.com/mxk/go-sqlite v0.0.0-20140611214908-167da9432e1f/go.mod h1:pkc41e3zYdLbnNZr/Zr5u/Ozr7D0p8EorhQiE+DmM4Y=
+github.com/qustavo/dotsql v1.1.0 h1:Yw+x4HacArj41O4z4oDso1KZqQ+if7O2jj8igcLqGM0=
+github.com/qustavo/dotsql v1.1.0/go.mod h1:ypGu9g6a8LYpavOT8VBsJO+plC0tLW6onMxwMvyoZIM=

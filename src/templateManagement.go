@@ -1,15 +1,20 @@
+// index serves the index html file
 package main
+
+//
+//   file:test.db?cache=shared&mode=memory
+//
 
 import (
 	"database/sql"
 	"net/http"
 
-	_ "github.com/go-sql-driver/mysql"
+	//	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type M map[string]interface{}
 
-// index serves the index html file
 func index(w http.ResponseWriter, r *http.Request) {
 	session, err := store.Get(r, cookieName)
 	if err != nil {
@@ -39,7 +44,9 @@ func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Create the database handle, confirm driver is present
-	db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono?parseTime=true")
+	//FORNOSQL db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono?parseTime=true")
+	db, _ := sql.Open(SDRIVER, SCON)
+
 	defer db.Close()
 	//`id`,`stage`,`date`,`teama`,`scorea`,`pena`,`teamb`,`scoreb`,`penb`,`stadium` -> Matches
 	rows, _ := db.Query("SELECT m.id, st.name as stage, date, t1.name as teama, m.scorea, m.pena, t2.name as teamb, m.scoreb, m.penb, s.name as stadium FROM matches m LEFT JOIN teams t1 on m.teama  = t1.id  LEFT JOIN teams t2 on m.teamb = t2.id LEFT JOIN stadium s on m.stadium = s.id  LEFT JOIN stage st on m.stage = st.id LIMIT 0, 1000")
@@ -72,9 +79,10 @@ func getTeams(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Create the database handle, confirm driver is present
-	db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono?parseTime=true")
+	//FORNOSQL db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono?parseTime=true")
+	db, _ := sql.Open(SDRIVER, SCON)
 	defer db.Close()
-	rows, _ := db.Query("SELECT id, name, active, groupid, point, win, drawn, lose, goalfor, goalagainst FROM footprono.teams order by id;")
+	rows, _ := db.Query("SELECT id, name, active, groupid, point, win, drawn, lose, goalfor, goalagainst FROM teams order by id;")
 	var teams []Team
 	for rows.Next() {
 		var team Team
@@ -89,6 +97,26 @@ func getTeams(w http.ResponseWriter, r *http.Request) {
 			"user":  user,
 			"stat":  stat,
 		})
+}
+
+func doRegister(w http.ResponseWriter, r *http.Request) {
+	// Manage Sessions and authentication
+	session, err := store.Get(r, cookieName)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	user := getUser(session)
+	if !checkAuthentication(w, r, user, session) {
+		return
+	}
+	tpl.ExecuteTemplate(w,
+		"register.gohtml",
+		M{
+			"user": user,
+			"stat": stat,
+		})
+
 }
 
 func about(w http.ResponseWriter, r *http.Request) {

@@ -3,10 +3,14 @@ package main
 import (
 	"database/sql"
 	"io"
+	"log"
 	"net/http"
+	"os"
 
-	_ "github.com/go-sql-driver/mysql"
+	// _ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
+	_ "github.com/mattn/go-sqlite3"
+	"github.com/qustavo/dotsql"
 )
 
 //Respond Write to the httpWrite the content of data
@@ -34,12 +38,70 @@ func getUser(s *sessions.Session) User {
 
 func health(w http.ResponseWriter, r *http.Request) {
 	// Create the database handle, confirm driver is present
-	db, _ := sql.Open("mysql", "lilnas:root@/footprono?parseTime=true")
+	//FORNOSQL db, _ := sql.Open("mysql", "lilnas:root@/footprono?parseTime=true")
+	db, _ := sql.Open(SDRIVER, SCON)
 	defer db.Close()
 	// Connect and check the server version
 	var version string
 	db.QueryRow("SELECT VERSION()").Scan(&version)
 	io.WriteString(w, "I'm healthy and The DB version is : "+version)
+}
+
+/*
+func manageSession(w http.ResponseWriter, r *http.Request) (User, bool) {
+	// Manage Sessions and authentication
+	session, err := store.Get(r, cookieName)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return false
+	}
+	user := getUser(session)
+	if !checkAuthentication(w, r, user, session) {
+		return false
+	}
+	return user, true
+}
+*/
+func initDatabase() {
+	name := "footprono.sqlite"
+	_, err2 := os.Stat(name)
+	if os.IsNotExist(err2) {
+		log.Println("DB File doesn't exist")
+		os.Create(name)
+		log.Println("DB File now exist")
+		db, _ := sql.Open(SDRIVER, SCON)
+		db.Close()
+	} else {
+		log.Println("DB File exist")
+	}
+
+	dot, err := dotsql.LoadFromFile("DB/queries.sql")
+	if err != nil {
+		log.Println("SQL Files are causing the following issues:")
+		log.Fatalln(err)
+		return
+	}
+	log.Println("Creating Tables")
+	createFromSqlFile(dot, "create-tables")
+	dot, err = dotsql.LoadFromFile("DB/data.sql")
+	if err != nil {
+		log.Println("SQL Files are causing the following issues:")
+		log.Fatalln(err)
+		return
+	}
+	log.Println("Filling Tables")
+	createFromSqlFile(dot, "fill-tables")
+	//TODO Add Filler for tables
+}
+
+func createFromSqlFile(dot *dotsql.DotSql, block string) {
+	db, _ := sql.Open(SDRIVER, SCON)
+	log.Println("Create table " + block)
+	_, err := dot.Exec(db, block)
+	if err != nil {
+		log.Fatalln(err)
+		return
+	}
 }
 
 /*

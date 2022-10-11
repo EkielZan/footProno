@@ -9,4 +9,6 @@ require (
 	github.com/gorilla/securecookie v1.1.1
 	github.com/gorilla/sessions v1.2.1
 	github.com/joho/godotenv v1.3.0
+	github.com/mattn/go-sqlite3 v1.14.15 // indirect
+	github.com/qustavo/dotsql v1.1.0 // indirect
 )

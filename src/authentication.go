@@ -1,12 +1,15 @@
 package main
 
 import (
+	"crypto/sha256"
 	"database/sql"
+	"encoding/hex"
 	"log"
 	"net/http"
 
-	_ "github.com/go-sql-driver/mysql"
+	// "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 // login authenticates the user
@@ -58,15 +61,17 @@ func logout(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-func checkLogin(login string, password string) bool {
+func checkLogin(email string, password string) bool {
 	// Create the database handle, confirm driver is present
-	db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono?parseTime=true")
+	//FORNOSQL db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono?parseTime=true")
+	db, _ := sql.Open(SDRIVER, SCON)
 	defer db.Close()
-	log.Println(login + " - " + password)
-	rows, err := db.Query("SELECT a.password,firstname,lastname,userid as count FROM authentication a, users u where a.userid = u.id and a.email=?;", login)
+	log.Println(email + " - " + password)
+	//rows, err := db.Query("SELECT a.password,firstname,lastname,id as count FROM authentication a, users u where a.id = u.id and a.email=?;", email)
+	rows, err := db.Query("SELECT password,firstname,lastname,id as count FROM users where email=?;", email)
 	if err != nil {
 		log.Println("The err : " + err.Error())
-		log.Println("No user found in the DB : " + login)
+		log.Println("No user found in the DB : " + email)
 		return false
 	}
 
@@ -74,9 +79,18 @@ func checkLogin(login string, password string) bool {
 	for rows.Next() {
 		rows.Scan(&ld.Password, &ld.Firstname, &ld.Lastname, &ld.Userid)
 	}
-	if ld.Password == password {
+
+	sha_256 := sha256.New()
+	sha_256.Write([]byte(password))
+
+	sha1_hash := hex.EncodeToString(sha_256.Sum(nil))
+	log.Println(sha1_hash)
+
+	if ld.Password == sha1_hash {
+		log.Println("Good Password")
 		return true
 	}
+	log.Println("Wrong Password")
 	return false
 }
 

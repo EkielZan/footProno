@@ -4,6 +4,7 @@ LIMIT 0, 1000
 
 -- Date: 2022-03-18 22:58
 */
+-- name: fills-stadium
 INSERT INTO `stadium` (`id`,`name`) VALUES (1,'Lusail Iconic Stadium');
 INSERT INTO `stadium` (`id`,`name`) VALUES (2,'Al Bayt Stadium');
 INSERT INTO `stadium` (`id`,`name`) VALUES (3,'Stadium 974');

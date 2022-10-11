@@ -14,6 +14,8 @@ import (
 )
 
 var Version = "Development"
+var SDRIVER = "sqlite3"
+var SCON = "./footprono.sqlite?cache=shared&mode=memory"
 var stat Stats
 var config Config
 var cookieName = "footProno-secure-cookie"
@@ -57,10 +59,12 @@ func main() {
 	stat.Version = Version
 
 	log.Println("Version:\t", stat.Version)
-	log.Println("Running Web Server Api on " + serverHost + " " + serverPort)
+	log.Println("Running Web Server on " + serverHost + " " + serverPort)
 	router := mux.NewRouter()
 
-	log.Println("Preparing to Serve Api")
+	initDatabase()
+
+	log.Println("Preparing to Serve pages")
 
 	router.HandleFunc("/", index)
 	router.HandleFunc("/gom", getOfficialMatches)

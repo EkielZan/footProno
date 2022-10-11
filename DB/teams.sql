@@ -4,6 +4,7 @@ LIMIT 0, 1000
 
 -- Date: 2022-03-18 22:59
 */
+-- name: fills-teams
 INSERT INTO `teams` (`id`,`name`,`active`,`groupid`,`point`,`win`,`drawn`,`lose`,`goalfor`,`goalagainst`) VALUES (1,'Qatar',0,'A1',0,0,0,0,0,0);
 INSERT INTO `teams` (`id`,`name`,`active`,`groupid`,`point`,`win`,`drawn`,`lose`,`goalfor`,`goalagainst`) VALUES (2,NULL,0,'A2',0,0,0,0,0,0);
 INSERT INTO `teams` (`id`,`name`,`active`,`groupid`,`point`,`win`,`drawn`,`lose`,`goalfor`,`goalagainst`) VALUES (3,NULL,0,'A3',0,0,0,0,0,0);

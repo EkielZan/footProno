@@ -4,6 +4,7 @@ LIMIT 0, 1000
 
 -- Date: 2022-03-21 20:59
 */
+-- name: fills-matches
 INSERT INTO `matches` (`id`,`stage`,`date`,`teama`,`scorea`,`pena`,`teamb`,`scoreb`,`penb`,`stadium`) VALUES (1,1,'2022-11-21 13:00:00',1,0,0,2,0,0,2);
 INSERT INTO `matches` (`id`,`stage`,`date`,`teama`,`scorea`,`pena`,`teamb`,`scoreb`,`penb`,`stadium`) VALUES (2,1,'2022-11-21 16:00:00',5,0,0,6,0,0,4);
 INSERT INTO `matches` (`id`,`stage`,`date`,`teama`,`scorea`,`pena`,`teamb`,`scoreb`,`penb`,`stadium`) VALUES (3,1,'2022-11-21 19:00:00',3,0,0,4,0,0,7);
