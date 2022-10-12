@@ -63,11 +63,11 @@ func manageSession(w http.ResponseWriter, r *http.Request) (User, bool) {
 }
 */
 func initDatabase() {
-	name := "footprono.sqlite"
-	_, err2 := os.Stat(name)
+
+	_, err2 := os.Stat(DBFile)
 	if os.IsNotExist(err2) {
 		log.Println("DB File doesn't exist")
-		os.Create(name)
+		os.Create(DBFile)
 		log.Println("DB File now exist")
 		db, _ := sql.Open(SDRIVER, SCON)
 		db.Close()
@@ -75,33 +75,38 @@ func initDatabase() {
 		log.Println("DB File exist")
 	}
 
-	dot, err := dotsql.LoadFromFile("DB/queries.sql")
+	dot, err := dotsql.LoadFromFile(CTABLE)
 	if err != nil {
 		log.Println("SQL Files are causing the following issues:")
 		log.Fatalln(err)
 		return
 	}
 	log.Println("Creating Tables")
-	createFromSqlFile(dot, "create-tables")
-	dot, err = dotsql.LoadFromFile("DB/data.sql")
-	if err != nil {
-		log.Println("SQL Files are causing the following issues:")
-		log.Fatalln(err)
-		return
+	retStat := createFromSqlFile(dot, "create-tables")
+	if !retStat {
+		log.Println("Tables are already created.")
+		log.Println("No need to refilled them.")
+	} else {
+		dot, err = dotsql.LoadFromFile(FTABLE)
+		if err != nil {
+			log.Println("SQL Files are causing the following issues:")
+			log.Fatalln(err)
+			return
+		}
+		log.Println("Filling Tables")
+		createFromSqlFile(dot, "fill-tables")
 	}
-	log.Println("Filling Tables")
-	createFromSqlFile(dot, "fill-tables")
-	//TODO Add Filler for tables
 }
 
-func createFromSqlFile(dot *dotsql.DotSql, block string) {
+func createFromSqlFile(dot *dotsql.DotSql, block string) bool {
 	db, _ := sql.Open(SDRIVER, SCON)
 	log.Println("Create table " + block)
 	_, err := dot.Exec(db, block)
 	if err != nil {
-		log.Fatalln(err)
-		return
+		log.Println(err)
+		return false
 	}
+	return true
 }
 
 /*

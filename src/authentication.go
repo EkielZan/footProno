@@ -6,6 +6,7 @@ import (
 	"encoding/hex"
 	"log"
 	"net/http"
+	"strings"
 
 	// "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
@@ -66,11 +67,9 @@ func checkLogin(email string, password string) bool {
 	//FORNOSQL db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono?parseTime=true")
 	db, _ := sql.Open(SDRIVER, SCON)
 	defer db.Close()
-	log.Println(email + " - " + password)
 	//rows, err := db.Query("SELECT a.password,firstname,lastname,id as count FROM authentication a, users u where a.id = u.id and a.email=?;", email)
 	rows, err := db.Query("SELECT password,firstname,lastname,id as count FROM users where email=?;", email)
 	if err != nil {
-		log.Println("The err : " + err.Error())
 		log.Println("No user found in the DB : " + email)
 		return false
 	}
@@ -84,13 +83,10 @@ func checkLogin(email string, password string) bool {
 	sha_256.Write([]byte(password))
 
 	sha1_hash := hex.EncodeToString(sha_256.Sum(nil))
-	log.Println(sha1_hash)
 
 	if ld.Password == sha1_hash {
-		log.Println("Good Password")
 		return true
 	}
-	log.Println("Wrong Password")
 	return false
 }
 
@@ -106,4 +102,31 @@ func checkAuthentication(w http.ResponseWriter, r *http.Request, user User, sess
 		return false
 	}
 	return true
+}
+
+func register(w http.ResponseWriter, r *http.Request) {
+	session, err := store.Get(r, cookieName)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	check := checkEmail(r.FormValue("email"))
+	if check != true {
+		session.AddFlash("email is not ending in ing.com")
+		err = session.Save(r, w)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		http.Redirect(w, r, "/registerForm", http.StatusFound)
+		return
+	}
+}
+
+func checkEmail(email string) bool {
+	splited := strings.Split(email, "@")
+	if splited[1] == "ing.com" {
+		return true
+	}
+	return false
 }

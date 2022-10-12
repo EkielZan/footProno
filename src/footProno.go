@@ -14,8 +14,21 @@ import (
 )
 
 var Version = "Development"
+
+//VAR SQLITE DB File
+var DBFile = "footprono.sqlite"
+
+// SQL Driver
 var SDRIVER = "sqlite3"
-var SCON = "./footprono.sqlite?cache=shared&mode=memory"
+var SCON = "./" + DBFile + "?cache=shared&mode=memory"
+
+//Creation of the tables
+var CTABLE = "DB/queries.sql"
+
+//Filling the tables
+var FTABLE = "DB/data.sql"
+
+//Global Access variables
 var stat Stats
 var config Config
 var cookieName = "footProno-secure-cookie"
@@ -71,6 +84,8 @@ func main() {
 	router.HandleFunc("/gt", getTeams)
 	router.HandleFunc("/health", health)
 	router.HandleFunc("/login", login)
+	router.HandleFunc("/registerForm", registerForm)
+	router.HandleFunc("/register", register)
 	router.HandleFunc("/logout", logout)
 	router.HandleFunc("/about", about)
 

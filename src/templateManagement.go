@@ -31,6 +31,23 @@ func index(w http.ResponseWriter, r *http.Request) {
 		})
 }
 
+func registerForm(w http.ResponseWriter, r *http.Request) {
+	session, err := store.Get(r, cookieName)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	user := getUser(session)
+	//flashes :=
+	tpl.ExecuteTemplate(w,
+		"register.gohtml",
+		M{
+			// We can pass as many things as we like
+			"user": user,
+			"stat": stat,
+		})
+}
+
 func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
 	// Manage Sessions and authentication
 	session, err := store.Get(r, cookieName)
