@@ -18,12 +18,8 @@
                       <input type="submit" value="Submit">
                   </form>
                 </div>
-                  {{ if index . "messages" }}
-                    <div class="messages" style="background: darkseagreen; padding: 10px;">
-                    {{ range index . "messages" }}
-                    <p>{{ . }}</p>
-                    {{ end }}
-                  </div>
+                  {{ range $f := .flash }}
+                  <div class="alert alert-danger">{{ $f }}</div>
                   {{ end }}
               </div>
             </div>

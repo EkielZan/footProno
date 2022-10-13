@@ -22,13 +22,21 @@ func index(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	user := getUser(session)
+	flashes := session.Flashes()
 	tpl.ExecuteTemplate(w,
 		"index.gohtml",
 		M{
 			// We can pass as many things as we like
-			"user": user,
-			"stat": stat,
+			"user":    user,
+			"stat":    stat,
+			"flashes": flashes,
 		})
+	session.Flashes()
+	err = session.Save(r, w)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
 func registerForm(w http.ResponseWriter, r *http.Request) {
@@ -38,14 +46,22 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	user := getUser(session)
+	flashes := session.Flashes()
 	//flashes :=
 	tpl.ExecuteTemplate(w,
 		"register.gohtml",
 		M{
 			// We can pass as many things as we like
-			"user": user,
-			"stat": stat,
+			"user":  user,
+			"stat":  stat,
+			"flash": flashes,
 		})
+	session.Flashes()
+	err = session.Save(r, w)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
 func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
