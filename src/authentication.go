@@ -20,7 +20,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	check := checkLogin(r.FormValue("username"), r.FormValue("code"))
+	check, ld := checkLogin(r.FormValue("username"), r.FormValue("code"))
 	if check != true {
 		session.AddFlash("Password is incorrect")
 		err = session.Save(r, w)
@@ -34,6 +34,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 	username := r.FormValue("username")
 	user := &User{
 		Username:      username,
+		LoginDetail:   ld,
 		Authenticated: true,
 	}
 	session.Values["user"] = user
@@ -62,19 +63,19 @@ func logout(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-func checkLogin(email string, password string) bool {
+func checkLogin(email string, password string) (bool, loginDetail) {
 	// Create the database handle, confirm driver is present
 	//FORNOSQL db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono?parseTime=true")
+	var ld loginDetail
 	db, _ := sql.Open(SDRIVER, SCON)
 	defer db.Close()
 	//rows, err := db.Query("SELECT a.password,firstname,lastname,id as count FROM authentication a, users u where a.id = u.id and a.email=?;", email)
 	rows, err := db.Query("SELECT password,firstname,lastname,id as count FROM users where email=?;", email)
 	if err != nil {
 		log.Println("No user found in the DB : " + email)
-		return false
+		return false, ld
 	}
 
-	var ld loginDetail
 	for rows.Next() {
 		rows.Scan(&ld.Password, &ld.Firstname, &ld.Lastname, &ld.Userid)
 	}
@@ -85,9 +86,9 @@ func checkLogin(email string, password string) bool {
 	sha1_hash := hex.EncodeToString(sha_256.Sum(nil))
 
 	if ld.Password == sha1_hash {
-		return true
+		return true, ld
 	}
-	return false
+	return false, ld
 }
 
 func checkAuthentication(w http.ResponseWriter, r *http.Request, user User, session *sessions.Session) bool {

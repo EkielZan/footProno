@@ -72,7 +72,7 @@ func main() {
 	stat.Version = Version
 
 	log.Println("Version:\t", stat.Version)
-	log.Println("Running Web Server on " + serverHost + " " + serverPort)
+	log.Println("Running Web Server on http://" + serverHost + ":" + serverPort)
 	router := mux.NewRouter()
 
 	initDatabase()

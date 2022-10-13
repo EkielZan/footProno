@@ -12,7 +12,7 @@
                 <div class="description">
                   {{if .Authenticated }}
                   <br>
-                  <p>Welcome back! {{.Username}}</p>
+                  <p>Welcome back {{.LoginDetail.Firstname}} !</p>
                   <br>
                   <a href="/logout">logout</a>
                   {{end}}

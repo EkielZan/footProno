@@ -107,6 +107,7 @@ type loginDetail struct {
 
 //User
 type User struct {
-	Username      string `json:"Username"`
-	Authenticated bool   `json:"Authenticated"`
+	Username      string      `json:"Username"`
+	LoginDetail   loginDetail `json:"LoginDetail"`
+	Authenticated bool        `json:"Authenticated"`
 }
