@@ -23,6 +23,8 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 	user := getUser(session)
 	flashes := session.Flashes()
+	session.Flashes()
+	err = session.Save(r, w)
 	tpl.ExecuteTemplate(w,
 		"index.gohtml",
 		M{
@@ -31,8 +33,6 @@ func index(w http.ResponseWriter, r *http.Request) {
 			"stat":    stat,
 			"flashes": flashes,
 		})
-	session.Flashes()
-	err = session.Save(r, w)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -48,6 +48,8 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 	user := getUser(session)
 	flashes := session.Flashes()
 	//flashes :=
+	session.Flashes()
+	err = session.Save(r, w)
 	tpl.ExecuteTemplate(w,
 		"register.gohtml",
 		M{
@@ -56,8 +58,6 @@ func registerForm(w http.ResponseWriter, r *http.Request) {
 			"stat":  stat,
 			"flash": flashes,
 		})
-	session.Flashes()
-	err = session.Save(r, w)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

@@ -6,7 +6,7 @@ import (
 	"encoding/hex"
 	"log"
 	"net/http"
-	"strings"
+	"regexp"
 
 	// "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
@@ -110,23 +110,27 @@ func register(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	check := checkEmail(r.FormValue("email"))
+	email := r.FormValue("email")
+	check := isEmailValidING(email)
+	flashes := ""
+
 	if check != true {
-		session.AddFlash("email is not ending in ing.com")
 		err = session.Save(r, w)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+		flashes = "Email is not ending with ing.com or isn't correctly formatted."
+		session.AddFlash(flashes)
+		session.Save(r, w)
 		http.Redirect(w, r, "/registerForm", http.StatusFound)
 		return
+	} else {
+		log.Println("Email is fully correct now onto temporary token generation")
 	}
-}
 
-func checkEmail(email string) bool {
-	splited := strings.Split(email, "@")
-	if splited[1] == "ing.com" {
-		return true
-	}
-	return false
+}
+func isEmailValidING(e string) bool {
+	emailRegex := regexp.MustCompile(`^[a-z0-9._%+\-]+@ing.com`)
+	return emailRegex.MatchString(e)
 }
