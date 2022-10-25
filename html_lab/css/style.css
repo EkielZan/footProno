@@ -1,0 +1,119 @@
+body {
+  background: #3c454d;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.4285em;
+  color: rgba(0, 0, 0, .87);
+}
+
+.headerBox {
+  padding: 0px;
+}
+
+.menuBox {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 25% !important;
+  background: #F8F8F9;
+  line-height: 1.4285em;
+  color: rgba(0, 0, 0, .87);
+  border-radius: .28571429rem;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  padding: 0rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.project-name {
+  font-size: 25px;
+  color: white !important;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  padding: 10px 0px;
+  text-align: center;
+  justify-content: center;
+}
+
+.menu a {
+  color: rgb(0, 0, 0) !important;
+  display: inline;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ing {
+  background-color: #ee8229;
+  border-radius: 25px;
+  margin: 0px auto;
+  padding: 0px 20px;
+  width: 1250px;
+}
+
+.footer {
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+}
+
+
+
+
+.darkerCol{
+  border-radius: 25px;
+  background-color:#bd641b2f;
+}
+table{
+  width:100%;
+}
+td{
+  text-align: center ;
+}
+
+.red-arrow {
+  background: url("./img/arrow-down-thick.svg?color=red") no-repeat center center contain;
+}
+
+.fontRed {
+  color: #e43c30;
+}
+
+.fontGreen {
+  color: #0a851e;
+}
+
+.trRed {
+  background: rgb(255, 0, 0, 0.2);
+}
+
+.trGreen {
+  background: rgb(0, 255, 0, 0.2);
+}
+
+.trGreenier {
+  background: rgb(0, 255, 0, 0.4);
+}
+
+.trGreener {
+  background: rgb(0, 255, 0, 0.6);
+}
+
+.trGreenest {
+  background: rgb(0, 255, 0, 0.8);
+}
+
+table.centered {
+  float: none;
+  display: inline;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+a.inl {
+  display: inline;
+  color: #b50101 !important;
+}

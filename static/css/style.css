@@ -18,9 +18,13 @@ body {
   white-space: nowrap;
 }
 
-.ui.ing {
+.ing {
   background-color: #ee8229;
   border-radius: 25px;
+}
+
+.ui.text.ing {
+  max-width: 900px !important;
 }
 
 .red-arrow {

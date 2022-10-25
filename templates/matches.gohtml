@@ -1,7 +1,8 @@
 {{define "matches"}}
       <div class="ui row centered">
-        <div class="centered">
-          <div class="ui text container ing">
+        <div class="">
+          <!-- <div class="ui text container ing"> -->
+          <div class="ing">
             <div class="ing">
               <div class="content">
                 <div class="header">
@@ -12,7 +13,7 @@
                 <div class="description">
                   <table style="width:100%">
                     <tr>
-                      <th>ID</th>
+                      <!-- <th>ID</th> -->
                       <th>Date</th>
                       <th>Teams</th>
                       <th>Score</th>
@@ -20,9 +21,8 @@
                       <th>Stadium</th>
                     </tr>
                     {{range .matches}}
-                    <!-- TODO : change this bad one liner for generated html readability -->
                     <tr>
-                      <td>{{.ID}}</td>
+                      <!-- <td>{{.ID}}</td> -->
                       <td>{{.Date.Format "02/01/2006 15H04"}}</td>
                       <td>{{.Teama}} - {{.Teamb}}</td>
                       <td>{{.Scorea}} - {{.Scoreb}}</td>
