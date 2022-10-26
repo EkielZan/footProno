@@ -13,7 +13,7 @@ body {
 .menuBox {
   margin: 0 auto;
   margin-bottom: 10px;
-  width: 25% !important;
+  width: 20% !important;
   background: #F8F8F9;
   line-height: 1.4285em;
   color: rgba(0, 0, 0, .87);
@@ -36,6 +36,11 @@ body {
   justify-content: center;
 }
 
+.loginDetails{
+     margin: 0 auto;
+     width: 300px;
+}
+
 .menu a {
   color: rgb(0, 0, 0) !important;
   display: inline;
@@ -49,25 +54,27 @@ body {
   border-radius: 25px;
   margin: 0px auto;
   padding: 0px 20px;
-  width: 1250px;
+  width: auto;
 }
 
 .footer {
   margin: 0 auto;
   text-align: center;
   justify-content: center;
+  font-size: 10px;
+  line-height: 1.3em;
+  padding-bottom: 10px
 }
-
-
-
 
 .darkerCol{
   border-radius: 25px;
   background-color:#bd641b2f;
 }
+
 table{
   width:100%;
 }
+
 td{
   text-align: center ;
 }
@@ -86,10 +93,12 @@ td{
 
 .trRed {
   background: rgb(255, 0, 0, 0.2);
+  border-radius: 25px;
 }
 
 .trGreen {
   background: rgb(0, 255, 0, 0.2);
+  border-radius: 25px;
 }
 
 .trGreenier {

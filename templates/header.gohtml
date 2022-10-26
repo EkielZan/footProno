@@ -1,30 +1,19 @@
 {{define "header"}}
 <!doctype html>
 <html lang="en">
-
 <head>
-  <title>World Cup 2022 - Contest</title>
-  <meta charset="utf-8" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/card.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/grid.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/message.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" />
-  
-  <link rel="stylesheet" href="css/style.css">
+    <title>World Cup 2022 - Contest</title>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-  <div id="app">
-    <div class="ui grid">
-      <div class="ui row centered">
-        <div class="">
-        {{if .Authenticated }}
-          <div class="ui white message centered">
-            <a href="/">Home</a> / <a href="/gom">Matches</a> / <a href="/gt">Teams</a> / <a href="/about">About</a>
-          </div>
-        {{end}}
+    <div id="app">
+        <div class="headerBox">
+            <div class="menuBox">
+                <div class="menu">
+                    <a href="/">Home</a> / <a href="/gom">Matches</a> / <a href="/gt">Teams</a> / <a href="/about">About</a>
+                </div>
+            </div>
         </div>
-      </div>
 {{end}}

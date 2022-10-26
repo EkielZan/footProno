@@ -1,39 +1,32 @@
 {{define "matches"}}
-      <div class="ui row centered">
-        <div class="">
-          <!-- <div class="ui text container ing"> -->
-          <div class="ing">
+        <div class="headerBox">
             <div class="ing">
-              <div class="content">
-                <div class="header">
-                  <div class=" project-name">
-                    Matches
-                  </div>
+                <div>
+                    <div class="project-name">
+                        Matches
+                    </div>
                 </div>
-                <div class="description">
-                  <table style="width:100%">
-                    <tr>
-                      <!-- <th>ID</th> -->
-                      <th>Date</th>
-                      <th>Teams</th>
-                      <th>Score</th>
-                      <th>Stage</th>
-                      <th>Stadium</th>
-                    </tr>
-                    {{range .matches}}
-                    <tr>
-                      <!-- <td>{{.ID}}</td> -->
-                      <td>{{.Date.Format "02/01/2006 15H04"}}</td>
-                      <td>{{.Teama}} - {{.Teamb}}</td>
-                      <td>{{.Scorea}} - {{.Scoreb}}</td>
-                      <td>{{.Stage}}</td>
-                      <td align ="right" style="padding-right: 10px;">{{.Stadium}}</td>
-                    </tr>
-                    {{end}}
-                  </table>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th class="darkerCol">Teams</th>
+                            <th>Score</th>
+                            <th class="darkerCol">Stage</th>
+                            <th>Stadium</th>
+                        </tr>
+                        {{range .matches}}
+                        <tr>
+                          <!-- <td>{{.ID}}</td> -->
+                          <td>{{.Date.Format "02/01/2006 15H04"}}</td>
+                          <td class="darkerCol">{{.Teama}} - {{.Teamb}}</td>
+                          <td>{{.Scorea}} - {{.Scoreb}}</td>
+                          <td class="darkerCol">{{.Stage}}</td>
+                          <td>{{.Stadium}}</td>
+                        </tr>
+                        {{end}}
+                    </table>
                 </div>
-              </div>
-            </div>
 {{end}}
 
 {{template "header" .user}}

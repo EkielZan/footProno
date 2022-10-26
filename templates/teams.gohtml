@@ -1,47 +1,42 @@
 {{define "teams"}}
-      <div class="ui row centered">
-        <div class="centered">
-          <div class="ui text container ing" >
-            <div class="ing">
-              <div class="content">
-                <div class="header">
-                  <div class=" project-name">
-                    Team List
-                  </div>
+    <div class="headerBox">
+        <div class="ing">
+            <div>
+                <div class="project-name">
+                    Teams
                 </div>
-                <div class="description">
-                  <table style="width:100%">
-                    <tr>
-                      <th> Id </th>
-                      <th> Name  </th>
-                      <th> Group </th>
-                      <th> Point </th>
-                      <th> Win </th>
-                      <th> Draw </th>
-                      <th> lose </th>
-                      <th> GF </th>
-                      <th> GA </th>
-                    </tr>
-                    {{range .teams}}
-                      {{if ne .Active '1'}}
-                        <tr class="trGreen">
-                      {{else}}
-                        <tr class="trRed">
-                      {{end}}
-                        <td>{{.ID}}</td>
-                        <td>{{.Name}}</td>
-                        <td>{{.Groupid}}</td>
-                        <td>{{.Point}}</td>
-                        <td>{{.Win}}</td>
-                        <td>{{.Drawn}}</td>
-                        <td>{{.Lose}}</td>
-                        <td>{{.Goalfor}}</td>
-                        <td>{{.Goalagainst}}</td>
-                      </tr>
-                    {{end}}
-                  </table>
-                </div>
-              </div>
+            </div>
+            <div>
+              <table>
+                <tr>
+                  <th> Id </th>
+                  <th class="darkerCol"> Name  </th>
+                  <th> Group </th>
+                  <th class="darkerCol"> Point </th>
+                  <th> Win </th>
+                  <th class="darkerCol"> Draw </th>
+                  <th> lose </th>
+                  <th class="darkerCol"> GF </th>
+                  <th> GA </th>
+                </tr>
+                {{range .teams}}
+                  {{if ne .Active '1'}}
+                    <tr class="trGreen">
+                  {{else}}
+                    <tr class="trRed">
+                  {{end}}
+                    <td class="darkerCol">{{.ID}}</td>
+                    <td>{{.Name}}</td>
+                    <td class="darkerCol">{{.Groupid}}</td>
+                    <td>{{.Point}}</td>
+                    <td class="darkerCol">{{.Win}}</td>
+                    <td>{{.Drawn}}</td>
+                    <td class="darkerCol">{{.Lose}}</td>
+                    <td>{{.Goalfor}}</td>
+                    <td class="darkerCol">{{.Goalagainst}}</td>
+                  </tr>
+                {{end}}
+              </table>
             </div>
 {{end}}
 
