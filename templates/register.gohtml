@@ -1,28 +1,28 @@
 {{define "register"}}
-      <div class="ui row centered">
-        <div class="centered">
-          <div class="ui text container ing">
-            <div class="ing">
-              <div class="content">
-                <div class="header">
-                  <div class=" project-name">
-                    Register
-                  </div>
+        <!-- start here  -->
+        <div class="ing">
+            <div class="headerBox">
+                <div>
+                    <div class="project-name">
+                        Register
+                    </div>
                 </div>
-                <div class="description">
-                  <p>This is where you  Register your account<br>
-                  Only ing email are allowd<br>
-                  <p>Please enter your email and wait for a temporary personna access token.</p>
+            <div class="headerBox">
+                <div class="registerDetails">
+              <p>Here you can register an account.<br>
+                  Only ing email are allowed.<br>
+                  <p>Please enter your email and wait to get a temporary personnal access token in your mail.</p>
                   <form action="/register" method="POST">
                       <input type="text" name="email" placeholder="E-mail"><br><br>
                       <input type="submit" value="Submit">
-                  </form>
-                </div><br>
-                  {{ range $f := .flash }}
+                  </form><br>
+                {{ range $f := .flash }}
                   <div class="alert alert-danger">{{ $f }}</div>
-                  {{ end }}
-              </div>
+                {{ end }}
+                </div>
             </div>
+        </div>
+        <!-- end here  -->
 {{end}}
 
 {{template "header" .user}}

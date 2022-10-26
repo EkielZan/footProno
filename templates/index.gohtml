@@ -24,6 +24,9 @@
                     </form></br>
                     If not already, <a href="/registerForm"> Register! </a></br>
                 {{ end }}
+                {{ range $f := .flash }}
+                  <div class="alert alert-danger">{{ $f }}</div>
+                {{ end }}
                 </div>
             </div>
         </div>
