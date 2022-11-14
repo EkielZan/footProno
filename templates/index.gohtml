@@ -6,6 +6,9 @@
                     <div class="project-name">
                         Login
                     </div>
+                    <div class="centerImg" style="display: flex; justify-content: center;">
+                        <img src="img/wclogo.png" style="height: 100px;">
+                    </div>
                 </div>
             <div class="headerBox">
                 <div class="loginDetails">
@@ -15,7 +18,7 @@
               <br>
               <a href="/logout">logout</a>
               {{end}}
-                {{ if not .Authenticated }}
+              {{ if not .Authenticated }}
                     <p>Please enter your login information.</p>
                     <form action="/login" method="POST">
                         <input type="text" name="username" placeholder="E-mail"><br><br>
@@ -23,10 +26,13 @@
                         <input type="submit" value="Submit">
                     </form></br>
                     If not already, <a href="/registerForm"> Register! </a></br>
-                {{ end }}
-                {{ range $f := .flash }}
+              {{ end }}
+                <div>
+                <p> I'm proposing this event only for fun. My first thought was to give up on this to avoid misinterpretation about any support of slavery, racism or anti-LGBTQ+ rights and other human rights that are and will be flouted. 
+                </div>
+              {{ range $f := .flash }}
                   <div class="alert alert-danger">{{ $f }}</div>
-                {{ end }}
+              {{ end }}
                 </div>
             </div>
         </div>

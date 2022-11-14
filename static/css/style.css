@@ -36,14 +36,19 @@ body {
   justify-content: center;
 }
 
-.loginDetails{
-     margin: 0 auto;
-     width: 300px;
+.loginDetails {
+  margin: 0 auto;
+  width: 300px;
 }
 
-.registerDetails{
-     margin: 0 auto;
-     width: 400px;
+.registerDetails {
+  margin: 0 auto;
+  width: 400px;
+}
+
+.centerImg {
+  display: flex;
+  justify-content: center;
 }
 
 .menu a {
@@ -71,17 +76,17 @@ body {
   padding-bottom: 10px
 }
 
-.darkerCol{
+.darkerCol {
   border-radius: 25px;
-  background-color:#bd641b2f;
+  background-color: #bd641b2f;
 }
 
-table{
-  width:100%;
+table {
+  width: 100%;
 }
 
-td{
-  text-align: center ;
+td {
+  text-align: center;
 }
 
 .red-arrow {

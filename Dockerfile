@@ -1,24 +1,32 @@
-FROM golang:1.13 AS builder
+FROM golang:1.18-alpine AS builder
 ARG VERSION=0.0.1
 WORKDIR /go/src/gitlab.com/EkielZan/footProno
+COPY build.sh build.sh
 COPY src src
+COPY go.mod go.mod
+COPY go.sum go.sum
 COPY healthcheck healthcheck
-COPY go.mod src/
-COPY go.mod healthcheck/
 #RUN go install gitlab.com/EkielZan/footProno
-RUN echo $VERSION && \
+RUN chmod +x ./build.sh && \
+    apk add gcc musl-dev && \
+    ls -l && \
     cd src && \
-    go install gitlab.com/EkielZan/footProno && \
-    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags="-X main.Version=$VERSION" -o ../bin/footProno .
-RUN cd healthcheck && \
-    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ../bin/healthcheck
+    echo "Build Main Binaries" && \
+    CGO_ENABLED=1 GOOS=linux go build -installsuffix cgo -v -ldflags="-X main.Version=Test" -o ../bin/footProno . && \
+    cd ../healthcheck && \
+    echo "Build Healthcheck Binaries" && \
+    CGO_ENABLED=0 GOOS=linux go build -installsuffix cgo -v -o ../bin/healthcheck && \
+    cd .. && \
+    ls -l bin && \
+    ls -l /go/src/gitlab.com/EkielZan/footProno/bin/* 
 
-FROM scratch
-COPY --from=builder /go/src/gitlab.com/EkielZan/footProno/bin/* /    
-ADD .env /
-ADD static static
-ADD ressources ressources
-ADD templates templates
-ADD certs certs
+FROM alpine
+WORKDIR /
+COPY --from=builder /go/src/gitlab.com/EkielZan/footProno/bin/footProno /footProno    
+COPY --from=builder /go/src/gitlab.com/EkielZan/footProno/bin/healthcheck /healthcheck
+COPY .env .env
+COPY static static
+COPY templates templates    
+COPY DB DB
 CMD ["/footProno"]
 HEALTHCHECK --interval=10s --timeout=5s --start-period=5s --retries=3 CMD [ "/healthcheck" ]

@@ -12,7 +12,12 @@
         <div class="headerBox">
             <div class="menuBox">
                 <div class="menu">
+                {{ if not .Authenticated }}
+                    <a href="/">Home</a> / <a href="/registerForm">Register</a> / <a href="/about">About</a>
+                {{ end }}
+                {{ if .Authenticated }}
                     <a href="/">Home</a> / <a href="/gom">Matches</a> / <a href="/gt">Teams</a> / <a href="/about">About</a>
+                {{ end }}
                 </div>
             </div>
         </div>

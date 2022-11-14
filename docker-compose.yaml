@@ -1,0 +1,32 @@
+---
+version: "3"
+services:
+  footprono:
+    image: footprono:latest
+    container_name: footprono
+    hostname: footprono
+    environment:
+      - TZ=Europe/Brussels
+#    network_mode: bridge
+    networks:
+      - proxy
+    ports:
+      - 4000:4000/tcp
+    restart: unless-stopped
+    volumes:
+      - /data/footprono/dbfile:/dbfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.footprono.entrypoints=http"
+      - "traefik.http.routers.footprono.rule=Host(`footprono.ekielzan.com`)"
+      - "traefik.http.middlewares.footprono-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.footprono.middlewares=footprono-https-redirect"
+      - "traefik.http.routers.footprono-secure.entrypoints=https"
+      - "traefik.http.routers.footprono-secure.rule=Host(`footprono.ekielzan.com`)"
+      - "traefik.http.routers.footprono-secure.tls=true"
+      - "traefik.http.routers.footprono-secure.service=footprono"
+      - "traefik.http.services.footprono.loadbalancer.server.port=4000"
+      - "traefik.docker.network=proxy"
+networks:
+  proxy:
+    external: true

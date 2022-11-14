@@ -16,7 +16,7 @@ import (
 var Version = "Development"
 
 //VAR SQLITE DB File
-var DBFile = "footprono.sqlite"
+var DBFile = "dbfile/footprono.sqlite"
 
 // SQL Driver
 var SDRIVER = "sqlite3"
