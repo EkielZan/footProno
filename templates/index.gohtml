@@ -12,27 +12,29 @@
                 </div>
             <div class="headerBox">
                 <div class="loginDetails">
-              {{if .Authenticated }}
-              <br>
-              <p>Welcome back {{.LoginDetail.Firstname}} !</p>
-              <br>
-              <a href="/logout">logout</a>
-              {{end}}
-              {{ if not .Authenticated }}
-                    <p>Please enter your login information.</p>
-                    <form action="/login" method="POST">
-                        <input type="text" name="username" placeholder="E-mail"><br><br>
-                        <input type="password" name="code" placeholder="Password" required><br><br>
-                        <input type="submit" value="Submit">
-                    </form></br>
-                    If not already, <a href="/registerForm"> Register! </a></br>
-              {{ end }}
-                <div>
-                <p> I'm proposing this event only for fun. My first thought was to give up on this to avoid misinterpretation about any support of slavery, racism or anti-LGBTQ+ rights and other human rights that are and will be flouted. 
+                    {{if .Authenticated }}
+                    <br>
+                    <p>Welcome back {{.LoginDetail.Firstname}} !</p>
+                    <br>
+                    <a href="/logout">logout</a>
+                    {{end}}
+                    {{ if not .Authenticated }}
+                            <p>Please enter your login information.</p>
+                            <form action="/login" method="POST">
+                                <input type="text" name="username" placeholder="E-mail"><br><br>
+                                <input type="password" name="code" placeholder="Password" required><br><br>
+                                <input type="submit" value="Submit">
+                            </form></br>
+                            If not already, <a href="/registerForm"> Register! </a></br>
+                    {{ end }}
+                    {{if .flash }}
+                        {{ range $f := .flash }}
+                            <div class="alert alert-danger">{{ $f }}</div>
+                        {{ end }}
+                    {{ end }}
                 </div>
-              {{ range $f := .flash }}
-                  <div class="alert alert-danger">{{ $f }}</div>
-              {{ end }}
+                <div class="notice">
+                    <p> I'm proposing this event only for fun. My first thought was to give up on this to avoid misinterpretation about any support of slavery, racism or anti-LGBTQ+ rights and other human rights that are and will be flouted. 
                 </div>
             </div>
         </div>

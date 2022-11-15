@@ -136,3 +136,11 @@ a.inl {
   display: inline;
   color: #b50101 !important;
 }
+
+.notice {
+  padding: 15px;
+  background-color: #d7ab5b70;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
