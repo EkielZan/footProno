@@ -1,0 +1,71 @@
+{{define "prons"}}
+        <div class="headerBox">
+            <div class="ing">
+                <div>
+                    <div class="project-name">
+                       Next Pronostics
+                    </div>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th class="darkerCol">Teams</th>
+                            <th>Home team</th>
+                            <th class="darkerCol">Away team</th>
+                            <th>Stage</th>
+                            <th></th>
+                        </tr>
+                        {{range $p := .prons}}
+                        <tr>
+                        <form action="/addPronos" method="POST">
+                        <input type="hidden" value="{{.MatchID}}" name="match-{{.MatchID}}">
+                          <td>{{.Date.Format "02/01/2006 15H04"}}</td>
+                          <td class="darkerCol">{{.Team1}} - {{.Team2}}</td>
+                          <td><input type="number" min="0" max="20" step="1" value ="{{.ScoreT1}}" name="ScoreT1-{{.Team1}}" id="ScoreT1-{{.Team1}}"></td>
+                          <td class="darkerCol"><input type="number" min="0" max="20" step="1" value ="{{.ScoreT2}}" name="ScoreT2-{{.Team2}}" id="ScoreT2-{{.Team2}}"></td>
+                          <td>{{.Stage}}</td>
+                          <td><input type="submit" value="OK"></td>
+                          </form>
+                        </tr>
+                        {{end}}
+                    </table>
+                </div>
+{{end}}
+
+{{define "donePronos"}}
+<div class="headerBox">
+<br>
+            <div class="ing">
+                <div>
+                    <div class="project-name">
+                        Past Pronostics 
+                    </div>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th class="darkerCol">Teams</th>
+                            <th>Home team</th>
+                            <th class="darkerCol">Away team</th>
+                            <th>Stage</th>
+                        </tr>
+                        {{range .dProns}}
+                        <tr>
+                          <!-- <td>{{.MatchID}}</td> -->
+                          <td>{{.Date.Format "02/01/2006 15H04"}}</td>
+                          <td class="darkerCol">{{.Team1}} - {{.Team2}}</td>
+                          <td>{{.ScoreT1}}</td>
+                          <td class="darkerCol">{{.ScoreT2}}</td>
+                          <td>{{.Stage}}</td>
+                        </tr>
+                        {{end}}
+                    </table>
+                </div>
+{{end}}
+
+{{template "header" .user}}
+{{template "prons" .}}
+{{template "donePronos" .}}
+{{template "footer" .stat}}

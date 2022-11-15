@@ -21,7 +21,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	check, ld := checkLogin(r.FormValue("username"), r.FormValue("code"))
-	if check != true {
+	if !check {
 		session.AddFlash("Password is incorrect")
 		err = session.Save(r, w)
 		if err != nil {
@@ -115,7 +115,7 @@ func register(w http.ResponseWriter, r *http.Request) {
 	check := isEmailValidING(email)
 	flashes := ""
 
-	if check != true {
+	if !check {
 		err = session.Save(r, w)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)

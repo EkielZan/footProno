@@ -12,10 +12,20 @@ type Pronostic struct {
 	ScoreT2 int       `json:"ScoreT2"`
 	ScoreP2 int       `json:"ScoreP2"`
 	Date    time.Time `json:"Date"`
-	Stage   int       `json:"Stage"`
+	Stage   string    `json:"Stage"`
 	Winner  string    `json:"Winner"`
 	ScoreP  int       `json:"ScoreP"`
 	Done    bool      `json:"Done"`
+}
+
+type ShortProno struct {
+	UserID  int  `json:"UserID"`
+	MatchID int  `json:"MatchID"`
+	ScoreT1 int  `json:"ScoreT1"`
+	ScoreP1 int  `json:"ScoreP1"`
+	ScoreT2 int  `json:"ScoreT2"`
+	ScoreP2 int  `json:"ScoreP2"`
+	Done    bool `json:"Done"`
 }
 
 //Match
