@@ -41,14 +41,26 @@ func index(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
+		rows2, _ := db.Query("select id,name from teams")
+		var champions []Champion
+		for rows2.Next() {
+			var champion Champion
+			rows2.Scan(&champion.ID, &champion.Name)
+			if player.Champion == champion.Name {
+				champion.Selected = true
+			}
+			champions = append(champions, champion)
+		}
+
 		err = tpl.ExecuteTemplate(w,
 			"indexlogged.gohtml",
 			M{
 				// We can pass as many things as we like
-				"user":   user,
-				"player": player,
-				"stat":   stat,
-				"flash":  flashes,
+				"user":      user,
+				"player":    player,
+				"champions": champions,
+				"stat":      stat,
+				"flash":     flashes,
 			})
 		if err != nil {
 			log.Println(err.Error())
@@ -209,6 +221,43 @@ func getTeams(w http.ResponseWriter, r *http.Request) {
 			"user":  user,
 			"stat":  stat,
 		})
+}
+
+func updateStuff(w http.ResponseWriter, r *http.Request) {
+	session, err := store.Get(r, cookieName)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	user := getUser(session)
+	if !checkAuthentication(w, r, user, session) {
+		return
+	}
+
+	stuff := r.FormValue("stuff")
+	target := ""
+	switch stuff {
+	case "champion":
+		target = "/"
+	}
+
+	champion := r.FormValue("champion")
+
+	db, _ := sql.Open(SDRIVER, SCON)
+	defer db.Close()
+	stm, _ := db.Prepare("UPDATE users set champion = ? where id=?;")
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	_ = stm.QueryRow(champion, user.LoginDetail.Userid).Scan()
+
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	http.Redirect(w, r, target, http.StatusFound)
+
 }
 
 func addPronos(w http.ResponseWriter, r *http.Request) {

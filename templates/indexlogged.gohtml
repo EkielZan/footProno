@@ -16,8 +16,16 @@
                         {{if eq "" .player.Champion }}
                         <p>You still have to choose your champion.</p>
                         {{else}}
-                        <p>You have choose <b>{{.player.Champion}}</b> as your champion.</p>
-                        {{end}}
+                        <form action="/updateStuff">
+                        <input type="hidden" name="stuff" id="stuff" value="champion²">
+                        <p>You have choose <select name="champion" id="champion">
+                                {{range .champions}}
+                                        <option value="{{.ID}}" {{ if .Selected }}selected{{end}}>{{.Name}}</option>
+                                {{end}}
+                            </select> as your champion.</p>
+                            <input type="submit" value="Submit" />
+                        </form>
+                        {{end}}                 
                         <p>
                         You have guesse correctly : 
                         <table>

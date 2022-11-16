@@ -56,6 +56,13 @@ type Team struct {
 	Goalagainst int    `json:"GAgainst"`
 }
 
+//Champion
+type Champion struct {
+	ID       int    `json:"ID"`
+	Name     string `json:"Name"`
+	Selected bool   `json:"Selected"`
+}
+
 //Stadium
 type Stadium struct {
 	ID   int    `json:"ID"`

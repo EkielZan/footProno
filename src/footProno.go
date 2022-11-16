@@ -89,6 +89,7 @@ func main() {
 	router.HandleFunc("/registerDone", registerDone)
 	router.HandleFunc("/logout", logout)
 	router.HandleFunc("/prons", getPronostics)
+	router.HandleFunc("/updateStuff", updateStuff)
 	router.HandleFunc("/about", about)
 
 	fileServer := http.FileServer(http.Dir("static"))
