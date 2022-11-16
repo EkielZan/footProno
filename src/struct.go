@@ -95,7 +95,7 @@ type Player struct {
 	Firstname      string      `json:"Firstname"`
 	Lastname       string      `json:"Lastname"`
 	Score          int         `json:"Score"`
-	Champion       int         `json:"Champion"`
+	Champion       string      `json:"Champion"`
 	Champchange    int         `json:"Champchange"`
 	Rank           int         `json:"Rank"`
 	Position       int         `json:"Position"`
@@ -109,10 +109,10 @@ type Player struct {
 
 //loginDetail
 type loginDetail struct {
-	Password  string `json:"Password"`
 	Firstname string `json:"Firstname"`
 	Lastname  string `json:"Lastname"`
 	Userid    int    `json:"Userid"`
+	Status    string `json:"Status"`
 }
 
 //User

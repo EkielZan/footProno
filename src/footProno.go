@@ -30,7 +30,6 @@ var FTABLE = "DB/data.sql"
 
 //Global Access variables
 var stat Stats
-var config Config
 var cookieName = "footProno-secure-cookie"
 
 // store will hold all session data
@@ -87,6 +86,7 @@ func main() {
 	router.HandleFunc("/addPronos", addPronos)
 	router.HandleFunc("/registerForm", registerForm)
 	router.HandleFunc("/register", register)
+	router.HandleFunc("/registerDone", registerDone)
 	router.HandleFunc("/logout", logout)
 	router.HandleFunc("/prons", getPronostics)
 	router.HandleFunc("/about", about)

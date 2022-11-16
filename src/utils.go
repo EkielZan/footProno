@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bytes"
+	"crypto/tls"
 	"database/sql"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -11,6 +14,7 @@ import (
 	"github.com/gorilla/sessions"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/qustavo/dotsql"
+	"gopkg.in/gomail.v2"
 )
 
 //Respond Write to the httpWrite the content of data
@@ -135,3 +139,46 @@ func updateJavaScript(port string, host string) {
 	}
 }
 */
+
+func sendMail(to string, token string) {
+
+	from := "blacksadum@gmail.com"
+	password := os.Getenv("APP_TOKEN")
+
+	m := gomail.NewMessage()
+
+	// Set E-Mail sender
+	m.SetHeader("From", "blacksadum@gmail.com", "footProno Manager")
+
+	// Set E-Mail receivers
+	m.SetHeader("To", to)
+
+	// Set E-Mail subject
+	m.SetHeader("Subject", "FootProno Temporary Token")
+
+	var t bytes.Buffer
+
+	tpl.ExecuteTemplate(&t,
+		"mail.gohtml",
+		M{
+			"user":  to,
+			"token": token,
+		})
+
+	result := t.String()
+	// Set E-Mail body. You can set plain text or html with text/html
+	m.SetBody("text/html", result)
+
+	// Settings for SMTP server
+	d := gomail.NewDialer("smtp.gmail.com", 587, from, password)
+
+	// This is only needed when SSL/TLS certificate is not valid on server.
+	// In production this should be set to false.
+	d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
+
+	// Now send E-Mail
+	if err := d.DialAndSend(m); err != nil {
+		fmt.Println(err)
+		panic(err)
+	}
+}

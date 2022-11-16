@@ -1,6 +1,6 @@
 --name: fill-tables
 INSERT INTO `config` (`lastmatch`,`refresh`,`stage`) VALUES (1,0,1);
-INSERT INTO `users` (`id`,`firstname`,`lastname`,`password`,`email`,`score`,`champion`,`champchange`,`position`,`positionbefore`,`malus`,`bonus`,`ngoodscores`,`ngoodwinner`) VALUES (1,'Gilles','Dejeneffe','9dc08e4033827c93f48cabc2f61e3f9817b51a7f1bcfa513a7537dcbc5d162e7','test@test.com',0,2,0,1,1,0,0,0,0);
+INSERT INTO `users` (`id`,`token`,`firstname`,`lastname`,`password`,`email`,`score`,`champion`,`champchange`,`position`,`positionbefore`,`malus`,`bonus`,`ngoodscores`,`ngoodwinner`) VALUES (1,'','Gilles','Dejeneffe','9dc08e4033827c93f48cabc2f61e3f9817b51a7f1bcfa513a7537dcbc5d162e7','test@test.com',0,2,0,1,1,0,0,0,0);
 INSERT INTO `teams` (`id`,`name`,`active`,`groupid`,`point`,`win`,`drawn`,`lose`,`goalfor`,`goalagainst`) VALUES (1,'Qatar',0,'A1',0,0,0,0,0,0);
 INSERT INTO `teams` (`id`,`name`,`active`,`groupid`,`point`,`win`,`drawn`,`lose`,`goalfor`,`goalagainst`) VALUES (2,'Ecuador',0,'A2',0,0,0,0,0,0);
 INSERT INTO `teams` (`id`,`name`,`active`,`groupid`,`point`,`win`,`drawn`,`lose`,`goalfor`,`goalagainst`) VALUES (3,'Senegal',0,'A3',0,0,0,0,0,0);

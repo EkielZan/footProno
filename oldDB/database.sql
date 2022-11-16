@@ -27,7 +27,7 @@ CREATE TABLE `matches` (
 );
 
 CREATE TABLE `users` (
-	`id` INT NOT NULL AUTO_INCREMENT,
+	`id` INT NOT NULL,
 	`firstname` varchar(45) NOT NULL,
 	`lastname` varchar(45) NOT NULL,
 	`score` INT NOT NULL DEFAULT '0',

@@ -1,4 +1,4 @@
-{{define "register"}}
+{{define "registerForm"}}
         <!-- start here  -->
         <div class="ing">
             <div class="headerBox">
@@ -13,6 +13,9 @@
                   Only ing email are allowed.<br>
                   <p>Please enter your email and wait to get a temporary personnal access token in your mail.</p>
                   <form action="/register" method="POST">
+                      <input type="text" name="firstname" placeholder="Firstname"><br><br>
+                      <input type="text" name="lastname" placeholder="Lastname"><br><br>
+                      <input type="password" name="password" placeholder="password"><br><br>
                       <input type="text" name="email" placeholder="E-mail"><br><br>
                       <input type="submit" value="Submit">
                   </form><br>
@@ -26,5 +29,5 @@
 {{end}}
 
 {{template "header" .user}}
-{{template "register" .}}
+{{template "registerForm" .}}
 {{template "footer" .stat}}

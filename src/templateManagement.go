@@ -28,41 +28,44 @@ func index(w http.ResponseWriter, r *http.Request) {
 	flashes := session.Flashes()
 	session.Flashes()
 	err = session.Save(r, w)
-	tpl.ExecuteTemplate(w,
-		"index.gohtml",
-		M{
-			// We can pass as many things as we like
-			"user":  user,
-			"stat":  stat,
-			"flash": flashes,
-		})
+	if auth := user.Authenticated; auth {
+		db, _ := sql.Open(SDRIVER, SCON)
+		defer db.Close()
+		rows, _ := db.Query("select u.id,firstname,lastname,score,t.name,position,malus,bonus,ngoodscores,ngoodwinner,token from users u LEFT JOIN teams t on t.id = u.champion where u.id==?;", user.LoginDetail.Userid)
+		var player Player
+		token := ""
+		for rows.Next() {
+			rows.Scan(&player.ID, &player.Firstname, &player.Lastname, &player.Score, &player.Champion, &player.Position, &player.Malus, &player.Bonus, &player.Ngoodscores, &player.Ngoodwinner, &token)
+			if token != "" {
+				player.Status = "token"
+			}
+		}
+
+		err = tpl.ExecuteTemplate(w,
+			"indexlogged.gohtml",
+			M{
+				// We can pass as many things as we like
+				"user":   user,
+				"player": player,
+				"stat":   stat,
+				"flash":  flashes,
+			})
+		if err != nil {
+			log.Println(err.Error())
+		}
+
+	} else {
+		tpl.ExecuteTemplate(w,
+			"index.gohtml",
+			M{
+				// We can pass as many things as we like
+				"user":  user,
+				"stat":  stat,
+				"flash": flashes,
+			})
+	}
 	if err != nil {
 		log.Println(err.Error())
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-}
-
-func registerForm(w http.ResponseWriter, r *http.Request) {
-	session, err := store.Get(r, cookieName)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	user := getUser(session)
-	flashes := session.Flashes()
-	//flashes :=
-	session.Flashes()
-	err = session.Save(r, w)
-	tpl.ExecuteTemplate(w,
-		"register.gohtml",
-		M{
-			// We can pass as many things as we like
-			"user":  user,
-			"stat":  stat,
-			"flash": flashes,
-		})
-	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
@@ -253,26 +256,6 @@ func addPronos(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	http.Redirect(w, r, "/prons", http.StatusFound)
-}
-
-func doRegister(w http.ResponseWriter, r *http.Request) {
-	// Manage Sessions and authentication
-	session, err := store.Get(r, cookieName)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	user := getUser(session)
-	if !checkAuthentication(w, r, user, session) {
-		return
-	}
-	tpl.ExecuteTemplate(w,
-		"register.gohtml",
-		M{
-			"user": user,
-			"stat": stat,
-		})
-
 }
 
 func about(w http.ResponseWriter, r *http.Request) {

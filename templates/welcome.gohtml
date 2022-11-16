@@ -1,0 +1,25 @@
+{{define "registerDone"}}
+        <!-- start here  -->
+        <div class="ing">
+            <div class="headerBox">
+                <div>
+                    <div class="project-name">
+                        Register
+                    </div>
+                </div>
+            <div class="headerBox">
+                <div class="registerDetails">
+              <p>Hi.<br>
+                  Thanks for Registering.<br>
+                  <p>Please check your email and wait to get the temporary personnal access token in your mail.</p>
+                  <p>Then use this temporary personnal access token as password in the login page to continue and enjoy.</p>
+                  <p><a href="/">Login page</p>
+                </div>
+            </div>
+        </div>
+        <!-- end here  -->
+{{end}}
+
+{{template "header" .user}}
+{{template "registerDone" .}}
+{{template "footer" .stat}}

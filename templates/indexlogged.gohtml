@@ -1,0 +1,41 @@
+{{define "logged"}}
+        <!-- start here  -->
+        <div class="ing">
+            <div class="headerBox">
+                <div>
+                    <div class="project-name">
+                        Player Info
+                    </div>
+                </div>
+            <div class="headerBox">
+                <div class="loginDetails">
+                    {{if .user.Authenticated }}
+                        <br>
+                        <p>Welcome back {{.player.Firstname}} !</p>
+                        <p>Your are at the  {{.player.Position}} position with a score of {{.player.Score}}.</p>
+                        {{if eq "" .player.Champion }}
+                        <p>You still have to choose your champion.</p>
+                        {{else}}
+                        <p>You have choose <b>{{.player.Champion}}</b> as your champion.</p>
+                        {{end}}
+                        <p>
+                        You have guesse correctly : 
+                        <table>
+                        <tr>
+                        <td>Match Score</td><td>{{.player.Ngoodscores}}</td>
+                        <tr></tr>
+                        <td>Match winner</td><td>{{.player.Ngoodwinner}}</td>
+                        </tr>
+                        </table>
+                        </p>
+                    {{end}}
+                    <a href="/logout">logout</a>
+                </div>
+            </div>
+        </div>
+        <!-- end here  -->
+{{end}}
+
+{{template "header" .user}}
+{{template "logged" .}}
+{{template "footer" .stat}}

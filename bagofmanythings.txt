@@ -1,0 +1,7 @@
+                    {{ if  eq "token" .player.Status }}
+                            <p>Please fill in your token to continue</p>
+                            <form action="/validateToken" method="POST">
+                                <input type="token" name="token" placeholder="token" required><br><br>
+                                <input type="submit" value="Submit">
+                            </form></br>
+                    {{ end }}

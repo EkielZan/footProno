@@ -33,10 +33,11 @@ CREATE TABLE `matches` (
 
 CREATE TABLE `users` (
 	`id` INT NOT NULL ,
+	`token` varchar(80) DEFAULT NULL,
 	`firstname` varchar(45) NOT NULL,
 	`lastname` varchar(45) NOT NULL,
-	`password` varchar(45) NOT NULL,
-	`email` varchar(75) NOT NULL,
+	`password` varchar(80) NOT NULL,
+	`email` varchar(80) NOT NULL,
 	`score` INT NOT NULL DEFAULT '0',
 	`champion` INT NOT NULL DEFAULT '0',
 	`champchange` INT NOT NULL DEFAULT '0',
@@ -51,7 +52,7 @@ CREATE TABLE `users` (
 );
 
 CREATE TABLE `stadium` (
-	`id` INT NOT NULL ,
+	`id` INT NOT NULL,
 	`name` varchar(45) NOT NULL,
 	PRIMARY KEY (`id`)
 );

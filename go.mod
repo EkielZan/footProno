@@ -10,4 +10,6 @@ require (
 	github.com/joho/godotenv v1.3.0
 	github.com/mattn/go-sqlite3 v1.14.15
 	github.com/qustavo/dotsql v1.1.0
+	github.com/wagslane/go-password-validator v0.3.0
+	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 )
