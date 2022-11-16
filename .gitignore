@@ -1,3 +1,4 @@
 footProno
 bin/
 footprono.sqlite
+.env
