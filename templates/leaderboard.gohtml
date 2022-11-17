@@ -1,52 +1,31 @@
-{{define "leaderboard"}}
-      <div class="ui row centered">
-        <div class="centered">
-          <!-- <div class="ui text container ing"> -->
-          <div class="ing">
+{{define "players"}}
+        <div class="headerBox">
             <div class="ing">
-              <div class="content">
-                <div class="header">
-                  <div class=" project-name">
-                    Leaderboard
-                  </div>
+                <div>
+                    <div class="project-name">
+                        Matches
+                    </div>
                 </div>
-                <div class="description">
-                  <table style="width:100%">
-                    <tr>
-                      <th>Pos</th>
-                      <th>Name</th>
-                      <th>Score</th>
-                      <th>Bonus</th>
-                      <th>Champion</th>
-                    </tr>
-                    {{range .scoredPlayers}}
-                    <tr>
-                      <td>{{.Rank}}</td>
-                      <td><a href="scp/{{.ID}}">{{.Name}}</a></td>
-                      <td>{{.Score}}</td>
-                      <td>{{if .ChampActive}}(+5){{end}}</td>
-                      <td {{if not .ChampActive}} class="strike" {{end}} >{{.Champ}}</td>
-                    </tr>
-                    {{end}}
-                  </table>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Position</th>
+                            <th class="darkerCol">Name</th>
+                            <th>Score</th>
+                            <th class="darkerCol">Champion</th>
+                        </tr>
+                        {{range .players}}
+                        <tr>
+                          <td>{{.Position}}</td>
+                          <td class="darkerCol">{{.Firstname}} {{.Lastname}}</td>
+                          <td>{{.Score}}</td>
+                          <td class="darkerCol">{{.Champion}}</td>
+                        </tr>
+                        {{end}}
+                    </table>
                 </div>
-              </div>
-            </div>
-            <br>
-            <div class="ing">
-              <div class="content">
-                <div class="header">
-                  <div class=" project-name">
-                    Statistics
-                  </div>
-                </div>
-                <div class="description">
-                  Number of scored goals : {{.stat.ButReal}}<br>
-                </div>
-              </div>
-            </div>
 {{end}}
 
 {{template "header" .user}}
-{{template "leaderboard" .user}}
+{{template "players" .}}
 {{template "footer" .stat}}

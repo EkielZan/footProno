@@ -47,6 +47,11 @@ input[type="number"] {
   width: 300px;
 }
 
+.playerDetails{
+     margin: 0 auto;
+     width: 450px;
+}
+
 .registerDetails {
   margin: 0 auto;
   width: 400px;

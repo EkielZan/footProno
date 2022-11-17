@@ -41,7 +41,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		rows2, _ := db.Query("select id,name from teams")
+		rows2, _ := db.Query("select id,name from teams order by name;")
 		var champions []Champion
 		for rows2.Next() {
 			var champion Champion
@@ -116,6 +116,43 @@ func getOfficialMatches(w http.ResponseWriter, r *http.Request) {
 			"user":    user,
 			"stat":    stat,
 		})
+}
+
+//leaderboard.gohtml
+func getLeaderBoard(w http.ResponseWriter, r *http.Request) {
+	// Manage Sessions and authentication
+	session, err := store.Get(r, cookieName)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	user := getUser(session)
+	if !checkAuthentication(w, r, user, session) {
+		return
+	}
+
+	// Create the database handle, confirm driver is present
+	//FORNOSQL db, _ := sql.Open("mysql", "root:@tcp(lilnas:3306)/footprono?parseTime=true")
+	db, _ := sql.Open(SDRIVER, SCON)
+
+	defer db.Close()
+	//`id`,`stage`,`date`,`teama`,`scorea`,`pena`,`teamb`,`scoreb`,`penb`,`stadium` -> Matches
+	rows, _ := db.Query("select u.id,firstname,lastname,score,t.name,position from users u LEFT JOIN teams t on t.id = u.champion order by position;")
+	var players []Player
+	for rows.Next() {
+		var player Player
+		rows.Scan(&player.ID, &player.Firstname, &player.Lastname, &player.Score, &player.Champion, &player.Position)
+		players = append(players, player)
+	}
+	// Pass Struct and execute template for display
+	tpl.ExecuteTemplate(w,
+		"leaderboard.gohtml",
+		M{
+			"players": players,
+			"user":    user,
+			"stat":    stat,
+		})
+
 }
 
 func getPronostics(w http.ResponseWriter, r *http.Request) {
@@ -211,6 +248,7 @@ func getTeams(w http.ResponseWriter, r *http.Request) {
 	for rows.Next() {
 		var team Team
 		rows.Scan(&team.ID, &team.Name, &team.Active, &team.Groupid, &team.Point, &team.Win, &team.Drawn, &team.Lose, &team.Goalfor, &team.Goalagainst)
+		team.Flag = getFlag(team.Name)
 		teams = append(teams, team)
 	}
 	// Pass Struct and execute template for display
@@ -236,6 +274,8 @@ func updateStuff(w http.ResponseWriter, r *http.Request) {
 
 	stuff := r.FormValue("stuff")
 	target := ""
+
+	//TODO Heavy Stuff going on here. Must put in the switch, the prepared statement and the target values not only the "action" to do
 	switch stuff {
 	case "champion":
 		target = "/"

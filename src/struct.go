@@ -54,6 +54,7 @@ type Team struct {
 	Lose        int    `json:"Lose"`
 	Goalfor     int    `json:"GFor"`
 	Goalagainst int    `json:"GAgainst"`
+	Flag        string `json:"Flag"`
 }
 
 //Champion

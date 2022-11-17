@@ -9,7 +9,6 @@
             <div>
               <table>
                 <tr>
-                  <th> Id </th>
                   <th class="darkerCol"> Name  </th>
                   <th> Group </th>
                   <th class="darkerCol"> Point </th>
@@ -25,8 +24,7 @@
                   {{else}}
                     <tr class="trRed">
                   {{end}}
-                    <td class="darkerCol">{{.ID}}</td>
-                    <td>{{.Name}}</td>
+                    <td>{{.Name}} &nbsp; <span class="fi fi-{{.Flag}}"></span> </td>
                     <td class="darkerCol">{{.Groupid}}</td>
                     <td>{{.Point}}</td>
                     <td class="darkerCol">{{.Win}}</td>

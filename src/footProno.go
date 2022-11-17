@@ -90,6 +90,7 @@ func main() {
 	router.HandleFunc("/logout", logout)
 	router.HandleFunc("/prons", getPronostics)
 	router.HandleFunc("/updateStuff", updateStuff)
+	router.HandleFunc("/getLeaderBoard", getLeaderBoard)
 	router.HandleFunc("/about", about)
 
 	fileServer := http.FileServer(http.Dir("static"))

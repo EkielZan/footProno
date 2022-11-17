@@ -41,6 +41,11 @@ body {
      width: 300px;
 }
 
+.playerDetails{
+     margin: 0 auto;
+     width: 450px;
+}
+
 .registerDetails{
      margin: 0 auto;
      width: 400px;
@@ -76,7 +81,7 @@ body {
   background-color:#bd641b2f;
 }
 
-table{
+table.fullwidth{
   width:100%;
 }
 

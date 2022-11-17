@@ -8,11 +8,11 @@
                     </div>
                 </div>
             <div class="headerBox">
-                <div class="loginDetails">
+                <div class="playerDetails">
                     {{if .user.Authenticated }}
                         <br>
                         <p>Welcome back {{.player.Firstname}} !</p>
-                        <p>Your are at the  {{.player.Position}} position with a score of {{.player.Score}}.</p>
+                        <p>Your are at the position {{.player.Position}} with a score of {{.player.Score}}.</p>
                         {{if eq "" .player.Champion }}
                         <p>You still have to choose your champion.</p>
                         {{else}}
@@ -27,7 +27,7 @@
                         </form>
                         {{end}}                 
                         <p>
-                        You have guesse correctly : 
+                        You have guessed correctly : 
                         <table>
                         <tr>
                         <td>Match Score</td><td>{{.player.Ngoodscores}}</td>
