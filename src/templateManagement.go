@@ -180,7 +180,11 @@ func getPronostics(w http.ResponseWriter, r *http.Request) {
 	for rows.Next() {
 		var match Match
 		rows.Scan(&match.ID, &match.Stage, &match.Date, &match.Teama, &match.Scorea, &match.Pena, &match.Teamb, &match.Scoreb, &match.Penb, &match.Stadium)
-		matches = append(matches, match)
+		isPast := compareDate(match.Date)
+		if !isPast {
+			match.Done = false
+			matches = append(matches, match)
+		}
 	}
 	defer db.Close()
 
@@ -192,6 +196,7 @@ func getPronostics(w http.ResponseWriter, r *http.Request) {
 		var pron Pronostic
 		for Prows.Next() {
 			Prows.Scan(&pron.MatchID, &pron.Stage, &pron.Date, &pron.Team1, &pron.ScoreT1, &pron.ScoreP1, &pron.Team2, &pron.ScoreT2, &pron.ScoreP2)
+
 		}
 		if pron.MatchID == 0 {
 			pron.MatchID = m.ID
@@ -203,15 +208,20 @@ func getPronostics(w http.ResponseWriter, r *http.Request) {
 			pron.ScoreT2 = 0
 			pron.ScoreP1 = 0
 			pron.ScoreP2 = 0
+			pron.Done = false
 		}
 		prons = append(prons, pron)
 	}
 	var dProns []Pronostic
-	Prows, _ := db.Query("SELECT p.match, st.name, m.date,  t1.name as teama, p.scorea, p.pena, t2.name as teamb, p.scoreb, p.penb FROM pronostics p LEFT JOIN matches m on m.id = p.match LEFT JOIN stage st on st.id = m.stage LEFT JOIN teams t1 on m.teama = t1.id LEFT JOIN teams t2 on m.teamb = t2.id where st.id < ? and p.user = ? LIMIT 0, 1000", config.Stage, wu)
+	Prows, _ := db.Query("SELECT p.match, st.name, m.date,  t1.name as teama, p.scorea, p.pena, t2.name as teamb, p.scoreb, p.penb FROM pronostics p LEFT JOIN matches m on m.id = p.match LEFT JOIN stage st on st.id = m.stage LEFT JOIN teams t1 on m.teama = t1.id LEFT JOIN teams t2 on m.teamb = t2.id where p.user = ? LIMIT 0, 1000", config.Stage, wu)
 	for Prows.Next() {
 		var dPron Pronostic
 		Prows.Scan(&dPron.MatchID, &dPron.Stage, &dPron.Date, &dPron.Team1, &dPron.ScoreT1, &dPron.ScoreP1, &dPron.Team2, &dPron.ScoreT2, &dPron.ScoreP2)
-		dProns = append(dProns, dPron)
+		isPast := compareDate(dPron.Date)
+		if isPast {
+			dPron.Done = false
+			dProns = append(dProns, dPron)
+		}
 	}
 	// Pass Struct and execute template for display
 	err = tpl.ExecuteTemplate(w,

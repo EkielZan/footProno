@@ -40,6 +40,7 @@ type Match struct {
 	Scoreb  int       `json:"ScoreB"`
 	Penb    int       `json:"PenB"`
 	Stadium string    `json:"Stadium"`
+	Done    bool      `json:"Done"`
 }
 
 //Team

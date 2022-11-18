@@ -1,6 +1,24 @@
 package main
 
+import (
+	"time"
+)
+
 // This is dirty. Must do a change in the DB but DB is ~life so this will be later. the faster the better
+
+func compareDate(matchDate time.Time) bool {
+	//Probably useless and should be cleaner
+	matchDate2 := matchDate.Format("02-01-2006 03:04:05")
+	t, _ := time.Parse("02-01-2006 03:04:05", matchDate2)
+	today := time.Now()
+	today2 := today.Format("02-01-2006 03:04:05")
+	t2, _ := time.Parse("02-01-2006 03:04:05", today2)
+
+	// Using time.After() method
+	g2 := t2.After(t)
+
+	return g2
+}
 
 func getFlag(champion string) string {
 	switch champion {

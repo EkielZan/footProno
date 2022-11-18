@@ -14,7 +14,16 @@
                         <p>Welcome back {{.player.Firstname}} !</p>
                         <p>Your are at the position {{.player.Position}} with a score of {{.player.Score}}.</p>
                         {{if eq "" .player.Champion }}
-                        <p>You still have to choose your champion.</p>
+                        <p>You still have to choose your champion:</p>
+                        <form action="/updateStuff">
+                        <input type="hidden" name="stuff" id="stuff" value="champion²">
+                        <select name="champion" id="champion">
+                            <option value="0" disabled="true" selected>Choose</option>
+                                {{range .champions}}
+                                        <option value="{{.ID}}" {{ if .Selected }}selected{{end}}>{{.Name}}</option>
+                                {{end}}
+                            </select></p>
+                        <input type="submit" value="Submit" />
                         {{else}}
                         <form action="/updateStuff">
                         <input type="hidden" name="stuff" id="stuff" value="champion²">
