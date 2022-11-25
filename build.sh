@@ -8,4 +8,7 @@ CGO_ENABLED=1 GOOS=linux go build -installsuffix cgo $force -v -ldflags="-X main
 cd ../healthcheck
 echo "Build Healthcheck Binaries"
 CGO_ENABLED=0 GOOS=linux go build -installsuffix cgo $force -v -o ../bin/healthcheck
+cd ../batches
+echo "Build batches Binaries"
+CGO_ENABLED=1 GOOS=linux go build -installsuffix cgo $force -v -o ../bin/updatedb
 cd ..
