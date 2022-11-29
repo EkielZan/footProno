@@ -9,6 +9,7 @@
                 <div>
                     <table>
                         <tr>
+                            <td>ID</td>
                             <th>Date</th>
                             <th class="darkerCol">Teams</th>
                             <th>Score</th>
@@ -17,7 +18,7 @@
                         </tr>
                         {{range .matches}}
                         <tr>
-                          <!-- <td>{{.ID}}</td> -->
+                          <td>{{.ID}}</td>
                           <td>{{.Date.Format "02/01/2006 15H04"}}</td>
                           <td class="darkerCol">{{.Teama}} - {{.Teamb}}</td>
                           <td>{{.Scorea}} - {{.Scoreb}}</td>
