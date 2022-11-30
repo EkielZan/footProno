@@ -35,4 +35,8 @@ UPDATE `matches` SET scorea=1, scoreb=2 where id=33;
 UPDATE `matches` SET scorea=2, scoreb=0 where id=34;
 UPDATE `matches` SET scorea=0, scoreb=3 where id=35;
 UPDATE `matches` SET scorea=0, scoreb=1 where id=36;
+UPDATE `matches` SET scorea=1, scoreb=0 where id=37;
+UPDATE `matches` SET scorea=1, scoreb=0 where id=38;
+UPDATE `matches` SET scorea=0, scoreb=2 where id=39;
+UPDATE `matches` SET scorea=1, scoreb=2 where id=40;
 UPDATE `config` SET stage=3 where stage=2;
