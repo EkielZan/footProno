@@ -48,3 +48,6 @@ UPDATE `matches` SET scorea=2, scoreb=1 where id=46;
 UPDATE `matches` SET scorea=2, scoreb=3 where id=47;
 UPDATE `matches` SET scorea=1, scoreb=0 where id=48;
 UPDATE `config` SET stage=4 where stage=3;
+
+INSERT INTO `matches` (`id`,`stage`,`date`,`teama`,`scorea`,`pena`,`teamb`,`scoreb`,`penb`,`stadium`) VALUES (49,4,'2022-12-03 16:00:00',4,0,0,7,0,0,7);
+INSERT INTO `matches` (`id`,`stage`,`date`,`teama`,`scorea`,`pena`,`teamb`,`scoreb`,`penb`,`stadium`) VALUES (49,4,'2022-12-03 16:00:00',9,0,0,14,0,0,6);
